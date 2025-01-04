@@ -1,0 +1,84 @@
+/*******************************
+    Header
+********************************/
+.hero {
+  height: calc(600px + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible)); }
+  @media (min-width: 769px) {
+    .hero {
+      height: calc(100vh + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible)); } }
+  .hero h1 {
+    margin: 0;
+    color: var(--text-secondary);
+    font-family: var(--font-head);
+    font-size: 32px;
+    text-transform: uppercase;
+    line-height: 70%;
+    font-weight: 600; }
+    @media only screen and (min-width: 480px) {
+      .hero h1 {
+        font-size: calc(32px + 28 * (100vw - 480px) / (768 - 480)); } }
+    @media only screen and (min-width: 768px) {
+      .hero h1 {
+        font-size: 60px; } }
+    .hero h1 .small {
+      position: absolute;
+      transform: rotate(180deg);
+      bottom: 5px;
+      left: -30px;
+      transform-origin: center;
+      writing-mode: vertical-rl;
+      height: 100%; }
+      @media (max-width: 768px) {
+        .hero h1 .small {
+          letter-spacing: 0.5em; } }
+      @media (max-width: 600px) {
+        .hero h1 .small {
+          letter-spacing: 0.3em; } }
+  .hero--static {
+    position: fixed;
+    top: calc(300px + (((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) / 2) - (var(--size-outline-visible) / 2));
+    transform: translateY(-50%);
+    z-index: 1;
+    margin-left: var(--space-lg);
+    border-bottom: var(--border-accent);
+    padding: 0 0 var(--space-sm) var(--space-lg); }
+    @media (min-width: 769px) {
+      .hero--static {
+        top: 50%; } }
+    .hero--static p {
+      margin-top: var(--space-xs);
+      text-transform: uppercase;
+      left: -20px;
+      font-size: var(--size-xs);
+      letter-spacing: 0.4em;
+      line-height: 160%; }
+  .hero svg {
+    opacity: var(--opacity-body); }
+
+.small {
+  font-size: calc(max(16px, 0.3em));
+  font-size: var(--size-xl);
+  line-height: 200%;
+  font-weight: 200;
+  letter-spacing: 1em; }
+
+.big {
+  font-size: 2em;
+  line-height: 100%;
+  font-weight: 800;
+  letter-spacing: -0.05em; }
+
+#overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2; }
+  #overlay .overlay1 {
+    fill: var(--bg-accent-low); }
+  #overlay .overlay2 {
+    fill: var(--bg-accent-mid); }
+  #overlay .overlay3 {
+    fill: var(--bg-accent-high); }
+  #overlay .overlay4 {
+    fill: var(--bg-primary); }

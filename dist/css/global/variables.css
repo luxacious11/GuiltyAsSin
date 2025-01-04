@@ -1,0 +1,332 @@
+/*******************************
+    Variables
+********************************/
+:root {
+  --font-body: "Nunito Sans", sans-serif;
+  --font-head: "Oswald", sans-serif;
+  --size-xs: 8px;
+  --size-sm: 10px;
+  --size-md: 12px;
+  --size-lg: 14px;
+  --size-xl: 16px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 15px;
+  --space-lg: 30px;
+  --space-xl: 60px;
+  --transition-standard-duration: 0.3s;
+  --transition-tab-duration: 0.5s;
+  --opacity-bg-image: 0.15;
+  --opacity-body: 0.8;
+  --position-bg-image: center;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_default_min.jpg);
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  --bg-primary: rgb(12, 12, 12);
+  --bg-primary-transparent: rgb(12, 12, 12, 0.8);
+  --text-on-accent: var(--text-secondary);
+  --text-primary: rgb(200, 200, 200);
+  --text-secondary: rgb(225, 225, 225);
+  --size-alert-max-height: 80px;
+  --size-menu-height: 30px;
+  --size-menu-width: 30px;
+  --size-store-image: 24px;
+  --size-switcher-image: 40px;
+  --size-outline-visible: 300px; }
+  @media (min-width: 601px) {
+    :root {
+      --size-alert-max-height: 150px; } }
+
+body.lgFont {
+  --size-xs: 10px;
+  --size-sm: 12px;
+  --size-md: 14px;
+  --size-lg: 16px;
+  --size-xl: 18px; }
+
+body.xlFont {
+  --size-xs: 12px;
+  --size-sm: 16px;
+  --size-md: 18px;
+  --size-lg: 20px;
+  --size-xl: 22px; }
+
+body.light {
+  --bg-primary: rgb(235, 235, 235);
+  --bg-primary-transparent: rgb(235, 235, 235, var(--opacity-body));
+  --text-secondary: rgb(24, 24, 24); }
+
+body[class*="g-"],
+body [class*="g-"], body[class*="mgroup-"],
+body [class*="mgroup-"] {
+  --accent: rgb(var(--rgb));
+  --accent-30: rgba(var(--rgb), 0.3);
+  --accent-40: rgba(var(--rgb), 0.4);
+  --accent-50: rgba(var(--rgb), 0.5);
+  --bg-accent: var(--accent);
+  --bg-accent-low: var(--accent-30);
+  --bg-accent-mid: var(--accent-40);
+  --bg-accent-high: var(--accent-50);
+  --text-accent: var(--accent);
+  --border-accent: 1px solid var(--accent); }
+
+body.g-1,
+body .g-1, body.mgroup-1,
+body .mgroup-1, body.g-2,
+body .g-2, body.mgroup-2,
+body .mgroup-2, body.g-3,
+body .g-3, body.mgroup-3,
+body .mgroup-3 {
+  --rgb: 145, 74, 74; }
+
+body.g-5,
+body .g-5, body.mgroup-5,
+body .mgroup-5 {
+  --rgb: 121, 121, 121;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_inactive_min.jpg); }
+
+body.g-4,
+body .g-4, body.mgroup-4,
+body .mgroup-4,
+body [data-group="staff"],
+body [data-group="Staff"],
+body [data-group="STAFF"] {
+  --rgb: 95, 138, 138;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_staff_min.jpg); }
+
+body.g-6,
+body .g-6, body.mgroup-6,
+body .mgroup-6,
+body [data-group="writer"],
+body [data-group="Writer"],
+body [data-group="WRITER"] {
+  --rgb: 142, 84, 61;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_writer_min.jpg); }
+
+body.g-7,
+body .g-7, body.mgroup-7,
+body .mgroup-7,
+body [data-group="tiger"],
+body [data-group="Tiger"],
+body [data-group="TIGER"] {
+  --rgb: 153, 117, 78;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_tiger_min.jpg); }
+
+body.g-8,
+body .g-8, body.mgroup-8,
+body .mgroup-8,
+body [data-group="wolf"],
+body [data-group="Wolf"],
+body [data-group="WOLF"] {
+  --rgb: 88, 92, 98;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_wolf_min.jpg); }
+
+body.g-9,
+body .g-9, body.mgroup-9,
+body .mgroup-9,
+body [data-group="rabbit"],
+body [data-group="Rabbit"],
+body [data-group="RABBIT"] {
+  --rgb: 189, 91, 132;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_rabbit_min.jpg); }
+
+body.g-10,
+body .g-10, body.mgroup-10,
+body .mgroup-10,
+body [data-group="adder"],
+body [data-group="Adder"],
+body [data-group="ADDER"] {
+  --rgb: 103, 117, 75;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_adder_min.jpg); }
+
+body.g-11,
+body .g-11, body.mgroup-11,
+body .mgroup-11,
+body [data-group="eagle"],
+body [data-group="Eagle"],
+body [data-group="EAGLE"] {
+  --rgb: 119, 157, 164;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_eagle_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-12,
+body .g-12, body.mgroup-12,
+body .mgroup-12,
+body [data-group="otter"],
+body [data-group="Otter"],
+body [data-group="OTTER"] {
+  --rgb: 162, 147, 118;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_otter_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-13,
+body .g-13, body.mgroup-13,
+body .mgroup-13,
+body [data-group="crow"],
+body [data-group="Crow"],
+body [data-group="CROW"] {
+  --rgb: 95, 89, 117;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_crow_min.jpg); }
+
+body.g-14,
+body .g-14, body.mgroup-14,
+body .mgroup-14,
+body [data-group="deer"],
+body [data-group="Deer"],
+body [data-group="DEER"] {
+  --rgb: 149, 155, 127;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_deer_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-15,
+body .g-15, body.mgroup-15,
+body .mgroup-15,
+body [data-group="unicorn"],
+body [data-group="Unicorn"],
+body [data-group="UNICORN"] {
+  --rgb: 168, 146, 159;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_unicorn_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-16,
+body .g-16, body.mgroup-16,
+body .mgroup-16,
+body [data-group="phoenix"],
+body [data-group="Phoenix"],
+body [data-group="PHOENIX"] {
+  --rgb: 189, 141, 79;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_phoenix_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-17,
+body .g-17, body.mgroup-17,
+body .mgroup-17,
+body [data-group="dragon"],
+body [data-group="Dragon"],
+body [data-group="DRAGON"] {
+  --rgb: 128, 43, 43;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_dragon_min.jpg); }
+
+body.g-18,
+body .g-18, body.mgroup-18,
+body .mgroup-18,
+body [data-group="selkie"],
+body [data-group="Selkie"],
+body [data-group="SELKIE"] {
+  --rgb: 38, 104, 117;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_selkie_min.jpg); }
+
+body.g-19,
+body .g-19, body.mgroup-19,
+body .mgroup-19,
+body [data-group="grizzly"],
+body [data-group="Grizzly"],
+body [data-group="GRIZZLY"] {
+  --rgb: 91, 73, 68;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_grizzly_min.jpg);
+  --opacity-bg-image: 0.3; }
+
+body.g-20,
+body .g-20, body.mgroup-20,
+body .mgroup-20,
+body [data-group="hyena"],
+body [data-group="Hyena"],
+body [data-group="HYENA"] {
+  --rgb: 125, 85, 92;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_hyena_min.jpg); }
+
+body.g-21,
+body .g-21, body.mgroup-21,
+body .mgroup-21,
+body [data-group="rat"],
+body [data-group="Rat"],
+body [data-group="RAT"] {
+  --rgb: 69, 77, 70;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_rat_min.jpg); }
+
+body.g-22,
+body .g-22, body.mgroup-22,
+body .mgroup-22,
+body [data-group="sloth"],
+body [data-group="Sloth"],
+body [data-group="SLOTH"] {
+  --rgb: 96, 68, 90;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_sloth_min.jpg); }
+
+body.g-23,
+body .g-23, body.mgroup-23,
+body .mgroup-23,
+body [data-group="griffin"],
+body [data-group="Griffin"],
+body [data-group="GRIFFIN"] {
+  --rgb: 66, 86, 106;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_griffin_min.jpg);
+  --opacity-bg-image: 0.2; }
+
+body.g-24,
+body .g-24, body.mgroup-24,
+body .mgroup-24,
+body [data-group="kelpie"],
+body [data-group="Kelpie"],
+body [data-group="KELPIE"] {
+  --rgb: 69, 87, 69;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+  --opacity-bg-image: 0.3;
+  --position-bg-image: 50% 40%; }
+
+body.g-25,
+body .g-25, body.mgroup-25,
+body .mgroup-25,
+body [data-group=""],
+body [data-group=""],
+body [data-group=""] {
+  --rgb: 137, 125, 121;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-26,
+body .g-26, body.mgroup-26,
+body .mgroup-26,
+body [data-group=""],
+body [data-group=""],
+body [data-group=""] {
+  --rgb: 214, 185, 129;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-27,
+body .g-27, body.mgroup-27,
+body .mgroup-27,
+body [data-group=""],
+body [data-group=""],
+body [data-group=""] {
+  --rgb: 163, 190, 109;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-28,
+body .g-28, body.mgroup-28,
+body .mgroup-28,
+body [data-group=""],
+body [data-group=""],
+body [data-group=""] {
+  --rgb: 61, 116, 93;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg); }
+
+body.g-29,
+body .g-29, body.mgroup-29,
+body .mgroup-29,
+body [data-group=""],
+body [data-group=""],
+body [data-group=""] {
+  --rgb: 71, 151, 165;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+  --text-on-accent: rgb(24, 24, 24); }
+
+body.g-30,
+body .g-30, body.mgroup-30,
+body .mgroup-30,
+body [data-group=""],
+body [data-group=""],
+body [data-group=""] {
+  --rgb: 120, 78, 96;
+  --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg); }

@@ -1,0 +1,13 @@
+/*******************************
+    Profile
+********************************/
+.profile--account {
+  display: grid;
+  grid-template-columns: var(--size-switcher-image) auto;
+  gap: var(--space-sm); }
+  .profile--account-image {
+    width: var(--size-switcher-image);
+    height: var(--size-switcher-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; }
