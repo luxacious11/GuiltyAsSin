@@ -26,6 +26,14 @@ select {
 a {
     text-decoration: none;
 }
+p {
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
 
 .fa-brands {
     font-family: 'Font Awesome 6 Brands' !important;

@@ -15,14 +15,14 @@ if(switcher !== null) {
 }
 
 //quick login
-if(document.querySelector('body').classList.contains('g-2')) {
+/*if(document.querySelector('body').classList.contains('g-2')) {
     initQuickLogin();
 } else {
     if($('#quick-login').length) {
         $('#quick-login').remove();
     }
     $('#quick-login-clip').remove();
-}
+}*/
 
 //remove empty tooltips
 $('*[title=""]').removeAttr('title');
@@ -51,6 +51,20 @@ if (typeof tippy === 'function') {
         arrow: false
     });
 }
+
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.hero').forEach(hero => {
+        let percentScrolled = ((hero.clientHeight / 2) - window.scrollY) / (hero.clientHeight / 2) + 0.2;
+        let blur = ((window.scrollY / (hero.clientHeight / 2)) - 0.2) * 50;
+        if(percentScrolled > 0) {
+            hero.querySelector('.hero--static').style.opacity = percentScrolled;
+            document.querySelector('.hero--static').style.filter = `blur(${blur > 0 ? blur : 0}px)`;
+        } else {
+            document.querySelector('.hero--static').style.opacity = 0;
+            document.querySelector('.hero--static').style.filter = `blur(50px)`;
+        }
+    });
+})
 
 /********** Initializations **********/
 setTheme();

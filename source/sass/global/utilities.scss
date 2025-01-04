@@ -310,80 +310,78 @@
     max-width: 575px;
 }
 
-ner-image[data-ratio="1:1"],
-[data-ratio="1:1"] ner-image {
+tag-image[data-ratio="1:1"],
+[data-ratio="1:1"] tag-image {
     aspect-ratio: 1 / 1;
 }
-ner-image[data-ratio="2:3"],
-[data-ratio="2:3"] ner-image {
+tag-image[data-ratio="2:3"],
+[data-ratio="2:3"] tag-image {
     aspect-ratio: 2 / 3;
 }
-ner-image[data-ratio="3:2"],
-[data-ratio="3:2"] ner-image {
+tag-image[data-ratio="3:2"],
+[data-ratio="3:2"] tag-image {
     aspect-ratio: 3 / 2;
 }
-ner-image[data-ratio="3:4"],
-[data-ratio="3:4"] ner-image {
+tag-image[data-ratio="3:4"],
+[data-ratio="3:4"] tag-image {
     aspect-ratio: 3 / 4;
 }
-ner-image[data-ratio="4:3"],
-[data-ratio="4:3"] ner-image {
+tag-image[data-ratio="4:3"],
+[data-ratio="4:3"] tag-image {
     aspect-ratio: 4 / 3;
 }
-ner-image[data-ratio="4:5"],
-[data-ratio="4:5"] ner-image {
+tag-image[data-ratio="4:5"],
+[data-ratio="4:5"] tag-image {
     aspect-ratio: 4 / 5;
 }
-ner-image[data-ratio="5:4"],
-[data-ratio="5:4"] ner-image {
+tag-image[data-ratio="5:4"],
+[data-ratio="5:4"] tag-image {
     aspect-ratio: 5 / 4;
 }
-ner-image[data-ratio="9:16"],
-[data-ratio="9:16"] ner-image {
+tag-image[data-ratio="9:16"],
+[data-ratio="9:16"] tag-image {
     aspect-ratio: 9 / 16;
 }
-ner-image[data-ratio="16:9"],
-[data-ratio="16:9"] ner-image {
+tag-image[data-ratio="16:9"],
+[data-ratio="16:9"] tag-image {
     aspect-ratio: 16 / 9;
 }
 
-ner-scroll[data-scroll="xs"],
-ner-scroll[data-scroll="Xs"],
-ner-scroll[data-scroll="XS"],
-[data-scroll="xs"] ner-scroll,
-[data-scroll="Xs"] ner-scroll,
-[data-scroll="XS"] ner-scroll {
+[data-scroll="xs"] .scroll,
+[data-scroll="Xs"] .scroll,
+[data-scroll="XS"] .scroll {
     max-height: 100px;
 }
-ner-scroll[data-scroll="sm"],
-ner-scroll[data-scroll="Sm"],
-ner-scroll[data-scroll="SM"],
-[data-scroll="sm"] ner-scroll,
-[data-scroll="Sm"] ner-scroll,
-[data-scroll="SM"] ner-scroll {
+[data-scroll="sm"] .scroll,
+[data-scroll="Sm"] .scroll,
+[data-scroll="SM"] .scroll {
     max-height: 175px;
 }
-ner-scroll[data-scroll="md"],
-ner-scroll[data-scroll="Md"],
-ner-scroll[data-scroll="MD"],
-[data-scroll="md"] ner-scroll,
-[data-scroll="Md"] ner-scroll,
-[data-scroll="MD"] ner-scroll {
+[data-scroll="md"] .scroll,
+[data-scroll="Md"] .scroll,
+[data-scroll="MD"] .scroll {
     max-height: 250px;
 }
-ner-scroll[data-scroll="lg"],
-ner-scroll[data-scroll="Lg"],
-ner-scroll[data-scroll="LG"],
-[data-scroll="lg"] ner-scroll,
-[data-scroll="Lg"] ner-scroll,
-[data-scroll="LG"] ner-scroll {
+[data-scroll="lg"] .scroll,
+[data-scroll="Lg"] .scroll,
+[data-scroll="LG"] .scroll {
     max-height: 325px;
 }
-ner-scroll[data-scroll="xl"],
-ner-scroll[data-scroll="Xl"],
-ner-scroll[data-scroll="XL"],
-[data-scroll="xl"] ner-scroll,
-[data-scroll="Xl"] ner-scroll,
-[data-scroll="XL"] ner-scroll {
+[data-scroll="xl"] .scroll,
+[data-scroll="Xl"] .scroll,
+[data-scroll="XL"] .scroll {
     max-height: 400px;
+}
+
+[data-text-color="accent"],
+[data-text-color="Accent"],
+[data-text-color="ACCENT"] {
+    color: var(--text-accent);
+}
+
+[data-text-color="standout"],
+[data-text-color="Standout"],
+[data-text-color="StandOut"],
+[data-text-color="STANDOUT"] {
+    color: var(--text-secondary);
 }

@@ -4,6 +4,9 @@
     Variables
 ********************************/
 :root {
+    --font-body: "Nunito Sans", sans-serif;
+    --font-head: "Oswald", sans-serif;
+
     --size-xs: 8px;
     --size-sm: 10px;
     --size-md: 12px;
@@ -19,15 +22,421 @@
     --transition-standard-duration: 0.3s;
     --transition-tab-duration: 0.5s;
 
+    --opacity-bg-image: 0.15;
+    --opacity-body: 0.8;
+
+    --position-bg-image: center;
+
+    --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_default_min.jpg);
     --bg-overlay: rgba(0, 0, 0, 0.8);
+    --bg-primary: rgb(12, 12, 12);
+    --bg-primary-transparent: rgb(12, 12, 12, 0.8);
+
+    --text-on-accent: var(--text-secondary);
+    --text-primary: rgb(200, 200, 200);
+    --text-secondary: rgb(225, 225, 225);
 
     --size-alert-max-height: 80px;
     --size-menu-height: 30px;
     --size-menu-width: 30px;
     --size-store-image: 24px;
     --size-switcher-image: 40px;
+    --size-outline-visible: 300px;
 
     @include mq-up(xs) {
         --size-alert-max-height: 150px;
+    }
+}
+
+body {
+    &.lgFont {
+        --size-xs: 10px;
+        --size-sm: 12px;
+        --size-md: 14px;
+        --size-lg: 16px;
+        --size-xl: 18px;
+    }
+    &.xlFont {
+        --size-xs: 12px;
+        --size-sm: 16px;
+        --size-md: 18px;
+        --size-lg: 20px;
+        --size-xl: 22px;
+    }
+    &.light {
+        --bg-primary: rgb(235, 235, 235);
+        --bg-primary-transparent: rgb(235, 235, 235, var(--opacity-body));
+
+        --text-secondary: rgb(24, 24, 24);
+    }
+
+    //Set up
+    &[class*="g-"],
+    [class*="g-"],
+    &[class*="mgroup-"],
+    [class*="mgroup-"] {
+        --accent: rgb(var(--rgb));
+        --accent-30: rgba(var(--rgb), 0.3);
+        --accent-40: rgba(var(--rgb), 0.4);
+        --accent-50: rgba(var(--rgb), 0.5);
+
+        --bg-accent: var(--accent);
+        --bg-accent-low: var(--accent-30);
+        --bg-accent-mid: var(--accent-40);
+        --bg-accent-high: var(--accent-50);
+        
+        --text-accent: var(--accent);
+        
+        --border-accent: 1px solid var(--accent);
+    }
+
+    //Other
+    &.g-1,
+    .g-1,
+    &.mgroup-1,
+    .mgroup-1,
+    &.g-2,
+    .g-2,
+    &.mgroup-2,
+    .mgroup-2,
+    &.g-3,
+    .g-3,
+    &.mgroup-3,
+    .mgroup-3 {
+        --rgb: 145, 74, 74;
+    }
+
+    //Banned & Inactive
+    &.g-5,
+    .g-5,
+    &.mgroup-5,
+    .mgroup-5 {
+        --rgb: 121, 121, 121;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_inactive_min.jpg);
+    }
+
+    //Staff
+    &.g-4,
+    .g-4,
+    &.mgroup-4,
+    .mgroup-4,
+    [data-group="staff"],
+    [data-group="Staff"],
+    [data-group="STAFF"] {
+        --rgb: 95, 138, 138;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_staff_min.jpg);
+    }
+
+    //Sorted
+    &.g-6,
+    .g-6,
+    &.mgroup-6,
+    .mgroup-6,
+    [data-group="writer"],
+    [data-group="Writer"],
+    [data-group="WRITER"] {
+        --rgb: 142, 84, 61;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_writer_min.jpg);
+    }
+
+    //Tiger
+    &.g-7,
+    .g-7,
+    &.mgroup-7,
+    .mgroup-7,
+    [data-group="tiger"],
+    [data-group="Tiger"],
+    [data-group="TIGER"] {
+        --rgb: 153, 117, 78;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_tiger_min.jpg);
+    }
+
+    //Wolf
+    &.g-8,
+    .g-8,
+    &.mgroup-8,
+    .mgroup-8,
+    [data-group="wolf"],
+    [data-group="Wolf"],
+    [data-group="WOLF"] {
+        --rgb: 88, 92, 98;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_wolf_min.jpg);
+    }
+
+    //Rabbit
+    &.g-9,
+    .g-9,
+    &.mgroup-9,
+    .mgroup-9,
+    [data-group="rabbit"],
+    [data-group="Rabbit"],
+    [data-group="RABBIT"] {
+        --rgb: 189, 91, 132;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_rabbit_min.jpg);
+    }
+
+    //Adder
+    &.g-10,
+    .g-10,
+    &.mgroup-10,
+    .mgroup-10,
+    [data-group="adder"],
+    [data-group="Adder"],
+    [data-group="ADDER"] {
+        --rgb: 103, 117, 75;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_adder_min.jpg);
+    }
+
+    //Eagle
+    &.g-11,
+    .g-11,
+    &.mgroup-11,
+    .mgroup-11,
+    [data-group="eagle"],
+    [data-group="Eagle"],
+    [data-group="EAGLE"] {
+        --rgb: 119, 157, 164;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_eagle_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Otter
+    &.g-12,
+    .g-12,
+    &.mgroup-12,
+    .mgroup-12,
+    [data-group="otter"],
+    [data-group="Otter"],
+    [data-group="OTTER"] {
+        --rgb: 162, 147, 118;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_otter_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Crow
+    &.g-13,
+    .g-13,
+    &.mgroup-13,
+    .mgroup-13,
+    [data-group="crow"],
+    [data-group="Crow"],
+    [data-group="CROW"] {
+        --rgb: 95, 89, 117;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_crow_min.jpg);
+    }
+
+    //Deer
+    &.g-14,
+    .g-14,
+    &.mgroup-14,
+    .mgroup-14,
+    [data-group="deer"],
+    [data-group="Deer"],
+    [data-group="DEER"] {
+        --rgb: 149, 155, 127;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_deer_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Unicorn
+    &.g-15,
+    .g-15,
+    &.mgroup-15,
+    .mgroup-15,
+    [data-group="unicorn"],
+    [data-group="Unicorn"],
+    [data-group="UNICORN"] {
+        --rgb: 168, 146, 159;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_unicorn_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Phoenix
+    &.g-16,
+    .g-16,
+    &.mgroup-16,
+    .mgroup-16,
+    [data-group="phoenix"],
+    [data-group="Phoenix"],
+    [data-group="PHOENIX"] {
+        --rgb: 189, 141, 79;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_phoenix_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Dragon
+    &.g-17,
+    .g-17,
+    &.mgroup-17,
+    .mgroup-17,
+    [data-group="dragon"],
+    [data-group="Dragon"],
+    [data-group="DRAGON"] {
+        --rgb: 128, 43, 43;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_dragon_min.jpg);
+    }
+
+    //Selkie
+    &.g-18,
+    .g-18,
+    &.mgroup-18,
+    .mgroup-18,
+    [data-group="selkie"],
+    [data-group="Selkie"],
+    [data-group="SELKIE"] {
+        --rgb: 38, 104, 117;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_selkie_min.jpg);
+    }
+
+    //Grizzly
+    &.g-19,
+    .g-19,
+    &.mgroup-19,
+    .mgroup-19,
+    [data-group="grizzly"],
+    [data-group="Grizzly"],
+    [data-group="GRIZZLY"] {
+        --rgb: 91, 73, 68;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_grizzly_min.jpg);
+        --opacity-bg-image: 0.3;
+    }
+
+    //Hyena
+    &.g-20,
+    .g-20,
+    &.mgroup-20,
+    .mgroup-20,
+    [data-group="hyena"],
+    [data-group="Hyena"],
+    [data-group="HYENA"] {
+        --rgb: 125, 85, 92;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_hyena_min.jpg);
+    }
+
+    //Rat
+    &.g-21,
+    .g-21,
+    &.mgroup-21,
+    .mgroup-21,
+    [data-group="rat"],
+    [data-group="Rat"],
+    [data-group="RAT"] {
+        --rgb: 69, 77, 70;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_rat_min.jpg);
+    }
+
+    //Sloth
+    &.g-22,
+    .g-22,
+    &.mgroup-22,
+    .mgroup-22,
+    [data-group="sloth"],
+    [data-group="Sloth"],
+    [data-group="SLOTH"] {
+        --rgb: 96, 68, 90;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_sloth_min.jpg);
+    }
+
+    //Griffin
+    &.g-23,
+    .g-23,
+    &.mgroup-23,
+    .mgroup-23,
+    [data-group="griffin"],
+    [data-group="Griffin"],
+    [data-group="GRIFFIN"] {
+        --rgb: 66, 86, 106;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_griffin_min.jpg);
+        --opacity-bg-image: 0.2;
+    }
+
+    //Kelpie
+    &.g-24,
+    .g-24,
+    &.mgroup-24,
+    .mgroup-24,
+    [data-group="kelpie"],
+    [data-group="Kelpie"],
+    [data-group="KELPIE"] {
+        --rgb: 69, 87, 69;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+        --opacity-bg-image: 0.3;
+        --position-bg-image: 50% 40%;
+    }
+
+    //Unnamed
+    &.g-25,
+    .g-25,
+    &.mgroup-25,
+    .mgroup-25,
+    [data-group=""],
+    [data-group=""],
+    [data-group=""] {
+        --rgb: 137, 125, 121;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Unnamed
+    &.g-26,
+    .g-26,
+    &.mgroup-26,
+    .mgroup-26,
+    [data-group=""],
+    [data-group=""],
+    [data-group=""] {
+        --rgb: 214, 185, 129;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Unnamed
+    &.g-27,
+    .g-27,
+    &.mgroup-27,
+    .mgroup-27,
+    [data-group=""],
+    [data-group=""],
+    [data-group=""] {
+        --rgb: 163, 190, 109;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Unnamed
+    &.g-28,
+    .g-28,
+    &.mgroup-28,
+    .mgroup-28,
+    [data-group=""],
+    [data-group=""],
+    [data-group=""] {
+        --rgb: 61, 116, 93;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+    }
+
+    //Unnamed
+    &.g-29,
+    .g-29,
+    &.mgroup-29,
+    .mgroup-29,
+    [data-group=""],
+    [data-group=""],
+    [data-group=""] {
+        --rgb: 71, 151, 165;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
+        --text-on-accent: rgb(24, 24, 24);
+    }
+
+    //Unnamed
+    &.g-30,
+    .g-30,
+    &.mgroup-30,
+    .mgroup-30,
+    [data-group=""],
+    [data-group=""],
+    [data-group=""] {
+        --rgb: 120, 78, 96;
+        --bg-image: url(https://files.jcink.net/uploads2/wherethehellis/Background_Images/bg_kelpie_min.jpg);
     }
 }

@@ -3,3 +3,100 @@
 /*******************************
     Header
 ********************************/
+.hero {
+    height: calc(600px + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible));
+
+    @include mq-up(sm) {
+        height: calc(100vh + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible));
+    }
+
+    h1 {
+        margin: 0;
+        color: var(--text-secondary);
+        font-family: var(--font-head);
+        @include fluid-type(32, 60, 480, 768);
+        text-transform: uppercase;
+        line-height: 70%;
+        font-weight: 600;
+
+        .small {
+            position: absolute;
+            transform: rotate(180deg);
+            bottom: 5px;
+            left: -30px;
+            transform-origin: center;
+            writing-mode: vertical-rl;
+            height: 100%;
+
+            @include mq-down(sm) {
+                letter-spacing: 0.5em;
+            }
+
+            @include mq-down(xs) {
+                letter-spacing: 0.3em;
+            }
+        }
+    }
+
+    &--static {
+        position: fixed;
+        top: calc(300px + (((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) / 2) - (var(--size-outline-visible) / 2));
+        transform: translateY(-50%);
+        z-index: 1;
+        margin-left: var(--space-lg);
+        border-bottom: var(--border-accent);
+        padding: 0 0 var(--space-sm) var(--space-lg);
+
+        @include mq-up(sm) {
+            top: 50%;
+        }
+
+        p {
+            margin-top: var(--space-xs);
+            text-transform: uppercase;
+            left: -20px;
+            font-size: var(--size-xs);
+            letter-spacing: 0.4em;
+            line-height: 160%;
+        }
+    }
+
+    svg {
+        opacity: var(--opacity-body);
+    }
+}
+
+.small {
+    font-size: calc(max(16px, 0.3em));
+    font-size: var(--size-xl);
+    line-height: 200%;
+    font-weight: 200;
+    letter-spacing: 1em;
+}
+.big {
+    font-size: 2em;
+    line-height: 100%;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+#overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+
+	.overlay1 {
+        fill: var(--bg-accent-low);
+    }
+	.overlay2 {
+        fill: var(--bg-accent-mid);
+    }
+	.overlay3 {
+        fill: var(--bg-accent-high);
+    }
+	.overlay4 {
+        fill: var(--bg-primary);
+    }
+}
