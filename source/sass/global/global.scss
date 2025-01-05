@@ -4,7 +4,6 @@
     Global
 ********************************/
 body {
-    padding: var(--size-menu-height) 0 0 var(--size-menu-width);
     background: var(--bg-primary);
     font-size: var(--size-md);
     line-height: 200%;
@@ -36,7 +35,7 @@ main {
     padding-right: var(--space-md);
     margin-right: calc(-1 * var(--space-md));
     scrollbar-width: thin;
-    scrollbar-color: black transparent;
+    scrollbar-color: var(--text-primary) transparent;
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -45,14 +44,14 @@ main {
         background: transparent;
     }
     &::-webkit-scrollbar-thumb {
-        background: black;
+        background: var(--text-primary);
     }
 
     &.accent {
-        scrollbar-color: red transparent;
+        scrollbar-color: var(--bg-accent) transparent;
 
         &::-webkit-scrollbar-thumb {
-            background: red;
+            background: var(--bg-accent);
         }
     }
 }
@@ -129,23 +128,23 @@ tag-labels {
         display: none;
     }
 }
-
 .invisibleElTagging,
 .invisibleEl {
     position: fixed;
     z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
+    top: var(--size-menu-height);
+    left: var(--size-menu-width);
+    width: 0;
+    height: calc(100vh - var(--size-menu-height));
     background: var(--bg-overlay);
     transition-duration: var(--transition-tab-duration);
 
     &.menu-open {
-        height: 100vh;
-        z-index: 2;
+        width: calc(100% - var(--size-menu-width));
+        z-index: 3;
     }
 }
+
 .alert-select {
     display: none;
     position: absolute;
@@ -199,5 +198,43 @@ tag-labels {
         grid-column: 1 / -1;
         cursor: pointer;
         margin: 0 auto;
+    }
+}
+
+.custom-code {
+    pre {
+        margin: var(--space-sm) 0 0 0;
+
+        textarea {
+            width: 100%;
+            background: var(--bg-tertiary-mid);
+            border: var(--border-primary);
+            border-radius: var(--radius-standard);
+            height: 80px;
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            padding: var(--space-sm);
+            line-height: 160%;
+            font-size: var(--size-md);
+            white-space: pre-wrap;
+        }
+    }
+}
+.copyQuick {
+    border: 0;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: var(--size-xs);
+    background: var(--bg-accent-low);
+    font-weight: 900;
+    letter-spacing: 0.3em;
+    padding: var(--space-sm) var(--space-md);
+    line-height: 100%;
+    border-radius: var(--radius-standard);
+    transition: var(--transition-standard-duration);
+    cursor: pointer;
+
+    &:hover {
+        background: var(--bg-accent-mid);
     }
 }

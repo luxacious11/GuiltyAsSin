@@ -3,7 +3,8 @@
 
 body.g-2 .memOnly,
 body:not(.g-2) .guestOnly,
-body:not(.g-4) .staffOnly {
+body:not(.g-4) .staffOnly,
+body.g-2 .notGuest {
   display: none !important; }
 
 body.g-2 .guestOnly,

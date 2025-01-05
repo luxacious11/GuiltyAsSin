@@ -39,9 +39,9 @@
     top: calc(300px + (((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) / 2) - (var(--size-outline-visible) / 2));
     transform: translateY(-50%);
     z-index: 1;
-    margin-left: var(--space-lg);
+    margin: 0 20px 0 calc(var(--space-lg) + var(--size-menu-width));
     border-bottom: var(--border-accent);
-    padding: 0 0 var(--space-sm) var(--space-lg); }
+    padding: 0 0 var(--space-sm) 20px; }
     @media (min-width: 769px) {
       .hero--static {
         top: 50%; } }
@@ -56,8 +56,7 @@
     opacity: var(--opacity-body); }
 
 .small {
-  font-size: calc(max(16px, 0.3em));
-  font-size: var(--size-xl);
+  font-size: 16px;
   line-height: 200%;
   font-weight: 200;
   letter-spacing: 1em; }

@@ -54,60 +54,105 @@
 </header>
       <div class="invisibleEl"></div>
 <nav class="nav nav--top">
-    <div id="navstrip" align="left">&nbsp;<a href="../public/index.html">Site Name</a></div>
+    <div class="nav--inner">
+        <div id="navstrip" align="left">&nbsp;<a href="../public/index.html">Site Name</a></div>
+    </div>
 </nav>
 <nav class="nav nav--left">
-    <a href="/" title="Index"><i class="fa-solid fa-home"></i></a>
-    <div class="nav--inline guestOnly">
-        <button onclick="toggleMenu(this)" class="button--menu" title="Login">
-            <i class="fa-solid fa-sign-in"></i>
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <nav class="nav--popout">
-            <div class="scroll" id="quick-login-clip"></div>
-        </nav>
+    <div class="nav--inner">
+        <div class="nav--inline">
+            <button onclick="toggleMenu(this)" class="button--menu" title="Main Menu" data-menu="main">
+                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="nav--inline guestOnly">
+            <button onclick="toggleMenu(this)" class="button--menu" title="Login">
+                <i class="fa-solid fa-sign-in"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <nav class="nav--popout">
+                <div class="scroll" id="quick-login-clip"></div>
+            </nav>
+        </div>
+        <a href="../public/defaults/register1.html" class="guestOnly" title="Register"><i class="fa-solid fa-user-plus"></i></a>
+        <a href="../public/profile.html" class="memOnly notMobile" title="View Lux"><i class="fa-solid fa-user"></i></a>
+        <a href="../public/usercp/user-edit.html" class="memOnly" title="Edit Profile"><i class="fa-solid fa-pen"></i></a>
+        <div class="nav--inline memOnly">
+            <button onclick="toggleMenu(this)" class="button--menu" data-menu="accounts" title="Switch Accounts">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <a href="../public/usercp/user-inbox.html" data-new="0" class="memOnly"><i class="fa-solid fa-envelope"></i></a>
+        <div class="nav--inline memOnly">
+            <button onclick="toggleMenu(this)" data-new="10" class="button--menu" data-menu="alerts" title="View Alerts">
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <a href="../public/defaults/login.html" class="memOnly" title="Logout"><i class="fa-solid fa-power-off"></i></a>
+        <div class="nav--inline options">
+            <button onclick="toggleMenu(this)" class="button--menu" title="Skin Options">
+                <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <nav class="nav--popout options">
+                <div class="scroll">
+                    <button onclick="toggleTheme()" class="toggle--theme">
+                        <i class="fa-solid fa-sun"></i>
+                        <div><span></span></div>
+                    </button>
+                    <button onclick="toggleSize()" class="toggle--size">
+                        <i class="fa-solid fa-font-case"></i>
+                        <div><span></span></div>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <a href="https://discord.gg/tVV9GyaRYK" class="notMobile" target="_blank" title="Join Our Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="#top" title="Scroll to Top"><i class="fa-solid fa-up-to-line"></i></a>
+        <a href="#bottom" title="Scroll to Bottom"><i class="fa-solid fa-down-to-line"></i></a>
     </div>
-    <a href="../public/defaults/register1.html" class="guestOnly" title="Register"><i class="fa-solid fa-user-plus"></i></a>
-    <a href="../public/profile.html" class="memOnly" title="View Lux"><i class="fa-solid fa-user"></i></a>
-    <a href="../public/usercp/user-edit.html" class="memOnly" title="Edit Profile"><i class="fa-solid fa-pen"></i></a>
-    <div class="nav--inline memOnly">
-        <button onclick="toggleMenu(this)" class="button--menu" data-menu="accounts" title="Switch Accounts">
-            <i class="fa-solid fa-arrow-right-arrow-left"></i>
-            <i class="fa-solid fa-xmark"></i>
-        </button>
+</nav>
+
+<nav class="nav--popout fullHeight" data-menu="main">
+    <div class="scroll accent">
+        <strong>Important</strong>
+        <a href="../public/profile.html" class="onlyMobile notGuest">Profile: Name</a>
+        <a href="../public/guidebook.html">Guidebook</a>
+        <a href="../public/guidebook.html#timeline">Timeline</a>
+        <a href="../public/guidebook.html#setting">Setting</a>
+        <a href="../public/guidebook.html#start">Getting Started</a>
+        <a href="../public/guidebook.html#groups">Member Groups</a>
+        <a href="https://discord.gg/tVV9GyaRYK" class="onlyMobile" target="_blank">Join Our Discord</a>
+        <strong>Forms</strong>
+        <a href="../public/guidebook.html#reserve-face">Reserve a Face</a>
+        <a href="../public/guidebook.html#add-business">Add a Business</a>
+        <a href="../public/guidebook.html#sort">Get Sorted</a>
+        <a href="../public/guidebook.html#edit-claims">Edit Claims</a>
+        <a href="../public/guidebook.html#edit-business">Edit a Business</a>
+        <a href="../public/guidebook.html#get-help">Get Help</a>
+        <strong>Claims</strong>
+        <a href="../public/memberDirectory.html">Members</a>
+        <a href="../public/guidebook.html#faces">Faces</a>
+        <a href="../public/guidebook.html#thefourhorsemen">Subplots</a>
+        <a href="../public/guidebook.html#powers">Powers</a>
+        <a href="../public/businesses.html">Jobs</a>
+        <a href="../public/connections.html">Connections</a>
+        <strong>Personal</strong>
+        <tag-code class="custom-code">
+            <button onclick="highlightCode()" class="copyQuick">copy</button>
+            <pre><textarea class="scroll">
+                [luxclass=altclass]
+                    [luxpost4=this is some song lyrics and it goes like this]the fourth the fifth the minor chord the major riff the baffled king composing hallelujah[/luxpost4]
+                [/luxclass]</textarea></pre>
+        </tag-code>
     </div>
-    <a href="../public/usercp/user-inbox.html" data-new="0" class="memOnly"><i class="fa-solid fa-envelope"></i></a>
-    <div class="nav--inline memOnly">
-        <button onclick="toggleMenu(this)" data-new="10" class="button--menu" data-menu="alerts" title="View Alerts">
-            <i class="fa-solid fa-bell"></i>
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
-    <a href="../public/defaults/login.html" class="memOnly" title="Logout"><i class="fa-solid fa-power-off"></i></a>
-    <a href="../public/store/store.html" class="memOnly" title="Store"><i class="fa-solid fa-store"></i></a>
-    <div class="nav--inline options">
-        <button onclick="toggleMenu(this)" class="button--menu" title="Skin Options">
-            <i class="fa-solid fa-gear"></i>
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <nav class="nav--popout options">
-            <div class="scroll">
-                <button onclick="toggleTheme()" class="toggle--theme">
-                    <i class="fa-solid fa-sun"></i>
-                    <div><span></span></div>
-                </button>
-                <button onclick="toggleSize()" class="toggle--size">
-                    <i class="fa-solid fa-font-case"></i>
-                    <div><span></span></div>
-                </button>
-            </div>
-        </nav>
-    </div>
-    <a href="/admin.php" target="_blank" class="staffOnly" title="Admin Panel"><i class="fa-solid fa-screwdriver-wrench"></i></a>
 </nav>
 
 <nav class="nav--popout fullHeight" data-menu="accounts">
-    <div id="account-switch" class="scroll">
+    <div id="account-switch" class="scroll accent">
         <span id='subaccounts_menu'>
             <form action='https://godlybehaviour.jcink.net/index.php?&act=Login&CODE=01&CookieDate=1' name='subswitch' method='POST'>
             <input type='hidden' name='auth_key' value='8edb8fcbc900e0d57613fec89cd6796c'>
@@ -129,7 +174,7 @@
         <a href="javascript:read_alerts();"><i class="fa-solid fa-envelope-open"></i></a>
         <a href="javascript:close_alerts();" class="close-alerts"><i class="fa-solid fa-xmark"></i></a>
     </div>
-    <div id="recent-alerts-data" class="alert--main scroll"><div style="height: 1px;"></div>
+    <div id="recent-alerts-data" class="alert--main scroll accent"><div style="height: 1px;"></div>
         <div class="row2">
         <div class="recent-alerts-msg reg-alert">
             <img src="https://files.jcink.net/themes/default/no-avatar.png" border="0" width="20" height="20" alt=""> New member registered: <a href="https://godlybehaviour.jcink.net/index.php?showuser=859">Achlys Armour</a>  <br>
