@@ -10,7 +10,8 @@ body {
 
 main {
   background: var(--bg-primary-transparent);
-  z-index: 2; }
+  z-index: 2;
+  padding: 0 0 var(--space-lg) var(--size-menu-width); }
 
 .bg {
   position: fixed;
@@ -43,6 +44,12 @@ main {
     scrollbar-color: var(--bg-accent) transparent; }
     .scroll.accent::-webkit-scrollbar-thumb {
       background: var(--bg-accent); }
+
+.is-open > button .open-button {
+  display: none; }
+
+*:not(.is-open) > button .close-button {
+  display: none; }
 
 .macro--button[onclick] {
   cursor: pointer; }

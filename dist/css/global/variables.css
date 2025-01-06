@@ -42,6 +42,7 @@
   --size-switcher-image: 50px;
   --size-outline-visible: 300px;
   --size-icon-square: 30px;
+  --radius-sm: 3px;
   --radius-standard: 4px; }
   @media (min-width: 601px) {
     :root {

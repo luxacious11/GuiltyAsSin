@@ -55,6 +55,7 @@
     --size-outline-visible: 300px;
     --size-icon-square: 30px;
 
+    --radius-sm: 3px;
     --radius-standard: 4px;
 
     @include mq-up(xs) {

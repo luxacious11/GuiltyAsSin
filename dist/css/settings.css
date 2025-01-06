@@ -17,3 +17,18 @@ body.g-4 .accordion--trigger.staffOnly {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+
+.f-22 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/coastline_desktop_min.jpg); }
+
+.f-23 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/oldtown_desktop_min.jpg); }
+
+.f-24 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/central_desktop_min.jpg); }
+
+.f-25 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/downtown_desktop_min.jpg); }
+
+.f-26 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/outskirts_desktop_min.jpg); }

@@ -400,9 +400,13 @@ function calculateAge(birthday) {
 }
 
 /****** Index ******/
+function expandSublinks(e) {
+    e.closest('.forum--title-row').classList.toggle('is-open');
+}
 function initForums() {
     //manual links
     document.querySelectorAll('.forum .forum--manual-links').forEach(linkSet => {
+        console.log(linkSet);
         //subforums exist
         let subforumEl = linkSet.closest('.forum').querySelector('.subforums');
         if(subforumEl) {
@@ -410,18 +414,51 @@ function initForums() {
         }
         //subforums don't exist
         else {
-            linkSet.closest('.forum').querySelector('.forum--links').insertAdjacentHTML('beforeend', linkSet.innerHTML);
-            linkSet.closest('.forum').querySelector('.forum--links').classList.add('manual-only');
+            linkSet.closest('.forum').querySelector('.forum--links .scroll').insertAdjacentHTML('beforeend', linkSet.innerHTML);
+            linkSet.closest('.forum').querySelector('.forum--links .scroll').classList.add('manual-only');
         }
 
         linkSet.remove();
     });
     document.querySelectorAll('.forum--links .subforums').forEach(linkSet => {
-        if(linkSet.innerText === '') {
+        if(linkSet.querySelectorAll('a').length === 0) {
             linkSet.closest('.forum--links').classList.add('hidden');
         }
     });
+    document.querySelectorAll('.forum--links .scroll').forEach(linkSet => {
+        if(linkSet.innerHTML === '') {
+            linkSet.remove();
+        }
+    })
     document.querySelectorAll('.forum--desc').forEach(el => el.remove());
+
+    document.querySelectorAll('.category .splide').forEach(slider => {
+        let splide = new Splide(`#${slider.id}`, {
+            perPage: 3,
+            gap: 10,
+            perMove: 1,
+            pagination: false,
+            padding: { right: '30px', left: '30px' },
+            breakpoints: {
+                1280: {
+                    perPage: 2,
+                },
+                1024: {
+                    perPage: 1,
+                },
+                768: {
+                    padding: { right: '15px', left: '15px' },
+                }
+          }
+        });
+        let bar = splide.root.querySelector( '.category--progress-bar' );
+        splide.on( 'mounted move', function () {
+            var end  = splide.Components.Controller.getEnd() + 1;
+            var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+            bar.style.width = String( 100 * rate ) + '%';
+        });
+        splide.mount();
+    });
 }
 
 /****** Webpages ******/

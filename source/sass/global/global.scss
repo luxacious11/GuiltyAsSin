@@ -13,6 +13,7 @@ body {
 main {
     background: var(--bg-primary-transparent);
     z-index: 2;
+    padding: 0 0 var(--space-lg) var(--size-menu-width);
 }
 .bg {
     position: fixed;
@@ -52,6 +53,20 @@ main {
 
         &::-webkit-scrollbar-thumb {
             background: var(--bg-accent);
+        }
+    }
+}
+
+button {
+    .is-open > & {
+        .open-button {
+            display: none;
+        }
+    }
+
+    *:not(.is-open) > & {
+        .close-button {
+            display: none;
         }
     }
 }
