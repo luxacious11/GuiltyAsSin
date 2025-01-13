@@ -16,7 +16,7 @@
       letter-spacing: 0.4em;
       line-height: 160%;
       border-bottom: var(--border-accent);
-      padding: 0 var(--space-xs) var(--space-sm);
+      padding: 0 var(--space-sm) var(--space-sm) 0 ;
       width: max-content;
       max-width: 100%;
       margin: 0 var(--space-md) var(--space-md);
@@ -51,6 +51,11 @@
    &--arrows {
       display: flex;
       gap: var(--space-sm);
+      position: relative !important;
+      width: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      height: auto !important;
    }
    &--arrow {
       background: none;
@@ -62,6 +67,7 @@
       top: auto;
       left: auto;
       right: auto;
+      position: relative !important;
    }
 
    &--progress {
@@ -137,7 +143,7 @@
       top: calc(100% + var(--space-sm));
       left: 0;
       width: 100%;
-      background: var(--bg-secondary);
+      background: var(--bg-primary);
       border-radius: var(--radius-standard);
       z-index: 1;
       padding: var(--space-sm);
@@ -205,10 +211,13 @@
       flex-direction: column;
       margin-top: var(--space-md);
 
-      span {
+      & > span {
          text-transform: uppercase;
          border-bottom: var(--border-primary);
          padding: var(--space-sm);
+         display: flex;
+         align-items: center;
+         gap: var(--space-md);
 
          a {
             color: var(--text-primary);
@@ -219,6 +228,10 @@
             font-size: var(--size-xl);
             font-weight: 700;
             border-top: var(--border-primary);
+
+            .fa-light {
+               opacity: 0.5;
+            }
          }
 
          &:nth-child(2) {
@@ -228,6 +241,11 @@
 
             a {
                color: var(--text-accent);
+
+               &::before {
+                  content: 'Written by ';
+                  color: var(--text-primary);
+               }
             }
          }
 
@@ -236,6 +254,19 @@
             letter-spacing: 0.2em;
             font-style: italic;
          }
+      }
+   }
+
+   &--desc {
+      .scroll {
+         margin: var(--space-sm) var(--space-sm) 0;
+         max-height: 80px;
+         text-align: justify;
+         height: 100%;
+      }
+
+      &:not(:has(.scroll)) {
+         display: none;
       }
    }
 

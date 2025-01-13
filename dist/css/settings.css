@@ -1,5 +1,8 @@
-.alert-section .input-wrap .fancy-input::before {
-  content: '\f00c'; }
+.pagination_last::after {
+  content: '\f340'; }
+
+.post--item .powers > span::before {
+  content: '\f101'; }
 
 body.g-2 .memOnly,
 body:not(.g-2) .guestOnly,
@@ -19,16 +22,70 @@ body.g-4 .accordion--trigger.staffOnly {
   display: flex; }
 
 .f-22 .forum--image {
-  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/coastline_desktop_min.jpg); }
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/coastline_min.jpg); }
 
 .f-23 .forum--image {
-  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/oldtown_desktop_min.jpg); }
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/oldtown_min.jpg); }
 
 .f-24 .forum--image {
-  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/central_desktop_min.jpg); }
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/central_min.jpg);
+  -webkit-filter: contrast(1.3);
+          filter: contrast(1.3); }
 
 .f-25 .forum--image {
-  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/downtown_desktop_min.jpg); }
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/downtown_min.jpg); }
 
 .f-26 .forum--image {
-  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/outskirts_desktop_min.jpg); }
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/outskirts_min.jpg); }
+
+.f-27 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/dockyards_min.jpg); }
+
+.f-28 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/carnivale_min.jpg);
+  background-position: bottom;
+  -webkit-filter: brightness(1.2);
+          filter: brightness(1.2); }
+
+.f-29 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/graveyard_min.jpg);
+  background-position: 50% 70%;
+  -webkit-filter: contrast(1.2) brightness(1.3);
+          filter: contrast(1.2) brightness(1.3); }
+
+.f-30 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/stanthony_min.jpg); }
+
+.f-31 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/westfall_min.jpg); }
+
+.f-32 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/logancreek_min.jpg);
+  background-position: bottom; }
+
+.f-33 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/oakland_min.jpg); }
+
+.f-34 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/holland_min.jpg); }
+
+.f-35 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/brentwood_min.jpg); }
+
+.f-36 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/bayroad_min.jpg); }
+
+.f-37 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/essexplaza_min.jpg); }
+
+.f-38 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/pacificmarket_min.jpg); }
+
+.f-39 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/castlepeak_min.jpg); }
+
+.f-40 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/hawthorne_min.jpg); }
+
+.f-41 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/pitch_min.jpg); }

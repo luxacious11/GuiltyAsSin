@@ -70,7 +70,7 @@
                 #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr,
                 #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
                   margin-bottom: var(--space-lg); } }
-              @media (min-width: 769px) {
+              @media (min-width: 801px) {
                 #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr,
                 #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
                   gap: var(--space-md); } }
@@ -117,7 +117,7 @@
 #UserCP.code-01 #ucpcontent form tbody {
   display: grid !important;
   gap: var(--space-lg); }
-  @media (min-width: 769px) {
+  @media (min-width: 801px) {
     #UserCP.code-01 #ucpcontent form tbody {
       grid-template-columns: repeat(6, 1fr); } }
   #UserCP.code-01 #ucpcontent form tbody tr {
@@ -188,7 +188,7 @@
     #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) {
       flex: 0 0 100%;
       padding: var(--space-sm); }
-      @media (min-width: 769px) {
+      @media (min-width: 801px) {
         #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) {
           flex: 0 0 calc(50% - (var(--space-md) / 2)); } }
       #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) > td {
@@ -294,7 +294,7 @@
       #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child) {
         flex: 0 0 100%;
         padding: var(--space-sm); }
-        @media (min-width: 769px) {
+        @media (min-width: 801px) {
           #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child) {
             flex: 0 0 calc(50% - calc(var(--space-md) / 2)); } }
         @media (min-width: 1025px) {
@@ -335,7 +335,7 @@
       #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) {
         flex: 0 0 100%;
         padding: var(--space-sm); }
-        @media (min-width: 769px) {
+        @media (min-width: 801px) {
           #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip),
           #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) {
             flex: 0 0 calc(50% - (var(--space-md) / 2)); } }

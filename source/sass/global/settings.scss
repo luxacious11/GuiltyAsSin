@@ -1,5 +1,8 @@
-.alert-section .input-wrap .fancy-input::before {
-    content: '\f00c';
+.pagination_last::after {
+    content: '\f340';
+}
+.post--item .powers > span::before {
+    content: '\f101';
 }
 
 body.g-2 .memOnly,
@@ -17,18 +20,91 @@ body.g-4 .accordion--trigger.staffOnly {
     display: flex;
 }
 
-.f-22 .forum--image {
-    background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/coastline_desktop_min.jpg);
-}
-.f-23 .forum--image {
-    background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/oldtown_desktop_min.jpg);
-}
-.f-24 .forum--image {
-    background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/central_desktop_min.jpg);
-}
-.f-25 .forum--image {
-    background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/downtown_desktop_min.jpg);
-}
-.f-26 .forum--image {
-    background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/outskirts_desktop_min.jpg);
+.forum--image {
+    //coastline
+    .f-22 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/coastline_min.jpg);
+    }
+    //old town
+    .f-23 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/oldtown_min.jpg);
+    }
+    //central
+    .f-24 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/central_min.jpg);
+        filter: contrast(1.3);
+    }
+    //downtown
+    .f-25 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/downtown_min.jpg);
+    }
+    //outskirts
+    .f-26 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/outskirts_min.jpg);
+    }
+    //dockyard
+    .f-27 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/dockyards_min.jpg);
+    }
+    //carnivale
+    .f-28 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/carnivale_min.jpg);
+        background-position: bottom;
+        filter: brightness(1.2);
+    }
+    //graveyard
+    .f-29 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/graveyard_min.jpg);
+        background-position: 50% 70%;
+        filter: contrast(1.2) brightness(1.3);
+    }
+    //st anthony village
+    .f-30 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/stanthony_min.jpg);
+    }
+    //westfall
+    .f-31 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/westfall_min.jpg);
+    }
+    //logan creek
+    .f-32 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/logancreek_min.jpg);
+        background-position: bottom;
+    }
+    //oakland terrace
+    .f-33 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/oakland_min.jpg);
+    }
+    //holland heights
+    .f-34 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/holland_min.jpg);
+    }
+    //brentwood
+    .f-35 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/brentwood_min.jpg);
+    }
+    //bay road
+    .f-36 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/bayroad_min.jpg);
+    }
+    //essex plaza
+    .f-37 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/essexplaza_min.jpg);
+    }
+    //pacific market
+    .f-38 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/pacificmarket_min.jpg);
+    }
+    //castlepeak
+    .f-39 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/castlepeak_min.jpg);
+    }
+    //hawthorne hills
+    .f-40 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/hawthorne_min.jpg);
+    }
+    //the pitch
+    .f-41 & {
+        background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/pitch_min.jpg);
+    }
 }

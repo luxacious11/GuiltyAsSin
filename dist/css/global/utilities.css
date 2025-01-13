@@ -354,7 +354,7 @@
     [data-type="ImageGrid"][data-columns="3"],
     [data-type="IMAGEGRID"][data-columns="3"] {
       grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 769px) {
+  @media (min-width: 801px) {
     [data-type="imagegrid"][data-columns="3"],
     [data-type="imageGrid"][data-columns="3"],
     [data-type="ImageGrid"][data-columns="3"],
@@ -372,7 +372,7 @@
     [data-type="ImageGrid"][data-columns="4"],
     [data-type="IMAGEGRID"][data-columns="4"] {
       grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 769px) {
+  @media (min-width: 801px) {
     [data-type="imagegrid"][data-columns="4"],
     [data-type="imageGrid"][data-columns="4"],
     [data-type="ImageGrid"][data-columns="4"],

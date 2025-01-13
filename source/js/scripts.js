@@ -53,18 +53,32 @@ if (typeof tippy === 'function') {
 }
 
 window.addEventListener('scroll', () => {
-    document.querySelectorAll('.hero').forEach(hero => {
-        let percentScrolled = ((hero.clientHeight / 2) - window.scrollY) / (hero.clientHeight / 2) + 0.2;
-        let blur = ((window.scrollY / (hero.clientHeight / 2)) - 0.2) * 50;
-        if(percentScrolled > 0) {
-            hero.querySelector('.hero--static').style.opacity = percentScrolled;
-            document.querySelector('.hero--static').style.filter = `blur(${blur > 0 ? blur : 0}px)`;
-        } else {
-            document.querySelector('.hero--static').style.opacity = 0;
-            document.querySelector('.hero--static').style.filter = `blur(50px)`;
-        }
-    });
-})
+    if(window.scrollY < window.innerHeight) {
+        document.querySelectorAll('header').forEach(hero => applyBlur(hero));
+    } else {
+        document.querySelectorAll('header').forEach(hero => {
+            hero.querySelector('.hero--static').style.opacity = 0;
+            hero.querySelector('.hero--static').style.filter = `blur(50px)`;
+        });
+    }
+});
+function applyBlur(hero) {
+    let percentScrolled = calcPercentScrolled(window.scrollY, hero.clientHeight);
+    let blur = blurAmount(window.scrollY, hero.clientHeight);
+    if(percentScrolled > 0) {
+        hero.querySelector('.hero--static').style.opacity = percentScrolled;
+        hero.querySelector('.hero--static').style.filter = `blur(${blur > 0 ? blur : 0}px)`;
+    } else {
+        hero.querySelector('.hero--static').style.opacity = 0;
+        hero.querySelector('.hero--static').style.filter = `blur(50px)`;
+    }
+}
+function calcPercentScrolled(scroll, height) {
+    return ((height / 2) - scroll) / (height / 2) + 0.2;
+}
+function blurAmount(scroll, height) {
+    return ((scroll / (height / 2)) - 0.2) * 50
+}
 
 /********** Initializations **********/
 setTheme();
@@ -105,6 +119,28 @@ if(pageType === 'ST') {
     initPostRowDescription();
     initPostContentAlter();
     initDiscordTagging('#ST main > table > tbody > tr > td:last-child');
+    initCarouselProgress('.post--progress-bar');
+
+    let descript = $('.topic-desc').html();
+    if (descript != undefined) {
+        var newDescript = descript.replace(", ", "");
+        $('.topic-desc').html(newDescript);
+    }
+    
+    //input clean up
+    document.querySelector('#qr_open .tablepad').innerHTML = document.querySelector('#qr_open .tablepad').innerHTML.replace('|', '');
+    let textNodes = getAllTextNodes(document.querySelector('#qr_open .tablepad'));
+    textNodes.forEach(node => {
+        const paragraph = document.createElement('p');
+        node.after(paragraph);
+        paragraph.appendChild(node);
+        paragraph.innerText = paragraph.innerText.replace(`|`, ``).trim();
+    });
+    document.querySelectorAll(`#qr_open input[type="checkbox"]`).forEach(input => inputWrap(input));
+    document.querySelectorAll('#qr_open .input-wrap').forEach(label => {
+        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox">${checkboxChecked}</div>`);
+    });
+    $('#qr_open .tablepad > input').wrapAll('<div class="qr_buttons"></div>');
 }
 
 /********** Login **********/
@@ -136,7 +172,7 @@ if(pageType === 'Reg') {
     fancyBoxes();
     if(document.querySelector('input[name="agree"][type="checkbox"]')) {
         $('input[name="agree"][type="checkbox"]').wrap('<label class="input-wrap tos"></label>');
-        $('.input-wrap.tos').append('<div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div> <p>I agree to the terms of this registration, <b>I am at least 18 years of age,</b> and wish to proceed.</p>');
+        $('.input-wrap.tos').append(`<div class="fancy-input checkbox">${checkboxChecked}</div> <p>I agree to the terms of this registration, <b>I am at least 18 years of age,</b> and wish to proceed.</p>`);
     }
 }
 
@@ -146,30 +182,6 @@ if(pageType === 'SF') {
     initTopicsWrap();
     initTopicDescription('.topic--description');
     initStickyBar();
-}
-
-/********** Topic View **********/
-if(pageType === 'ST') {
-    let descript = $('.topic-desc').html();
-    if (descript != undefined) {
-        var newDescript = descript.replace(", ", "");
-        $('.topic-desc').html(newDescript);
-    }
-    
-    //input clean up
-    document.querySelector('#qr_open .tablepad').innerHTML = document.querySelector('#qr_open .tablepad').innerHTML.replace('|', '');
-    let textNodes = getAllTextNodes(document.querySelector('#qr_open .tablepad'));
-    textNodes.forEach(node => {
-        const paragraph = document.createElement('p');
-        node.after(paragraph);
-        paragraph.appendChild(node);
-        paragraph.innerText = paragraph.innerText.replace(`|`, ``).trim();
-    });
-    document.querySelectorAll(`#qr_open input[type="checkbox"]`).forEach(input => inputWrap(input));
-    document.querySelectorAll('#qr_open .input-wrap').forEach(label => {
-        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox">x</div>`);
-    });
-    $('#qr_open .tablepad > input').wrapAll('<div class="qr_buttons"></div>');
 }
 
 /********** Topic View **********/

@@ -3,6 +3,46 @@
 /*******************************
     Profile
 ********************************/
+#Profile {
+    header {
+        display: none;
+    }
+    main {
+        background: transparent;
+    }
+
+    .hero {
+        height: auto;
+        padding-bottom: 35vw;
+    
+        @include mq-up(md) {
+            height: auto;
+        }
+
+
+        &--static {
+            position: relative;
+            top: auto;
+            transform: none;
+            left: auto;
+            margin: calc(var(--size-menu-height) + var(--space-xl)) var(--space-xl) 0 var(--space-xl);
+            width: min-content;
+            max-width: calc(100% - (2 * var(--space-xl)));
+
+            .big {
+                left: -3px;
+
+                & + * {
+                    margin: var(--space-sm) 0 var(--space-md) 0;
+                }
+            }
+
+            .small {
+                bottom: -5px;
+            }
+        }
+    }
+}
 .profile {
     &--account {
         display: grid;
@@ -16,5 +56,47 @@
             background-repeat: no-repeat;
             background-position: center;
         }
+    }
+
+    &--triggers {
+        display: grid;
+        grid-template-columns: 60px auto;
+        gap: var(--space-md);
+        font-family: var(--font-head);
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        font-size: var(--size-lg);
+        margin: var(--space-lg) var(--space-xl);
+        max-width: 600px;
+
+        & > i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            color: var(--text-accent);
+            font-size: 24px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-standard);
+        }
+
+        &-inner {
+            margin: 0;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-standard);
+            padding: var(--space-md) calc(var(--space-md) + 5px);
+            line-height: 160%;
+            text-align: justify;
+
+            .scroll {
+                max-height: 80px;
+            }
+        }
+    }
+
+    &--body {
+        min-height: 200vh;
+        background: var(--bg-primary-transparent);
     }
 }

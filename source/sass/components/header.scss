@@ -4,10 +4,33 @@
     Header
 ********************************/
 .hero {
-    height: calc(600px + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible));
+    height: 64vw;
 
-    @include mq-up(sm) {
-        height: calc(100vh + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible));
+    @include mq-up(md) {
+        height: 64vw;
+    }
+
+    body:not(#idx):not(#Profile) & {
+        height: 40vw;
+        min-height: 300px;
+
+        .hero--static {
+            padding-left: 0;
+            top: calc(max(calc(20vw - var(--size-menu-height) - (((1318.1 / 3108.5) * (40vw - var(--size-menu-width))) / 2)), 120px));
+
+            .small,
+            p {
+                display: none;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+    
+            .small {
+                letter-spacing: 0.3em;
+            }
+        }
     }
 
     h1 {
@@ -40,16 +63,12 @@
 
     &--static {
         position: fixed;
-        top: calc(300px + (((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) / 2) - (var(--size-outline-visible) / 2));
+        top: calc(max(calc(32vw - var(--size-menu-height) - (((1318.1 / 3108.5) * (64vw - var(--size-menu-width))) / 2)), 120px));
         transform: translateY(-50%);
         z-index: 1;
         margin: 0 20px 0 calc(var(--space-lg) + var(--size-menu-width));
         border-bottom: var(--border-accent);
         padding: 0 0 var(--space-sm) 20px;
-
-        @include mq-up(sm) {
-            top: 50%;
-        }
 
         p {
             margin-top: var(--space-xs);
@@ -84,7 +103,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 2;
 
 	.overlay1 {
         fill: var(--bg-accent-low);

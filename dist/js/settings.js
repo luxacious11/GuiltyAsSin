@@ -26,6 +26,7 @@ const uploads = `uploads2`;
 const siteName = `sitename`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
 const defaultSquare = 'https://picsum.photos/100';
+const checkboxChecked = `<i class="fa-solid fa-check"></i>`;
 
 //this is for character sorting, highlighting the edge of the sorting related messages
 //the group name should by lowercase and should match what would appear in the Group column of the google sheet

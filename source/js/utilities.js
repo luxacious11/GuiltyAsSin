@@ -370,7 +370,7 @@ function formatName(name, singleStyle = 'span', highlight = null, includeSpace =
     if(nameArray.length > 1) {
         let surnames = [...nameArray];
         surnames.shift();
-        formattedName = `<b ${highlight === 'first' ? `data-text-color="accent"` : ''}>${nameArray[0]}</b>${includeSpace && ' '}<span ${highlight === 'last' ? `data-text-color="accent"` : ''}>${surnames.join(' ')}</span>`
+        formattedName = `<b ${highlight === 'first' ? `data-text-color="accent"` : ''}>${nameArray[0]}</b>${includeSpace ? ' ' : ''}<span ${highlight === 'last' ? `data-text-color="accent"` : ''}>${surnames.join(' ')}</span>`
     } else {
         formattedName = `<${singleStyle} ${highlight === 'first' ? `data-text-color="accent"` : ''}>${nameArray[0]}</${singleStyle}>`;
     }
@@ -398,12 +398,37 @@ function calculateAge(birthday) {
     }
     return age;
 }
+function formatPowers(powers) {
+    if(!powers.one && !powers.two && !powers.three) {
+        return ``;
+    }
+
+    let powersHTML = ``;
+    if(powers.one) {
+        powersHTML += `<span>${powers.one}</span>`;
+    }
+    if(powers.two) {
+        powersHTML += `<span>${powers.two}</span>`;
+    }
+    if(powers.three) {
+        powersHTML += `<span>${powers.three}</span>`;
+    }
+
+    return powersHTML;
+}
 
 /****** Index ******/
 function expandSublinks(e) {
     e.closest('.forum--title-row').classList.toggle('is-open');
 }
 function initForums() {
+    //default text for no posts in the forum
+    document.querySelectorAll('.last-poster').forEach(poster => {
+	if(poster.innerHTML === '') {
+		poster.closest('.forum--info').querySelectorAll('span > span').forEach(line => line.innerText = '---');
+	}
+    });
+
     //manual links
     document.querySelectorAll('.forum .forum--manual-links').forEach(linkSet => {
         console.log(linkSet);
@@ -430,7 +455,7 @@ function initForums() {
             linkSet.remove();
         }
     })
-    document.querySelectorAll('.forum--desc').forEach(el => el.remove());
+    document.querySelectorAll('.forum--manual-links').forEach(el => el.remove());
 
     document.querySelectorAll('.category .splide').forEach(slider => {
         let splide = new Splide(`#${slider.id}`, {
@@ -620,7 +645,7 @@ function formatMarkdown(str, identifier, opening, closing) {
   
     str = str.split(identifier).map((value, index) => {
   
-        if(str.split(identifier).length - 1 !== index && value !== '') {
+        if(str.split(identifier).length !== index && value !== '') {
             if ((value.includes('href=') || value.includes('target=') || value.includes('src=') || value.includes('class=') || value.includes('alt=')) && str.split(identifier).length > 1) {
                 return handleSpecialMarkdownAvoidance(value, identifier, opening, closing);
             } else if(index % 2 == 0) {
@@ -628,21 +653,26 @@ function formatMarkdown(str, identifier, opening, closing) {
             } else {
                 return `${opening}${value}${closing}`;
             }
-        } else {
-                return '';
         }
       
     }).join('');
   
-    return str !== '' ? str : original;
+    return (str !== '') ? str : original;
 }
 function initMarkdown() {
-    console.log(markdownSafe);
+    let quickLists = document.querySelectorAll('tl');
+    if(quickLists.length > 0) {
+        quickLists.forEach(list => {
+            list.innerHTML = formatQuickList(list);
+        });
+    }
+
     if(document.querySelectorAll(markdownSafe).length > 0) {
         document.querySelectorAll(markdownSafe).forEach(post => {
             let str = post.innerHTML;
             str = formatMarkdown(str, `**`, `<b>"`, `"</b>`);
             str = formatMarkdown(str, `_`, `<i>`, `</i>`);
+            str = formatMarkdown(str, `~~`, `<s>`, `</s>`);
             str = formatMarkdown(str, `||`, `<tag-spoiler>`, `</tag-spoiler>`);
             post.innerHTML = str;
         });
@@ -654,40 +684,24 @@ function initMarkdown() {
             spoiler.addEventListener('click', e => {e.currentTarget.classList.add('is-visible')});
         });
     }
-
-
-    let quickLists = document.querySelectorAll('tl');
-    if(quickLists.length > 0) {
-        quickLists.forEach(list => {
-            list.innerHTML = formatQuickList(list);
-        });
-    }
-}
-function toggleAlerts(e) {
-    e.closest('.alert-options').querySelector('.alert-select').classList.toggle('is-open');
-    if(e.closest('.alert-options').querySelector('.alert-select').classList.contains('is-open')) {
-        document.querySelector('.invisibleElTagging').classList.add('menu-open');
-    } else {
-        document.querySelector('.invisibleElTagging').classList.remove('menu-open');
-    }
 }
 function tagLabel(type, data, label) {
     if(type === 'channel') {
         return `<label class="input-wrap">
             <input type="radio" name="tag-channel" data-channel="${data}">
-            <div class="fancy-input radio"></div>
+            <div class="fancy-input radio">${checkboxChecked}</div>
             <span>${label}</span>
         </label>`;
     } else if(type === 'identifier') {
         return `<label class="input-wrap">
             <input type="checkbox" name="tag-identifier" data-tag="${data}">
-            <div class="fancy-input"></div>
+            <div class="fancy-input">${checkboxChecked}</div>
             <span>${label}</span>
         </label>`;
     } else if(type === 'mentions') {
         return `<label class="input-wrap">
             <input type="checkbox" name="tag-mention" data-tag="${data}">
-            <div class="fancy-input"></div>
+            <div class="fancy-input">${checkboxChecked}</div>
             <span>${label}</span>
         </label>`;
     }
@@ -1250,10 +1264,10 @@ function inputWrap(el, next = null, type = 'checkbox') {
 }
 function fancyBoxes() {
     document.querySelectorAll('.input-wrap.checkbox').forEach(label => {
-        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>`);
+        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox">${checkboxChecked}</div>`);
     });
     document.querySelectorAll('.input-wrap.radio').forEach(label => {
-        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input radio"><i class="fa-solid fa-check"></i></div>`);
+        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input radio">${checkboxChecked}</div>`);
     });
 }
 function read_alerts() {
@@ -1467,8 +1481,18 @@ function initHashAccordion(target = '.hash-accordion', child = '.section', ancho
         });
     }
 }
-function carouselArrowIndex(e) {
-    let {bullets, slides} = carouselVariableSetup(e);
+function initCarouselProgress(progressBarClass, wrapperClass = '.carousel', slideClass = '.slide') {
+    if(progressBarClass) {
+        let carousels = document.querySelectorAll(wrapperClass);
+        carousels.forEach(carousel => {
+            let progressBar = carousel.querySelector(progressBarClass);
+            let slideCount = carousel.querySelectorAll(slideClass).length;
+            progressBar.style.width = `${(1 / slideCount) * 100}%`;
+        });
+    }
+}
+function carouselArrowIndex(e, wrapperClass = '.carousel') {
+    let {bullets, slides} = carouselVariableSetup(e, wrapperClass);
     let index;
     bullets.forEach((bullet, i) => {
         if(bullet.classList.contains('is-active')) {
@@ -1482,20 +1506,19 @@ function carouselArrowIndex(e) {
 
     return index;
 }
-function carouselVariableSetup(e, level = 0) {
-    let wrapper;
-    if(level === 1) {
-        wrapper = e.parentNode.parentNode.parentNode;
+function carouselVariableSetup(e, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
+    let wrapper = e.closest(wrapperClass);
+
+    let bullets = wrapper.querySelectorAll(bulletClass);
+    let slides = wrapper.querySelectorAll(slideClass);
+    if(progressBarClass) {
+        let progressBar = wrapper.querySelector(progressBarClass);
+        return {bullets, slides, wrapper, progressBar};
     } else {
-        wrapper = e.parentNode.parentNode;
+        return {bullets, slides, wrapper};
     }
-
-    let bullets = wrapper.querySelectorAll('.post--page');
-    let slides = wrapper.querySelectorAll('.post--slide');
-
-    return {bullets, slides, wrapper};
 }
-function carouselArrowAct(index, bullets, slides, wrapper) {
+function carouselArrowAct(index, bullets, slides, wrapper, progressBar) {
     //add active as needed
     bullets[index].classList.add('is-active');
     slides[index].classList.add('is-active');
@@ -1511,39 +1534,39 @@ function carouselArrowAct(index, bullets, slides, wrapper) {
     } else {
         wrapper.classList.add('is-image');
     }
+
+    if(progressBar) {
+        progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
+    }
 }
-function carouselLeft(e) {
+function carouselLeft(e, progressBarClass, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
     //set up variables
     let index = carouselArrowIndex(e);
-    let {bullets, slides, wrapper} = carouselVariableSetup(e);
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass);
 
-    //determine new index
     if(index === 0) {
         index = bullets.length - 1;
     } else {
         index--;
     }
-
-    //act on new index
-    carouselArrowAct(index, bullets, slides, wrapper);
+    
+    carouselArrowAct(index, bullets, slides, wrapper, progressBar);
 }
-function carouselRight(e) {
+function carouselRight(e, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
     //set up variables
     let index = carouselArrowIndex(e);
-    let {bullets, slides, wrapper} = carouselVariableSetup(e);
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass);
 
-    //determine new index
     if(index === bullets.length - 1) {
         index = 0;
     } else {
         index++;
     }
 
-    //act on new index
-    carouselArrowAct(index, bullets, slides, wrapper);
+    carouselArrowAct(index, bullets, slides, wrapper, progressBar);
 }
-function carouselPage(e) {
-    let {bullets, slides, wrapper} = carouselVariableSetup(e, 1);
+function carouselPage(e, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass);
     let bulletsArray = Array.from(bullets);
     let index = bulletsArray.indexOf.call(bulletsArray, e);
     
@@ -1552,7 +1575,7 @@ function carouselPage(e) {
     slides.forEach(slide => slide.classList.remove('is-active'));
 
     //act on new index
-    carouselArrowAct(index, bullets, slides, wrapper);
+    carouselArrowAct(index, bullets, slides, wrapper, progressBar);
 }
 
 /****** Forms ******/
@@ -1953,7 +1976,7 @@ function formatJobRemoval(data) {
         }
         html += `<label class="input-wrap">
             <input type="checkbox" name="remove-job" data-employer="${cleanText(job.employer)}" data-section="${cleanText(job.section)}" data-position="${cleanText(job.position)}">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox">${checkboxChecked}</div>
             <strong>${label}</strong>
         </label>`;
     });
@@ -2009,7 +2032,7 @@ function formatRoleRemoval(data) {
     roles.forEach(role => {
         html += `<label class="input-wrap">
             <input type="checkbox" name="remove-role" data-plot="${role.plot}" data-section="${role.section}" data-role="${role.role}">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox">${checkboxChecked}</div>
             <strong>${role.plot} - ${role.section} - ${role.role}</strong>
         </label>`;
     });

@@ -50,7 +50,7 @@
               @media (min-width: 481px) {
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
                   margin-bottom: var(--space-lg); } }
-              @media (min-width: 769px) {
+              @media (min-width: 801px) {
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
                   gap: var(--space-md); } }
               #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft b,
@@ -100,7 +100,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: var(--space-md); }
-    @media (min-width: 769px) {
+    @media (min-width: 801px) {
       #store.store-shop #ucpcontent > table > tbody {
         grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1025px) {
@@ -109,7 +109,7 @@
     #store.store-shop #ucpcontent > table > tbody > tr {
       display: flex;
       flex-wrap: wrap; }
-      @media (min-width: 769px) {
+      @media (min-width: 801px) {
         #store.store-shop #ucpcontent > table > tbody > tr {
           flex: 0 0 calc(50% - calc(var(--space-md) / 2)); } }
       @media (min-width: 1025px) {
@@ -196,7 +196,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: var(--space-md); }
-    @media (min-width: 769px) {
+    @media (min-width: 801px) {
       #store.store-inventory #ucpcontent > table > tbody {
         grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1025px) {
@@ -205,7 +205,7 @@
     #store.store-inventory #ucpcontent > table > tbody > tr {
       display: flex;
       flex-wrap: wrap; }
-      @media (min-width: 769px) {
+      @media (min-width: 801px) {
         #store.store-inventory #ucpcontent > table > tbody > tr {
           flex: 0 0 calc(50% - calc(var(--space-md) / 2)); } }
       @media (min-width: 1025px) {
@@ -283,7 +283,7 @@
 #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child),
 #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
   display: grid; }
-  @media (min-width: 769px) {
+  @media (min-width: 801px) {
     #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child),
     #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child),
     #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child),
@@ -362,7 +362,7 @@
       flex-wrap: wrap;
       height: max-content;
       flex: 0 0 100%; }
-      @media (min-width: 769px) {
+      @media (min-width: 801px) {
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
           flex: 0 0 calc(50% - ( var(--space-md) / 2)); } }
       @media (min-width: 1025px) {

@@ -2,10 +2,23 @@
     Header
 ********************************/
 .hero {
-  height: calc(600px + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible)); }
-  @media (min-width: 769px) {
+  height: 64vw; }
+  @media (min-width: 1025px) {
     .hero {
-      height: calc(100vh + ((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) - var(--size-outline-visible)); } }
+      height: 64vw; } }
+  body:not(#idx):not(#Profile) .hero {
+    height: 40vw;
+    min-height: 300px; }
+    body:not(#idx):not(#Profile) .hero .hero--static {
+      padding-left: 0;
+      top: calc(max(calc(20vw - var(--size-menu-height) - (((1318.1 / 3108.5) * (40vw - var(--size-menu-width))) / 2)), 120px)); }
+      body:not(#idx):not(#Profile) .hero .hero--static .small,
+      body:not(#idx):not(#Profile) .hero .hero--static p {
+        display: none; }
+    body:not(#idx):not(#Profile) .hero h1 {
+      font-size: 32px; }
+      body:not(#idx):not(#Profile) .hero h1 .small {
+        letter-spacing: 0.3em; }
   .hero h1 {
     margin: 0;
     color: var(--text-secondary);
@@ -28,7 +41,7 @@
       transform-origin: center;
       writing-mode: vertical-rl;
       height: 100%; }
-      @media (max-width: 768px) {
+      @media (max-width: 800px) {
         .hero h1 .small {
           letter-spacing: 0.5em; } }
       @media (max-width: 600px) {
@@ -36,15 +49,12 @@
           letter-spacing: 0.3em; } }
   .hero--static {
     position: fixed;
-    top: calc(300px + (((1318.1 / 3108.5) * (100vw - var(--size-menu-width))) / 2) - (var(--size-outline-visible) / 2));
+    top: calc(max(calc(32vw - var(--size-menu-height) - (((1318.1 / 3108.5) * (64vw - var(--size-menu-width))) / 2)), 120px));
     transform: translateY(-50%);
     z-index: 1;
     margin: 0 20px 0 calc(var(--space-lg) + var(--size-menu-width));
     border-bottom: var(--border-accent);
     padding: 0 0 var(--space-sm) 20px; }
-    @media (min-width: 769px) {
-      .hero--static {
-        top: 50%; } }
     .hero--static p {
       margin-top: var(--space-xs);
       text-transform: uppercase;
@@ -71,8 +81,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  z-index: 2; }
+  width: 100%; }
   #overlay .overlay1 {
     fill: var(--bg-accent-low); }
   #overlay .overlay2 {

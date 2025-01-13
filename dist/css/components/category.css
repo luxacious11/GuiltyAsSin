@@ -11,7 +11,7 @@
     letter-spacing: 0.4em;
     line-height: 160%;
     border-bottom: var(--border-accent);
-    padding: 0 var(--space-xs) var(--space-sm);
+    padding: 0 var(--space-sm) var(--space-sm) 0;
     width: max-content;
     max-width: 100%;
     margin: 0 var(--space-md) var(--space-md); }
@@ -35,7 +35,12 @@
       border-top: var(--border-accent); }
   .category--arrows {
     display: flex;
-    gap: var(--space-sm); }
+    gap: var(--space-sm);
+    position: relative !important;
+    width: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    height: auto !important; }
   .category--arrow {
     background: none;
     color: var(--text-secondary);
@@ -45,7 +50,8 @@
     transform: none;
     top: auto;
     left: auto;
-    right: auto; }
+    right: auto;
+    position: relative !important; }
   .category--progress {
     background: var(--bg-quaternary);
     width: 100%; }
@@ -100,7 +106,7 @@
     top: calc(100% + var(--space-sm));
     left: 0;
     width: 100%;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border-radius: var(--radius-standard);
     z-index: 1;
     padding: var(--space-sm);
@@ -147,27 +153,42 @@
     display: flex;
     flex-direction: column;
     margin-top: var(--space-md); }
-    .forum--info span {
+    .forum--info > span {
       text-transform: uppercase;
       border-bottom: var(--border-primary);
-      padding: var(--space-sm); }
-      .forum--info span a {
+      padding: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md); }
+      .forum--info > span a {
         color: var(--text-primary); }
-      .forum--info span:first-child {
+      .forum--info > span:first-child {
         font-family: var(--font-head);
         font-size: var(--size-xl);
         font-weight: 700;
         border-top: var(--border-primary); }
-      .forum--info span:nth-child(2) {
+        .forum--info > span:first-child .fa-light {
+          opacity: 0.5; }
+      .forum--info > span:nth-child(2) {
         font-family: var(--font-head);
         font-size: calc(var(--size-xl) * 0.8);
         letter-spacing: 0.1em; }
-        .forum--info span:nth-child(2) a {
+        .forum--info > span:nth-child(2) a {
           color: var(--text-accent); }
-      .forum--info span:last-child {
+          .forum--info > span:nth-child(2) a::before {
+            content: 'Written by ';
+            color: var(--text-primary); }
+      .forum--info > span:last-child {
         font-size: var(--size-xs);
         letter-spacing: 0.2em;
         font-style: italic; }
+  .forum--desc .scroll {
+    margin: var(--space-sm) var(--space-sm) 0;
+    max-height: 80px;
+    text-align: justify;
+    height: 100%; }
+  .forum--desc:not(:has(.scroll)) {
+    display: none; }
   .forum:has(.forum--links:empty) .forum--sublink-menu {
     display: none; }
   .forum.redirect {
