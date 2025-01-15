@@ -376,6 +376,18 @@ function formatName(name, singleStyle = 'span', highlight = null, includeSpace =
     }
     return formattedName;
 }
+function profileFormatName(name) {
+    let nameArray = capitalize(name).split(' ').filter(item => item !== '');
+    let formattedName = ``;
+    if(nameArray.length > 1) {
+        let surnames = [...nameArray];
+        surnames.shift();
+        formattedName = `<div class="big">${nameArray[0]}</div><div class="second-line" data-text-color="accent">${surnames.join(' ')}</div>`;
+    } else {
+        formattedName = `<div class="big">${nameArray[0]}</div>`;
+    }
+    return formattedName;
+}
 function standardizeLower(text) {
     return text.toLowerCase().trim();
 }
@@ -1481,6 +1493,19 @@ function initHashAccordion(target = '.hash-accordion', child = '.section', ancho
         });
     }
 }
+function initKeyboardCarousel(wrapperClass = '.carousel', arrowLeftClass = '.arrow--left', arrowRightClass = '.arrow--right') {
+    let carousels = document.querySelectorAll(wrapperClass);
+    if(carousels.length === 1) {
+        document.addEventListener('keyup', e => {
+            if(e.key == 'ArrowLeft') {
+                carousels[0].querySelector(arrowLeftClass).click();
+            }
+            if(e.key == 'ArrowRight') {
+                carousels[0].querySelector(arrowRightClass).click();
+            }
+        });
+    }
+}
 function initCarouselProgress(progressBarClass, wrapperClass = '.carousel', slideClass = '.slide') {
     if(progressBarClass) {
         let carousels = document.querySelectorAll(wrapperClass);
@@ -1490,6 +1515,35 @@ function initCarouselProgress(progressBarClass, wrapperClass = '.carousel', slid
             progressBar.style.width = `${(1 / slideCount) * 100}%`;
         });
     }
+}
+function initHashCarousel(defaultTab, progressBarClass, wrapperClass = '.carousel', slideClass = '.slide', bulletClass = '.bullet', arrowLeftClass = '.arrow--left', arrowRightClass = '.arrow--right') {
+    let index = 0;
+    let wrapper = document.querySelector(wrapperClass);
+    if(window.location.hash) {
+        let activeTab = window.location.hash.split('#')[1];
+        let slides = wrapper.querySelectorAll(slideClass);
+        let bullets = wrapper.querySelectorAll(bulletClass);
+        slides.forEach((slide, i) => {
+            if(slide.dataset.tab === activeTab) {
+                index = i;
+                bullets[i].classList.add('is-active');
+            }
+        });
+        slides.forEach(slide => {
+            slide.style.left = `${index * -100}%`;
+        })
+    } else {
+        wrapper.querySelector(`.bullet[title="${defaultTab}"]`).classList.add('is-active');
+    }
+    if(progressBarClass) {
+        let carousels = document.querySelectorAll(wrapperClass);
+        carousels.forEach(carousel => {
+            let progressBar = carousel.querySelector(progressBarClass);
+            let slideCount = carousel.querySelectorAll(slideClass).length;
+            progressBar.style.width = `${((index + 1) / slideCount) * 100}%`;
+        });
+    }
+    initKeyboardCarousel(wrapperClass, arrowLeftClass, arrowRightClass);
 }
 function carouselArrowIndex(e, wrapperClass = '.carousel') {
     let {bullets, slides} = carouselVariableSetup(e, wrapperClass);
@@ -1536,13 +1590,15 @@ function carouselArrowAct(index, bullets, slides, wrapper, progressBar) {
     }
 
     if(progressBar) {
+        console.log(index + 1);
+        console.log(slides.length);
         progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
     }
 }
-function carouselLeft(e, progressBarClass, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
+function carouselLeft(e, hash = false, progressBarClass, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
     //set up variables
     let index = carouselArrowIndex(e);
-    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass);
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass, wrapperClass, bulletClass, slideClass);
 
     if(index === 0) {
         index = bullets.length - 1;
@@ -1551,11 +1607,15 @@ function carouselLeft(e, progressBarClass, wrapperClass = '.carousel', bulletCla
     }
     
     carouselArrowAct(index, bullets, slides, wrapper, progressBar);
+
+    if(hash) {
+        window.location.hash = slides[index].dataset.tab;
+    }
 }
-function carouselRight(e, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
+function carouselRight(e, hash = false, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
     //set up variables
     let index = carouselArrowIndex(e);
-    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass);
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass, wrapperClass, bulletClass, slideClass);
 
     if(index === bullets.length - 1) {
         index = 0;
@@ -1564,9 +1624,13 @@ function carouselRight(e, progressBarClass = null, wrapperClass = '.carousel', b
     }
 
     carouselArrowAct(index, bullets, slides, wrapper, progressBar);
+
+    if(hash) {
+        window.location.hash = slides[index].dataset.tab;
+    }
 }
 function carouselPage(e, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
-    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass);
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass, wrapperClass, bulletClass, slideClass);
     let bulletsArray = Array.from(bullets);
     let index = bulletsArray.indexOf.call(bulletsArray, e);
     
@@ -1576,6 +1640,23 @@ function carouselPage(e, progressBarClass = null, wrapperClass = '.carousel', bu
 
     //act on new index
     carouselArrowAct(index, bullets, slides, wrapper, progressBar);
+}
+function carouselPageHash(e, tab, progressBarClass = null, wrapperClass = '.carousel', bulletClass = '.bullet', slideClass = '.slide') {
+    let {bullets, slides, wrapper, progressBar} = carouselVariableSetup(e, progressBarClass, wrapperClass, bulletClass, slideClass);
+    let bulletsArray = Array.from(bullets);
+    let index = bulletsArray.indexOf.call(bulletsArray, e);
+    
+    //remove all active
+    bullets.forEach(bullet => bullet.classList.remove('is-active'));
+    slides.forEach(slide => slide.classList.remove('is-active'));
+
+    //act on new index
+    carouselArrowAct(index, bullets, slides, wrapper, progressBar);
+
+    carouselSetHash(tab);
+}
+function carouselSetHash(hash) {
+    window.location.hash = hash;
 }
 
 /****** Forms ******/

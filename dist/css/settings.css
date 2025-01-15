@@ -1,7 +1,9 @@
 .pagination_last::after {
   content: '\f340'; }
 
-.post--item .powers > span::before {
+.post--item .powers > span::before,
+.profile .scroll ul li::before,
+.postcolor ul li::before {
   content: '\f101'; }
 
 body.g-2 .memOnly,
@@ -20,6 +22,22 @@ body.g-4 .accordion--trigger.staffOnly {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+
+.tw--header::before {
+  content: '\f071';
+  padding-left: 5px; }
+
+.note--header::before {
+  content: '\e1af'; }
+
+tag-relationship > a::after {
+  content: '\f178'; }
+
+.profile--column .accordion--trigger:not(.is-active)::after {
+  content: '\2b'; }
+
+.profile--column .accordion--trigger.is-active::after {
+  content: '\e404'; }
 
 .f-22 .forum--image {
   background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/coastline_min.jpg); }

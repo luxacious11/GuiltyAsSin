@@ -1,0 +1,898 @@
+/*******************************
+    Typography
+********************************/
+.profile .scroll h2:not(:first-child),
+.profile .scroll h3:not(:first-child),
+.profile .scroll h4:not(:first-child),
+.profile .scroll h5:not(:first-child),
+.profile .scroll h6:not(:first-child),
+.profile .scroll h7:not(:first-child),
+.profile .scroll h8:not(:first-child),
+.profile .scroll .h2:not(:first-child),
+.profile .scroll .h3:not(:first-child),
+.profile .scroll .h4:not(:first-child),
+.profile .scroll .h5:not(:first-child),
+.profile .scroll .h6:not(:first-child),
+.profile .scroll .h7:not(:first-child),
+.profile .scroll .h8:not(:first-child),
+.postcolor h2:not(:first-child),
+.postcolor h3:not(:first-child),
+.postcolor h4:not(:first-child),
+.postcolor h5:not(:first-child),
+.postcolor h6:not(:first-child),
+.postcolor h7:not(:first-child),
+.postcolor h8:not(:first-child),
+.postcolor .h2:not(:first-child),
+.postcolor .h3:not(:first-child),
+.postcolor .h4:not(:first-child),
+.postcolor .h5:not(:first-child),
+.postcolor .h6:not(:first-child),
+.postcolor .h7:not(:first-child),
+.postcolor .h8:not(:first-child) {
+  margin-top: var(--space-lg); }
+
+.profile .scroll h2 + br,
+.profile .scroll h3 + br,
+.profile .scroll h4 + br,
+.profile .scroll h5 + br,
+.profile .scroll h6 + br,
+.profile .scroll h7 + br,
+.profile .scroll h8 + br,
+.profile .scroll .h2 + br,
+.profile .scroll .h3 + br,
+.profile .scroll .h4 + br,
+.profile .scroll .h5 + br,
+.profile .scroll .h6 + br,
+.profile .scroll .h7 + br,
+.profile .scroll .h8 + br,
+.postcolor h2 + br,
+.postcolor h3 + br,
+.postcolor h4 + br,
+.postcolor h5 + br,
+.postcolor h6 + br,
+.postcolor h7 + br,
+.postcolor h8 + br,
+.postcolor .h2 + br,
+.postcolor .h3 + br,
+.postcolor .h4 + br,
+.postcolor .h5 + br,
+.postcolor .h6 + br,
+.postcolor .h7 + br,
+.postcolor .h8 + br {
+  display: none; }
+
+.profile .scroll h2 a,
+.profile .scroll h3 a,
+.profile .scroll h4 a,
+.profile .scroll h5 a,
+.profile .scroll h6 a,
+.profile .scroll h7 a,
+.profile .scroll h8 a,
+.profile .scroll .h2 a,
+.profile .scroll .h3 a,
+.profile .scroll .h4 a,
+.profile .scroll .h5 a,
+.profile .scroll .h6 a,
+.profile .scroll .h7 a,
+.profile .scroll .h8 a,
+.postcolor h2 a,
+.postcolor h3 a,
+.postcolor h4 a,
+.postcolor h5 a,
+.postcolor h6 a,
+.postcolor h7 a,
+.postcolor h8 a,
+.postcolor .h2 a,
+.postcolor .h3 a,
+.postcolor .h4 a,
+.postcolor .h5 a,
+.postcolor .h6 a,
+.postcolor .h7 a,
+.postcolor .h8 a {
+  color: inherit; }
+
+.profile .scroll h2 + h2,
+.profile .scroll h2 + h3,
+.profile .scroll h2 + h4,
+.profile .scroll h2 + h5,
+.profile .scroll h2 + h6,
+.profile .scroll h2 + h7,
+.profile .scroll h2 + h8,
+.profile .scroll h2 + .h2,
+.profile .scroll h2 + .h3,
+.profile .scroll h2 + .h4,
+.profile .scroll h2 + .h5,
+.profile .scroll h2 + .h6,
+.profile .scroll h2 + .h7,
+.profile .scroll h2 + .h8,
+.profile .scroll h3 + h2,
+.profile .scroll h3 + h3,
+.profile .scroll h3 + h4,
+.profile .scroll h3 + h5,
+.profile .scroll h3 + h6,
+.profile .scroll h3 + h7,
+.profile .scroll h3 + h8,
+.profile .scroll h3 + .h2,
+.profile .scroll h3 + .h3,
+.profile .scroll h3 + .h4,
+.profile .scroll h3 + .h5,
+.profile .scroll h3 + .h6,
+.profile .scroll h3 + .h7,
+.profile .scroll h3 + .h8,
+.profile .scroll h4 + h2,
+.profile .scroll h4 + h3,
+.profile .scroll h4 + h4,
+.profile .scroll h4 + h5,
+.profile .scroll h4 + h6,
+.profile .scroll h4 + h7,
+.profile .scroll h4 + h8,
+.profile .scroll h4 + .h2,
+.profile .scroll h4 + .h3,
+.profile .scroll h4 + .h4,
+.profile .scroll h4 + .h5,
+.profile .scroll h4 + .h6,
+.profile .scroll h4 + .h7,
+.profile .scroll h4 + .h8,
+.profile .scroll h5 + h2,
+.profile .scroll h5 + h3,
+.profile .scroll h5 + h4,
+.profile .scroll h5 + h5,
+.profile .scroll h5 + h6,
+.profile .scroll h5 + h7,
+.profile .scroll h5 + h8,
+.profile .scroll h5 + .h2,
+.profile .scroll h5 + .h3,
+.profile .scroll h5 + .h4,
+.profile .scroll h5 + .h5,
+.profile .scroll h5 + .h6,
+.profile .scroll h5 + .h7,
+.profile .scroll h5 + .h8,
+.profile .scroll h6 + h2,
+.profile .scroll h6 + h3,
+.profile .scroll h6 + h4,
+.profile .scroll h6 + h5,
+.profile .scroll h6 + h6,
+.profile .scroll h6 + h7,
+.profile .scroll h6 + h8,
+.profile .scroll h6 + .h2,
+.profile .scroll h6 + .h3,
+.profile .scroll h6 + .h4,
+.profile .scroll h6 + .h5,
+.profile .scroll h6 + .h6,
+.profile .scroll h6 + .h7,
+.profile .scroll h6 + .h8,
+.profile .scroll h7 + h2,
+.profile .scroll h7 + h3,
+.profile .scroll h7 + h4,
+.profile .scroll h7 + h5,
+.profile .scroll h7 + h6,
+.profile .scroll h7 + h7,
+.profile .scroll h7 + h8,
+.profile .scroll h7 + .h2,
+.profile .scroll h7 + .h3,
+.profile .scroll h7 + .h4,
+.profile .scroll h7 + .h5,
+.profile .scroll h7 + .h6,
+.profile .scroll h7 + .h7,
+.profile .scroll h7 + .h8,
+.profile .scroll h8 + h2,
+.profile .scroll h8 + h3,
+.profile .scroll h8 + h4,
+.profile .scroll h8 + h5,
+.profile .scroll h8 + h6,
+.profile .scroll h8 + h7,
+.profile .scroll h8 + h8,
+.profile .scroll h8 + .h2,
+.profile .scroll h8 + .h3,
+.profile .scroll h8 + .h4,
+.profile .scroll h8 + .h5,
+.profile .scroll h8 + .h6,
+.profile .scroll h8 + .h7,
+.profile .scroll h8 + .h8,
+.profile .scroll .h2 + h2,
+.profile .scroll .h2 + h3,
+.profile .scroll .h2 + h4,
+.profile .scroll .h2 + h5,
+.profile .scroll .h2 + h6,
+.profile .scroll .h2 + h7,
+.profile .scroll .h2 + h8,
+.profile .scroll .h2 + .h2,
+.profile .scroll .h2 + .h3,
+.profile .scroll .h2 + .h4,
+.profile .scroll .h2 + .h5,
+.profile .scroll .h2 + .h6,
+.profile .scroll .h2 + .h7,
+.profile .scroll .h2 + .h8,
+.profile .scroll .h3 + h2,
+.profile .scroll .h3 + h3,
+.profile .scroll .h3 + h4,
+.profile .scroll .h3 + h5,
+.profile .scroll .h3 + h6,
+.profile .scroll .h3 + h7,
+.profile .scroll .h3 + h8,
+.profile .scroll .h3 + .h2,
+.profile .scroll .h3 + .h3,
+.profile .scroll .h3 + .h4,
+.profile .scroll .h3 + .h5,
+.profile .scroll .h3 + .h6,
+.profile .scroll .h3 + .h7,
+.profile .scroll .h3 + .h8,
+.profile .scroll .h4 + h2,
+.profile .scroll .h4 + h3,
+.profile .scroll .h4 + h4,
+.profile .scroll .h4 + h5,
+.profile .scroll .h4 + h6,
+.profile .scroll .h4 + h7,
+.profile .scroll .h4 + h8,
+.profile .scroll .h4 + .h2,
+.profile .scroll .h4 + .h3,
+.profile .scroll .h4 + .h4,
+.profile .scroll .h4 + .h5,
+.profile .scroll .h4 + .h6,
+.profile .scroll .h4 + .h7,
+.profile .scroll .h4 + .h8,
+.profile .scroll .h5 + h2,
+.profile .scroll .h5 + h3,
+.profile .scroll .h5 + h4,
+.profile .scroll .h5 + h5,
+.profile .scroll .h5 + h6,
+.profile .scroll .h5 + h7,
+.profile .scroll .h5 + h8,
+.profile .scroll .h5 + .h2,
+.profile .scroll .h5 + .h3,
+.profile .scroll .h5 + .h4,
+.profile .scroll .h5 + .h5,
+.profile .scroll .h5 + .h6,
+.profile .scroll .h5 + .h7,
+.profile .scroll .h5 + .h8,
+.profile .scroll .h6 + h2,
+.profile .scroll .h6 + h3,
+.profile .scroll .h6 + h4,
+.profile .scroll .h6 + h5,
+.profile .scroll .h6 + h6,
+.profile .scroll .h6 + h7,
+.profile .scroll .h6 + h8,
+.profile .scroll .h6 + .h2,
+.profile .scroll .h6 + .h3,
+.profile .scroll .h6 + .h4,
+.profile .scroll .h6 + .h5,
+.profile .scroll .h6 + .h6,
+.profile .scroll .h6 + .h7,
+.profile .scroll .h6 + .h8,
+.profile .scroll .h7 + h2,
+.profile .scroll .h7 + h3,
+.profile .scroll .h7 + h4,
+.profile .scroll .h7 + h5,
+.profile .scroll .h7 + h6,
+.profile .scroll .h7 + h7,
+.profile .scroll .h7 + h8,
+.profile .scroll .h7 + .h2,
+.profile .scroll .h7 + .h3,
+.profile .scroll .h7 + .h4,
+.profile .scroll .h7 + .h5,
+.profile .scroll .h7 + .h6,
+.profile .scroll .h7 + .h7,
+.profile .scroll .h7 + .h8,
+.profile .scroll .h8 + h2,
+.profile .scroll .h8 + h3,
+.profile .scroll .h8 + h4,
+.profile .scroll .h8 + h5,
+.profile .scroll .h8 + h6,
+.profile .scroll .h8 + h7,
+.profile .scroll .h8 + h8,
+.profile .scroll .h8 + .h2,
+.profile .scroll .h8 + .h3,
+.profile .scroll .h8 + .h4,
+.profile .scroll .h8 + .h5,
+.profile .scroll .h8 + .h6,
+.profile .scroll .h8 + .h7,
+.profile .scroll .h8 + .h8,
+.postcolor h2 + h2,
+.postcolor h2 + h3,
+.postcolor h2 + h4,
+.postcolor h2 + h5,
+.postcolor h2 + h6,
+.postcolor h2 + h7,
+.postcolor h2 + h8,
+.postcolor h2 + .h2,
+.postcolor h2 + .h3,
+.postcolor h2 + .h4,
+.postcolor h2 + .h5,
+.postcolor h2 + .h6,
+.postcolor h2 + .h7,
+.postcolor h2 + .h8,
+.postcolor h3 + h2,
+.postcolor h3 + h3,
+.postcolor h3 + h4,
+.postcolor h3 + h5,
+.postcolor h3 + h6,
+.postcolor h3 + h7,
+.postcolor h3 + h8,
+.postcolor h3 + .h2,
+.postcolor h3 + .h3,
+.postcolor h3 + .h4,
+.postcolor h3 + .h5,
+.postcolor h3 + .h6,
+.postcolor h3 + .h7,
+.postcolor h3 + .h8,
+.postcolor h4 + h2,
+.postcolor h4 + h3,
+.postcolor h4 + h4,
+.postcolor h4 + h5,
+.postcolor h4 + h6,
+.postcolor h4 + h7,
+.postcolor h4 + h8,
+.postcolor h4 + .h2,
+.postcolor h4 + .h3,
+.postcolor h4 + .h4,
+.postcolor h4 + .h5,
+.postcolor h4 + .h6,
+.postcolor h4 + .h7,
+.postcolor h4 + .h8,
+.postcolor h5 + h2,
+.postcolor h5 + h3,
+.postcolor h5 + h4,
+.postcolor h5 + h5,
+.postcolor h5 + h6,
+.postcolor h5 + h7,
+.postcolor h5 + h8,
+.postcolor h5 + .h2,
+.postcolor h5 + .h3,
+.postcolor h5 + .h4,
+.postcolor h5 + .h5,
+.postcolor h5 + .h6,
+.postcolor h5 + .h7,
+.postcolor h5 + .h8,
+.postcolor h6 + h2,
+.postcolor h6 + h3,
+.postcolor h6 + h4,
+.postcolor h6 + h5,
+.postcolor h6 + h6,
+.postcolor h6 + h7,
+.postcolor h6 + h8,
+.postcolor h6 + .h2,
+.postcolor h6 + .h3,
+.postcolor h6 + .h4,
+.postcolor h6 + .h5,
+.postcolor h6 + .h6,
+.postcolor h6 + .h7,
+.postcolor h6 + .h8,
+.postcolor h7 + h2,
+.postcolor h7 + h3,
+.postcolor h7 + h4,
+.postcolor h7 + h5,
+.postcolor h7 + h6,
+.postcolor h7 + h7,
+.postcolor h7 + h8,
+.postcolor h7 + .h2,
+.postcolor h7 + .h3,
+.postcolor h7 + .h4,
+.postcolor h7 + .h5,
+.postcolor h7 + .h6,
+.postcolor h7 + .h7,
+.postcolor h7 + .h8,
+.postcolor h8 + h2,
+.postcolor h8 + h3,
+.postcolor h8 + h4,
+.postcolor h8 + h5,
+.postcolor h8 + h6,
+.postcolor h8 + h7,
+.postcolor h8 + h8,
+.postcolor h8 + .h2,
+.postcolor h8 + .h3,
+.postcolor h8 + .h4,
+.postcolor h8 + .h5,
+.postcolor h8 + .h6,
+.postcolor h8 + .h7,
+.postcolor h8 + .h8,
+.postcolor .h2 + h2,
+.postcolor .h2 + h3,
+.postcolor .h2 + h4,
+.postcolor .h2 + h5,
+.postcolor .h2 + h6,
+.postcolor .h2 + h7,
+.postcolor .h2 + h8,
+.postcolor .h2 + .h2,
+.postcolor .h2 + .h3,
+.postcolor .h2 + .h4,
+.postcolor .h2 + .h5,
+.postcolor .h2 + .h6,
+.postcolor .h2 + .h7,
+.postcolor .h2 + .h8,
+.postcolor .h3 + h2,
+.postcolor .h3 + h3,
+.postcolor .h3 + h4,
+.postcolor .h3 + h5,
+.postcolor .h3 + h6,
+.postcolor .h3 + h7,
+.postcolor .h3 + h8,
+.postcolor .h3 + .h2,
+.postcolor .h3 + .h3,
+.postcolor .h3 + .h4,
+.postcolor .h3 + .h5,
+.postcolor .h3 + .h6,
+.postcolor .h3 + .h7,
+.postcolor .h3 + .h8,
+.postcolor .h4 + h2,
+.postcolor .h4 + h3,
+.postcolor .h4 + h4,
+.postcolor .h4 + h5,
+.postcolor .h4 + h6,
+.postcolor .h4 + h7,
+.postcolor .h4 + h8,
+.postcolor .h4 + .h2,
+.postcolor .h4 + .h3,
+.postcolor .h4 + .h4,
+.postcolor .h4 + .h5,
+.postcolor .h4 + .h6,
+.postcolor .h4 + .h7,
+.postcolor .h4 + .h8,
+.postcolor .h5 + h2,
+.postcolor .h5 + h3,
+.postcolor .h5 + h4,
+.postcolor .h5 + h5,
+.postcolor .h5 + h6,
+.postcolor .h5 + h7,
+.postcolor .h5 + h8,
+.postcolor .h5 + .h2,
+.postcolor .h5 + .h3,
+.postcolor .h5 + .h4,
+.postcolor .h5 + .h5,
+.postcolor .h5 + .h6,
+.postcolor .h5 + .h7,
+.postcolor .h5 + .h8,
+.postcolor .h6 + h2,
+.postcolor .h6 + h3,
+.postcolor .h6 + h4,
+.postcolor .h6 + h5,
+.postcolor .h6 + h6,
+.postcolor .h6 + h7,
+.postcolor .h6 + h8,
+.postcolor .h6 + .h2,
+.postcolor .h6 + .h3,
+.postcolor .h6 + .h4,
+.postcolor .h6 + .h5,
+.postcolor .h6 + .h6,
+.postcolor .h6 + .h7,
+.postcolor .h6 + .h8,
+.postcolor .h7 + h2,
+.postcolor .h7 + h3,
+.postcolor .h7 + h4,
+.postcolor .h7 + h5,
+.postcolor .h7 + h6,
+.postcolor .h7 + h7,
+.postcolor .h7 + h8,
+.postcolor .h7 + .h2,
+.postcolor .h7 + .h3,
+.postcolor .h7 + .h4,
+.postcolor .h7 + .h5,
+.postcolor .h7 + .h6,
+.postcolor .h7 + .h7,
+.postcolor .h7 + .h8,
+.postcolor .h8 + h2,
+.postcolor .h8 + h3,
+.postcolor .h8 + h4,
+.postcolor .h8 + h5,
+.postcolor .h8 + h6,
+.postcolor .h8 + h7,
+.postcolor .h8 + h8,
+.postcolor .h8 + .h2,
+.postcolor .h8 + .h3,
+.postcolor .h8 + .h4,
+.postcolor .h8 + .h5,
+.postcolor .h8 + .h6,
+.postcolor .h8 + .h7,
+.postcolor .h8 + .h8 {
+  margin-top: 0; }
+
+.profile .scroll h2,
+.profile .scroll .h2,
+.profile .scroll h3,
+.profile .scroll .h3,
+.profile .scroll h4,
+.profile .scroll .h4,
+.profile .scroll h5,
+.profile .scroll .h5,
+.postcolor h2,
+.postcolor .h2,
+.postcolor h3,
+.postcolor .h3,
+.postcolor h4,
+.postcolor .h4,
+.postcolor h5,
+.postcolor .h5 {
+  margin: 0 auto 0.4em 0;
+  line-height: 120%;
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  width: 100%;
+  max-width: max-content; }
+
+.profile .scroll h2,
+.profile .scroll .h2,
+.profile .scroll h3,
+.profile .scroll .h3,
+.postcolor h2,
+.postcolor .h2,
+.postcolor h3,
+.postcolor .h3 {
+  font-weight: 700;
+  border-bottom: var(--border-accent);
+  color: var(--text-secondary); }
+
+.profile .scroll h2,
+.profile .scroll .h2,
+.postcolor h2,
+.postcolor .h2 {
+  font-size: 32px;
+  padding: 0 0.6em 0.2em 0; }
+  @media only screen and (min-width: 480px) {
+    .profile .scroll h2,
+    .profile .scroll .h2,
+    .postcolor h2,
+    .postcolor .h2 {
+      font-size: calc(32px + 16 * (100vw - 480px) / (1280 - 480)); } }
+  @media only screen and (min-width: 1280px) {
+    .profile .scroll h2,
+    .profile .scroll .h2,
+    .postcolor h2,
+    .postcolor .h2 {
+      font-size: 48px; } }
+
+.profile .scroll h3,
+.profile .scroll .h3,
+.postcolor h3,
+.postcolor .h3 {
+  font-size: 24px;
+  padding: 0 0.6em 0.3em 0; }
+  @media only screen and (min-width: 480px) {
+    .profile .scroll h3,
+    .profile .scroll .h3,
+    .postcolor h3,
+    .postcolor .h3 {
+      font-size: calc(24px + 8 * (100vw - 480px) / (1280 - 480)); } }
+  @media only screen and (min-width: 1280px) {
+    .profile .scroll h3,
+    .profile .scroll .h3,
+    .postcolor h3,
+    .postcolor .h3 {
+      font-size: 32px; } }
+
+.profile .scroll h4,
+.profile .scroll .h4,
+.profile .scroll h5,
+.profile .scroll .h5,
+.postcolor h4,
+.postcolor .h4,
+.postcolor h5,
+.postcolor .h5 {
+  font-weight: 400;
+  padding: 0 0.6em 0.4em 0;
+  border-bottom: var(--border-accent-transparent);
+  color: var(--text-primary); }
+
+.profile .scroll h4,
+.profile .scroll .h4,
+.postcolor h4,
+.postcolor .h4 {
+  letter-spacing: 0.05em;
+  font-size: 16px; }
+  @media only screen and (min-width: 480px) {
+    .profile .scroll h4,
+    .profile .scroll .h4,
+    .postcolor h4,
+    .postcolor .h4 {
+      font-size: calc(16px + 8 * (100vw - 480px) / (1280 - 480)); } }
+  @media only screen and (min-width: 1280px) {
+    .profile .scroll h4,
+    .profile .scroll .h4,
+    .postcolor h4,
+    .postcolor .h4 {
+      font-size: 24px; } }
+
+.profile .scroll h5,
+.profile .scroll .h5,
+.postcolor h5,
+.postcolor .h5 {
+  letter-spacing: 0.1em;
+  font-size: 12px; }
+  @media only screen and (min-width: 480px) {
+    .profile .scroll h5,
+    .profile .scroll .h5,
+    .postcolor h5,
+    .postcolor .h5 {
+      font-size: calc(12px + 6 * (100vw - 480px) / (1280 - 480)); } }
+  @media only screen and (min-width: 1280px) {
+    .profile .scroll h5,
+    .profile .scroll .h5,
+    .postcolor h5,
+    .postcolor .h5 {
+      font-size: 18px; } }
+
+.profile .scroll h6,
+.profile .scroll .h6,
+.profile .scroll h7,
+.profile .scroll .h7,
+.postcolor h6,
+.postcolor .h6,
+.postcolor h7,
+.postcolor .h7 {
+  display: block;
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  padding: 0 var(--space-sm) var(--space-xs) 0;
+  line-height: 160%;
+  border-bottom: var(--border-accent);
+  margin: 0 auto var(--space-md) 0;
+  width: max-content; }
+
+.profile .scroll h6,
+.profile .scroll .h6,
+.postcolor h6,
+.postcolor .h6 {
+  letter-spacing: 0.4em;
+  color: var(--text-secondary); }
+
+.profile .scroll h7,
+.profile .scroll .h7,
+.postcolor h7,
+.postcolor .h7 {
+  letter-spacing: 0.2em;
+  color: var(--text-primary); }
+
+.profile .scroll h8,
+.postcolor h8 {
+  display: block;
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  padding: calc(var(--space-lg) - 5px) var(--space-lg);
+  line-height: 160%;
+  border-bottom: var(--border-accent);
+  border-top: var(--border-accent);
+  margin: 0 auto var(--space-lg);
+  width: 100%;
+  max-width: 400px;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
+  font-style: italic;
+  text-align: justify;
+  text-align-last: center; }
+
+.profile .scroll blockquote,
+.postcolor blockquote {
+  background: var(--bg-accent-low);
+  border-radius: var(--radius-standard);
+  padding: calc(var(--space-lg) - 5px) var(--space-lg);
+  width: 100%;
+  max-width: 500px;
+  margin: var(--space-lg) auto;
+  color: var(--text-secondary);
+  font-size: var(--size-md);
+  letter-spacing: 0.05em; }
+  .profile .scroll blockquote:first-child,
+  .postcolor blockquote:first-child {
+    margin-top: 0; }
+  .profile .scroll blockquote:last-child,
+  .postcolor blockquote:last-child {
+    margin-bottom: 0; }
+
+.profile .scroll b,
+.postcolor b {
+  font-size: 1.1em;
+  color: var(--text-accent);
+  font-weight: 900; }
+  .profile .scroll b i,
+  .postcolor b i {
+    color: var(--text-secondary); }
+
+.profile .scroll i,
+.postcolor i {
+  font-size: 1.1em;
+  color: var(--text-accent); }
+
+.profile .scroll u,
+.postcolor u {
+  text-decoration: none;
+  padding: 0 3px;
+  z-index: 1;
+  border-bottom: var(--border-accent); }
+
+.profile .scroll s,
+.postcolor s {
+  padding: 0 3px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--bg-accent); }
+
+.profile .scroll tag-spoiler,
+.postcolor tag-spoiler {
+  padding: 2px calc(var(--space-sm) + 2px);
+  background: var(--bg-primary-mid);
+  border-radius: var(--radius-standard);
+  color: transparent;
+  cursor: pointer;
+  transition-duration: var(--transition-standard-duration); }
+  .profile .scroll tag-spoiler:hover,
+  .postcolor tag-spoiler:hover {
+    background: var(--bg-primary-high); }
+  .profile .scroll tag-spoiler.is-visible,
+  .postcolor tag-spoiler.is-visible {
+    color: var(--text-primary); }
+
+.profile .scroll tag-translation,
+.postcolor tag-translation {
+  border-bottom: 1px dashed var(--accent);
+  padding: 0 var(--space-xs);
+  cursor: pointer; }
+
+.profile .scroll a,
+.postcolor a {
+  color: var(--text-accent);
+  font-family: var(--font-head);
+  font-weight: 600; }
+  .profile .scroll a[target="_blank"]:not(.staffOnly)::after,
+  .postcolor a[target="_blank"]:not(.staffOnly)::after {
+    font-size: 1.2em;
+    font-family: 'Font Awesome 6 Pro';
+    top: -3px;
+    position: relative;
+    margin-left: 5px; }
+
+.profile .scroll ul,
+.postcolor ul {
+  margin: var(--space-lg) 0;
+  padding-left: 0; }
+  .profile .scroll ul:first-child,
+  .postcolor ul:first-child {
+    margin-top: 0; }
+  .profile .scroll ul:last-child,
+  .postcolor ul:last-child {
+    margin-bottom: 0; }
+  .profile .scroll ul li,
+  .postcolor ul li {
+    padding-left: 0;
+    list-style: none; }
+    .profile .scroll ul li::before,
+    .postcolor ul li::before {
+      display: inline-block;
+      margin-right: var(--space-md);
+      position: relative;
+      font-family: 'Font Awesome 6 Pro';
+      color: var(--text-accent);
+      font-size: 0.8em;
+      top: -1px; }
+    .profile .scroll ul li:not(:last-child),
+    .postcolor ul li:not(:last-child) {
+      margin-bottom: var(--space-md); }
+    .profile .scroll ul li > b:first-child,
+    .postcolor ul li > b:first-child {
+      margin-right: var(--space-md); }
+
+.tw,
+.note {
+  display: grid;
+  gap: var(--space-md);
+  font-family: var(--font-head);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-size: var(--size-lg);
+  margin: var(--space-lg) var(--space-md);
+  max-width: 600px; }
+  .tw:first-child,
+  .note:first-child {
+    margin-top: 0; }
+  .tw:last-child,
+  .note:last-child {
+    margin-bottom: 0; }
+  @media (min-width: 601px) {
+    .tw,
+    .note {
+      grid-template-columns: 60px auto;
+      margin: var(--space-lg) var(--space-xl); } }
+  .tw--header,
+  .note--header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    color: var(--text-accent);
+    font-size: 0;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-standard); }
+    .tw--header::before,
+    .note--header::before {
+      font-size: 24px;
+      font-family: 'Font Awesome 6 Pro';
+      font-weight: 300; }
+  .tw--body,
+  .note--body {
+    margin: 0;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-standard);
+    padding: var(--space-md) calc(var(--space-md) + 5px);
+    line-height: 160%;
+    text-align: justify;
+    height: max-content; }
+
+tag-shipsubtitle,
+tag-shiptitle {
+  display: block;
+  margin: 0 auto 0 0;
+  line-height: 120%;
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  width: max-content;
+  max-width: 100%;
+  font-weight: 700;
+  padding: 0 0.6em 0.4em 0;
+  border-bottom: var(--border-accent);
+  color: var(--text-secondary); }
+  tag-shipsubtitle + br,
+  tag-shiptitle + br {
+    display: none; }
+  tag-shipsubtitle:not(:first-child),
+  tag-shiptitle:not(:first-child) {
+    margin-top: var(--space-md); }
+
+tag-shiptitle {
+  font-size: 1.4em; }
+
+tag-relationship {
+  display: grid;
+  gap: var(--space-sm); }
+  tag-relationship:has(img) {
+    grid-template-columns: 100%; }
+    @media (min-width: 601px) {
+      tag-relationship:has(img) {
+        grid-template-columns: 60px auto; } }
+    @media (min-width: 1025px) {
+      tag-relationship:has(img) {
+        grid-template-columns: 100%; } }
+    @media (min-width: 1281px) {
+      tag-relationship:has(img) {
+        grid-template-columns: 60px auto; } }
+  tag-relationship + br,
+  tag-relationship > br {
+    display: none; }
+  tag-relationship > b,
+  tag-relationship > a {
+    display: block;
+    font-size: var(--size-xs) !important;
+    text-transform: uppercase;
+    padding: 0 var(--space-sm) var(--space-xs) 0;
+    line-height: 160%;
+    border-bottom: var(--border-accent);
+    margin: var(--space-md) auto 0 0;
+    width: max-content;
+    max-width: 100%;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 700 !important;
+    order: 1;
+    grid-column: 1 / -1; }
+  tag-relationship > a::after {
+    font-family: 'Font Awesome 6 Pro';
+    font-weight: 400;
+    padding-left: var(--space-sm); }
+  tag-relationship > span {
+    font-size: var(--size-md);
+    display: block;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-standard);
+    padding: var(--space-sm) var(--space-md);
+    line-height: 160%;
+    order: 3; }
+  tag-relationship > img {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-standard);
+    order: 2; }
+  tag-relationship + br + tag-shipsubtitle,
+  tag-relationship + br + tag-shiptitle,
+  tag-relationship + tag-shipsubtitle,
+  tag-relationship + tag-shiptitle {
+    margin-top: var(--space-lg) !important; }
+  tag-relationship + br + tag-relationship,
+  tag-relationship + tag-relationship {
+    margin-top: var(--space-sm); }

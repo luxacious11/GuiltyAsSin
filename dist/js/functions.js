@@ -2,23 +2,31 @@
 function formatAesthetics(aesthetics, images) {
     let imageHTML;
     switch (aesthetics) {
-        case 'Mosaic':
-            imageHTML = `<span class="twoWide"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
-                <span class="twoWide"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>
-                <span><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>
-                <span class="twoWide"><img src="${images['square-3']}" title="Square #3" alt="Square #3" loading="lazy" /></span>
-                <span class="twoHigh"><img src="${images['tall-2']}" title="Tall #2" alt="Tall #2" loading="lazy" /></span>
-                <span class="threeWide"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>`;
+        case 'LargeMosaic':
+            imageHTML = `<span class="aesthetic--square one"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
+                <span class="aesthetic--square two"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>
+                <span class="aesthetic--square three"><img src="${images['square-3']}" title="Square #3" alt="Square #3" loading="lazy" /></span>
+                <span class="aesthetic--square four"><img src="${images['square-4']}" title="Square #4" alt="Square #4" loading="lazy" /></span>
+                <span class="aesthetic--wide five"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>
+                <span class="aesthetic--wide six"><img src="${images['wide-2']}" title="Wide #2" alt="Wide #2" loading="lazy" /></span>
+                <span class="aesthetic--tall seven"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
             break;
-        case 'Grid':
-            imageHTML = `<span class="twoWide"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>
-                <span class="twoHigh"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>
-                <span><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
-                <span><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>`;
+        case 'SmallMosaic':
+            imageHTML = `<span class="aesthetic--square one"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
+                <span class="aesthetic--square two"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>
+                <span class="aesthetic--wide three"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>
+                <span class="aesthetic--wide four"><img src="${images['wide-2']}" title="Wide #2" alt="Wide #2" loading="lazy" /></span>
+                <span class="aesthetic--tall five"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
+            break;
+        case 'Columns':
+            imageHTML = `<span class="aesthetic--square one"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
+                <span class="aesthetic--tall two"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>
+                <span class="aesthetic--tall three"><img src="${images['tall-2']}" title="Tall #2" alt="Tall #2" loading="lazy" /></span>
+                <span class="aesthetic--square four"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>`;
             break;
         case 'Single':
         default: 
-        imageHTML = `<span><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
+            imageHTML = `<span class="aesthetic--tall one"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
             break;
     }
     return imageHTML;
@@ -26,27 +34,34 @@ function formatAesthetics(aesthetics, images) {
 function setRoster() {   
     let alphaChars = Alpha(document.querySelectorAll('select[name=showuser] option'));
     alphaChars.forEach(character => {
-        let imageDiv = createAvatars('profile--account-image', character.account, attributes = ``);
+        let imageDiv = createAvatars('profile--roster-account-image', character.account, attributes = ``);
 
-        let html = `<a class="profile--account" href="?showuser=${character.account}">
+        let html = `<a class="profile--roster-account" href="?showuser=${character.account}">
             ${imageDiv}
-            <b>${capitalize(character.character)}</b>
+            <div class="profile--roster-account-name">${formatName(character.character, 'span', 'last', true)}</div>
         </a>`;
 
         document.querySelector('.profile--roster').insertAdjacentHTML('beforeend', html);
     });
 }
 function initProfile (title, ratings) {
-    document.querySelector('.profile--header h1').innerHTML = capitalize(title);
+    document.querySelector('.profile--header h1').insertAdjacentHTML('beforeend', profileFormatName(title));
     ratings.forEach(rating => formatRating(rating));
     removeBlankFields();
 }
-function initCharacter(aesthetics, images, overflow, title, birthday, isLocal = false) {
+function initCharacter(aesthetics, images, overflow, title, birthday, warnings, powerType, powers, isLocal = false) {
     //remove member sections
     document.querySelectorAll('.memAccOnly').forEach(item => item.remove());
 
+    if(warnings !== `<i>No Information</i>` && warnings !== ``) {
+        document.querySelector('.profile--triggers-inner .scroll').innerHTML = warnings;
+    } else {
+        document.querySelector('.profile--triggers').remove();
+    }
+
     //set up aesthetics
     if(aesthetics !== `<i>No Information</i>` && aesthetics !== ``) {
+	document.querySelector('.profile--aesthetic').classList.add(aesthetics);
         document.querySelector('.profile--aesthetic').innerHTML = formatAesthetics(aesthetics, images);
     }
 
@@ -58,6 +73,12 @@ function initCharacter(aesthetics, images, overflow, title, birthday, isLocal = 
         document.querySelector('birthday-clip').innerText = `${birthday.month} ${birthday.day}, ${parseInt(birthday.year)}`;
     }
 
+    if(powerType.toLowerCase() === 'powerless') {
+        document.querySelectorAll('.powersOnly').forEach(item => item.remove());
+    } else {
+	document.querySelector('.clip-powers').innerHTML = formatPowers(powers);
+    }
+
     //Freeform Overflow
     if(overflow !== `` && overflow !== `<i>No Information</i>`) {
         document.querySelector('.clip-freeform-overflow').insertAdjacentHTML('beforeend', overflow);
@@ -67,6 +88,9 @@ function initCharacter(aesthetics, images, overflow, title, birthday, isLocal = 
     if(!isLocal) {
         FillTracker(title, trackerParams);
     }
+
+    initHashCarousel('Basics', '.profile--progress-bar');
+    initAccordion();
 }
 function initMember() {
     //remove character only sections

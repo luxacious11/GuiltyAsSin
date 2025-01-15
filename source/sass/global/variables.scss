@@ -12,6 +12,7 @@
     --size-md: 12px;
     --size-lg: 14px;
     --size-xl: 16px;
+    --size-diff: 0px;
 
     --space-xs: 5px;
     --space-sm: 10px;
@@ -55,6 +56,8 @@
     --size-outline-visible: 300px;
     --size-icon-square: 24px;
     --size-fancy-input: 16px;
+    --size-single-aesthetic-width: 300px;
+    --size-columns-aesthetic-width: 400px;
 
     --radius-sm: 3px;
     --radius-standard: 4px;
@@ -75,6 +78,7 @@ body {
         --size-md: 14px;
         --size-lg: 16px;
         --size-xl: 18px;
+        --size-diff: 2px;
     }
     &.xlFont {
         --size-xs: 12px;
@@ -82,6 +86,7 @@ body {
         --size-md: 18px;
         --size-lg: 20px;
         --size-xl: 22px;
+        --size-diff: 4px;
     }
     &.light {
         --bg-overlay: rgba(205, 205, 205, 0.8);

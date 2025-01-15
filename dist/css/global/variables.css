@@ -9,6 +9,7 @@
   --size-md: 12px;
   --size-lg: 14px;
   --size-xl: 16px;
+  --size-diff: 0px;
   --space-xs: 5px;
   --space-sm: 10px;
   --space-md: 15px;
@@ -43,6 +44,8 @@
   --size-outline-visible: 300px;
   --size-icon-square: 24px;
   --size-fancy-input: 16px;
+  --size-single-aesthetic-width: 300px;
+  --size-columns-aesthetic-width: 400px;
   --radius-sm: 3px;
   --radius-standard: 4px; }
   @media (min-width: 481px) {
@@ -57,14 +60,16 @@ body.lgFont {
   --size-sm: 12px;
   --size-md: 14px;
   --size-lg: 16px;
-  --size-xl: 18px; }
+  --size-xl: 18px;
+  --size-diff: 2px; }
 
 body.xlFont {
   --size-xs: 12px;
   --size-sm: 16px;
   --size-md: 18px;
   --size-lg: 20px;
-  --size-xl: 22px; }
+  --size-xl: 22px;
+  --size-diff: 4px; }
 
 body.light {
   --bg-overlay: rgba(205, 205, 205, 0.8);
