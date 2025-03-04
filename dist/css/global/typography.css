@@ -28,7 +28,35 @@
 .postcolor .h5:not(:first-child),
 .postcolor .h6:not(:first-child),
 .postcolor .h7:not(:first-child),
-.postcolor .h8:not(:first-child) {
+.postcolor .h8:not(:first-child),
+.ucp--description h2:not(:first-child),
+.ucp--description h3:not(:first-child),
+.ucp--description h4:not(:first-child),
+.ucp--description h5:not(:first-child),
+.ucp--description h6:not(:first-child),
+.ucp--description h7:not(:first-child),
+.ucp--description h8:not(:first-child),
+.ucp--description .h2:not(:first-child),
+.ucp--description .h3:not(:first-child),
+.ucp--description .h4:not(:first-child),
+.ucp--description .h5:not(:first-child),
+.ucp--description .h6:not(:first-child),
+.ucp--description .h7:not(:first-child),
+.ucp--description .h8:not(:first-child),
+.webpage--content-inner h2:not(:first-child),
+.webpage--content-inner h3:not(:first-child),
+.webpage--content-inner h4:not(:first-child),
+.webpage--content-inner h5:not(:first-child),
+.webpage--content-inner h6:not(:first-child),
+.webpage--content-inner h7:not(:first-child),
+.webpage--content-inner h8:not(:first-child),
+.webpage--content-inner .h2:not(:first-child),
+.webpage--content-inner .h3:not(:first-child),
+.webpage--content-inner .h4:not(:first-child),
+.webpage--content-inner .h5:not(:first-child),
+.webpage--content-inner .h6:not(:first-child),
+.webpage--content-inner .h7:not(:first-child),
+.webpage--content-inner .h8:not(:first-child) {
   margin-top: var(--space-lg); }
 
 .profile .scroll h2 + br,
@@ -58,7 +86,35 @@
 .postcolor .h5 + br,
 .postcolor .h6 + br,
 .postcolor .h7 + br,
-.postcolor .h8 + br {
+.postcolor .h8 + br,
+.ucp--description h2 + br,
+.ucp--description h3 + br,
+.ucp--description h4 + br,
+.ucp--description h5 + br,
+.ucp--description h6 + br,
+.ucp--description h7 + br,
+.ucp--description h8 + br,
+.ucp--description .h2 + br,
+.ucp--description .h3 + br,
+.ucp--description .h4 + br,
+.ucp--description .h5 + br,
+.ucp--description .h6 + br,
+.ucp--description .h7 + br,
+.ucp--description .h8 + br,
+.webpage--content-inner h2 + br,
+.webpage--content-inner h3 + br,
+.webpage--content-inner h4 + br,
+.webpage--content-inner h5 + br,
+.webpage--content-inner h6 + br,
+.webpage--content-inner h7 + br,
+.webpage--content-inner h8 + br,
+.webpage--content-inner .h2 + br,
+.webpage--content-inner .h3 + br,
+.webpage--content-inner .h4 + br,
+.webpage--content-inner .h5 + br,
+.webpage--content-inner .h6 + br,
+.webpage--content-inner .h7 + br,
+.webpage--content-inner .h8 + br {
   display: none; }
 
 .profile .scroll h2 a,
@@ -88,7 +144,35 @@
 .postcolor .h5 a,
 .postcolor .h6 a,
 .postcolor .h7 a,
-.postcolor .h8 a {
+.postcolor .h8 a,
+.ucp--description h2 a,
+.ucp--description h3 a,
+.ucp--description h4 a,
+.ucp--description h5 a,
+.ucp--description h6 a,
+.ucp--description h7 a,
+.ucp--description h8 a,
+.ucp--description .h2 a,
+.ucp--description .h3 a,
+.ucp--description .h4 a,
+.ucp--description .h5 a,
+.ucp--description .h6 a,
+.ucp--description .h7 a,
+.ucp--description .h8 a,
+.webpage--content-inner h2 a,
+.webpage--content-inner h3 a,
+.webpage--content-inner h4 a,
+.webpage--content-inner h5 a,
+.webpage--content-inner h6 a,
+.webpage--content-inner h7 a,
+.webpage--content-inner h8 a,
+.webpage--content-inner .h2 a,
+.webpage--content-inner .h3 a,
+.webpage--content-inner .h4 a,
+.webpage--content-inner .h5 a,
+.webpage--content-inner .h6 a,
+.webpage--content-inner .h7 a,
+.webpage--content-inner .h8 a {
   color: inherit; }
 
 .profile .scroll h2 + h2,
@@ -482,7 +566,399 @@
 .postcolor .h8 + .h5,
 .postcolor .h8 + .h6,
 .postcolor .h8 + .h7,
-.postcolor .h8 + .h8 {
+.postcolor .h8 + .h8,
+.ucp--description h2 + h2,
+.ucp--description h2 + h3,
+.ucp--description h2 + h4,
+.ucp--description h2 + h5,
+.ucp--description h2 + h6,
+.ucp--description h2 + h7,
+.ucp--description h2 + h8,
+.ucp--description h2 + .h2,
+.ucp--description h2 + .h3,
+.ucp--description h2 + .h4,
+.ucp--description h2 + .h5,
+.ucp--description h2 + .h6,
+.ucp--description h2 + .h7,
+.ucp--description h2 + .h8,
+.ucp--description h3 + h2,
+.ucp--description h3 + h3,
+.ucp--description h3 + h4,
+.ucp--description h3 + h5,
+.ucp--description h3 + h6,
+.ucp--description h3 + h7,
+.ucp--description h3 + h8,
+.ucp--description h3 + .h2,
+.ucp--description h3 + .h3,
+.ucp--description h3 + .h4,
+.ucp--description h3 + .h5,
+.ucp--description h3 + .h6,
+.ucp--description h3 + .h7,
+.ucp--description h3 + .h8,
+.ucp--description h4 + h2,
+.ucp--description h4 + h3,
+.ucp--description h4 + h4,
+.ucp--description h4 + h5,
+.ucp--description h4 + h6,
+.ucp--description h4 + h7,
+.ucp--description h4 + h8,
+.ucp--description h4 + .h2,
+.ucp--description h4 + .h3,
+.ucp--description h4 + .h4,
+.ucp--description h4 + .h5,
+.ucp--description h4 + .h6,
+.ucp--description h4 + .h7,
+.ucp--description h4 + .h8,
+.ucp--description h5 + h2,
+.ucp--description h5 + h3,
+.ucp--description h5 + h4,
+.ucp--description h5 + h5,
+.ucp--description h5 + h6,
+.ucp--description h5 + h7,
+.ucp--description h5 + h8,
+.ucp--description h5 + .h2,
+.ucp--description h5 + .h3,
+.ucp--description h5 + .h4,
+.ucp--description h5 + .h5,
+.ucp--description h5 + .h6,
+.ucp--description h5 + .h7,
+.ucp--description h5 + .h8,
+.ucp--description h6 + h2,
+.ucp--description h6 + h3,
+.ucp--description h6 + h4,
+.ucp--description h6 + h5,
+.ucp--description h6 + h6,
+.ucp--description h6 + h7,
+.ucp--description h6 + h8,
+.ucp--description h6 + .h2,
+.ucp--description h6 + .h3,
+.ucp--description h6 + .h4,
+.ucp--description h6 + .h5,
+.ucp--description h6 + .h6,
+.ucp--description h6 + .h7,
+.ucp--description h6 + .h8,
+.ucp--description h7 + h2,
+.ucp--description h7 + h3,
+.ucp--description h7 + h4,
+.ucp--description h7 + h5,
+.ucp--description h7 + h6,
+.ucp--description h7 + h7,
+.ucp--description h7 + h8,
+.ucp--description h7 + .h2,
+.ucp--description h7 + .h3,
+.ucp--description h7 + .h4,
+.ucp--description h7 + .h5,
+.ucp--description h7 + .h6,
+.ucp--description h7 + .h7,
+.ucp--description h7 + .h8,
+.ucp--description h8 + h2,
+.ucp--description h8 + h3,
+.ucp--description h8 + h4,
+.ucp--description h8 + h5,
+.ucp--description h8 + h6,
+.ucp--description h8 + h7,
+.ucp--description h8 + h8,
+.ucp--description h8 + .h2,
+.ucp--description h8 + .h3,
+.ucp--description h8 + .h4,
+.ucp--description h8 + .h5,
+.ucp--description h8 + .h6,
+.ucp--description h8 + .h7,
+.ucp--description h8 + .h8,
+.ucp--description .h2 + h2,
+.ucp--description .h2 + h3,
+.ucp--description .h2 + h4,
+.ucp--description .h2 + h5,
+.ucp--description .h2 + h6,
+.ucp--description .h2 + h7,
+.ucp--description .h2 + h8,
+.ucp--description .h2 + .h2,
+.ucp--description .h2 + .h3,
+.ucp--description .h2 + .h4,
+.ucp--description .h2 + .h5,
+.ucp--description .h2 + .h6,
+.ucp--description .h2 + .h7,
+.ucp--description .h2 + .h8,
+.ucp--description .h3 + h2,
+.ucp--description .h3 + h3,
+.ucp--description .h3 + h4,
+.ucp--description .h3 + h5,
+.ucp--description .h3 + h6,
+.ucp--description .h3 + h7,
+.ucp--description .h3 + h8,
+.ucp--description .h3 + .h2,
+.ucp--description .h3 + .h3,
+.ucp--description .h3 + .h4,
+.ucp--description .h3 + .h5,
+.ucp--description .h3 + .h6,
+.ucp--description .h3 + .h7,
+.ucp--description .h3 + .h8,
+.ucp--description .h4 + h2,
+.ucp--description .h4 + h3,
+.ucp--description .h4 + h4,
+.ucp--description .h4 + h5,
+.ucp--description .h4 + h6,
+.ucp--description .h4 + h7,
+.ucp--description .h4 + h8,
+.ucp--description .h4 + .h2,
+.ucp--description .h4 + .h3,
+.ucp--description .h4 + .h4,
+.ucp--description .h4 + .h5,
+.ucp--description .h4 + .h6,
+.ucp--description .h4 + .h7,
+.ucp--description .h4 + .h8,
+.ucp--description .h5 + h2,
+.ucp--description .h5 + h3,
+.ucp--description .h5 + h4,
+.ucp--description .h5 + h5,
+.ucp--description .h5 + h6,
+.ucp--description .h5 + h7,
+.ucp--description .h5 + h8,
+.ucp--description .h5 + .h2,
+.ucp--description .h5 + .h3,
+.ucp--description .h5 + .h4,
+.ucp--description .h5 + .h5,
+.ucp--description .h5 + .h6,
+.ucp--description .h5 + .h7,
+.ucp--description .h5 + .h8,
+.ucp--description .h6 + h2,
+.ucp--description .h6 + h3,
+.ucp--description .h6 + h4,
+.ucp--description .h6 + h5,
+.ucp--description .h6 + h6,
+.ucp--description .h6 + h7,
+.ucp--description .h6 + h8,
+.ucp--description .h6 + .h2,
+.ucp--description .h6 + .h3,
+.ucp--description .h6 + .h4,
+.ucp--description .h6 + .h5,
+.ucp--description .h6 + .h6,
+.ucp--description .h6 + .h7,
+.ucp--description .h6 + .h8,
+.ucp--description .h7 + h2,
+.ucp--description .h7 + h3,
+.ucp--description .h7 + h4,
+.ucp--description .h7 + h5,
+.ucp--description .h7 + h6,
+.ucp--description .h7 + h7,
+.ucp--description .h7 + h8,
+.ucp--description .h7 + .h2,
+.ucp--description .h7 + .h3,
+.ucp--description .h7 + .h4,
+.ucp--description .h7 + .h5,
+.ucp--description .h7 + .h6,
+.ucp--description .h7 + .h7,
+.ucp--description .h7 + .h8,
+.ucp--description .h8 + h2,
+.ucp--description .h8 + h3,
+.ucp--description .h8 + h4,
+.ucp--description .h8 + h5,
+.ucp--description .h8 + h6,
+.ucp--description .h8 + h7,
+.ucp--description .h8 + h8,
+.ucp--description .h8 + .h2,
+.ucp--description .h8 + .h3,
+.ucp--description .h8 + .h4,
+.ucp--description .h8 + .h5,
+.ucp--description .h8 + .h6,
+.ucp--description .h8 + .h7,
+.ucp--description .h8 + .h8,
+.webpage--content-inner h2 + h2,
+.webpage--content-inner h2 + h3,
+.webpage--content-inner h2 + h4,
+.webpage--content-inner h2 + h5,
+.webpage--content-inner h2 + h6,
+.webpage--content-inner h2 + h7,
+.webpage--content-inner h2 + h8,
+.webpage--content-inner h2 + .h2,
+.webpage--content-inner h2 + .h3,
+.webpage--content-inner h2 + .h4,
+.webpage--content-inner h2 + .h5,
+.webpage--content-inner h2 + .h6,
+.webpage--content-inner h2 + .h7,
+.webpage--content-inner h2 + .h8,
+.webpage--content-inner h3 + h2,
+.webpage--content-inner h3 + h3,
+.webpage--content-inner h3 + h4,
+.webpage--content-inner h3 + h5,
+.webpage--content-inner h3 + h6,
+.webpage--content-inner h3 + h7,
+.webpage--content-inner h3 + h8,
+.webpage--content-inner h3 + .h2,
+.webpage--content-inner h3 + .h3,
+.webpage--content-inner h3 + .h4,
+.webpage--content-inner h3 + .h5,
+.webpage--content-inner h3 + .h6,
+.webpage--content-inner h3 + .h7,
+.webpage--content-inner h3 + .h8,
+.webpage--content-inner h4 + h2,
+.webpage--content-inner h4 + h3,
+.webpage--content-inner h4 + h4,
+.webpage--content-inner h4 + h5,
+.webpage--content-inner h4 + h6,
+.webpage--content-inner h4 + h7,
+.webpage--content-inner h4 + h8,
+.webpage--content-inner h4 + .h2,
+.webpage--content-inner h4 + .h3,
+.webpage--content-inner h4 + .h4,
+.webpage--content-inner h4 + .h5,
+.webpage--content-inner h4 + .h6,
+.webpage--content-inner h4 + .h7,
+.webpage--content-inner h4 + .h8,
+.webpage--content-inner h5 + h2,
+.webpage--content-inner h5 + h3,
+.webpage--content-inner h5 + h4,
+.webpage--content-inner h5 + h5,
+.webpage--content-inner h5 + h6,
+.webpage--content-inner h5 + h7,
+.webpage--content-inner h5 + h8,
+.webpage--content-inner h5 + .h2,
+.webpage--content-inner h5 + .h3,
+.webpage--content-inner h5 + .h4,
+.webpage--content-inner h5 + .h5,
+.webpage--content-inner h5 + .h6,
+.webpage--content-inner h5 + .h7,
+.webpage--content-inner h5 + .h8,
+.webpage--content-inner h6 + h2,
+.webpage--content-inner h6 + h3,
+.webpage--content-inner h6 + h4,
+.webpage--content-inner h6 + h5,
+.webpage--content-inner h6 + h6,
+.webpage--content-inner h6 + h7,
+.webpage--content-inner h6 + h8,
+.webpage--content-inner h6 + .h2,
+.webpage--content-inner h6 + .h3,
+.webpage--content-inner h6 + .h4,
+.webpage--content-inner h6 + .h5,
+.webpage--content-inner h6 + .h6,
+.webpage--content-inner h6 + .h7,
+.webpage--content-inner h6 + .h8,
+.webpage--content-inner h7 + h2,
+.webpage--content-inner h7 + h3,
+.webpage--content-inner h7 + h4,
+.webpage--content-inner h7 + h5,
+.webpage--content-inner h7 + h6,
+.webpage--content-inner h7 + h7,
+.webpage--content-inner h7 + h8,
+.webpage--content-inner h7 + .h2,
+.webpage--content-inner h7 + .h3,
+.webpage--content-inner h7 + .h4,
+.webpage--content-inner h7 + .h5,
+.webpage--content-inner h7 + .h6,
+.webpage--content-inner h7 + .h7,
+.webpage--content-inner h7 + .h8,
+.webpage--content-inner h8 + h2,
+.webpage--content-inner h8 + h3,
+.webpage--content-inner h8 + h4,
+.webpage--content-inner h8 + h5,
+.webpage--content-inner h8 + h6,
+.webpage--content-inner h8 + h7,
+.webpage--content-inner h8 + h8,
+.webpage--content-inner h8 + .h2,
+.webpage--content-inner h8 + .h3,
+.webpage--content-inner h8 + .h4,
+.webpage--content-inner h8 + .h5,
+.webpage--content-inner h8 + .h6,
+.webpage--content-inner h8 + .h7,
+.webpage--content-inner h8 + .h8,
+.webpage--content-inner .h2 + h2,
+.webpage--content-inner .h2 + h3,
+.webpage--content-inner .h2 + h4,
+.webpage--content-inner .h2 + h5,
+.webpage--content-inner .h2 + h6,
+.webpage--content-inner .h2 + h7,
+.webpage--content-inner .h2 + h8,
+.webpage--content-inner .h2 + .h2,
+.webpage--content-inner .h2 + .h3,
+.webpage--content-inner .h2 + .h4,
+.webpage--content-inner .h2 + .h5,
+.webpage--content-inner .h2 + .h6,
+.webpage--content-inner .h2 + .h7,
+.webpage--content-inner .h2 + .h8,
+.webpage--content-inner .h3 + h2,
+.webpage--content-inner .h3 + h3,
+.webpage--content-inner .h3 + h4,
+.webpage--content-inner .h3 + h5,
+.webpage--content-inner .h3 + h6,
+.webpage--content-inner .h3 + h7,
+.webpage--content-inner .h3 + h8,
+.webpage--content-inner .h3 + .h2,
+.webpage--content-inner .h3 + .h3,
+.webpage--content-inner .h3 + .h4,
+.webpage--content-inner .h3 + .h5,
+.webpage--content-inner .h3 + .h6,
+.webpage--content-inner .h3 + .h7,
+.webpage--content-inner .h3 + .h8,
+.webpage--content-inner .h4 + h2,
+.webpage--content-inner .h4 + h3,
+.webpage--content-inner .h4 + h4,
+.webpage--content-inner .h4 + h5,
+.webpage--content-inner .h4 + h6,
+.webpage--content-inner .h4 + h7,
+.webpage--content-inner .h4 + h8,
+.webpage--content-inner .h4 + .h2,
+.webpage--content-inner .h4 + .h3,
+.webpage--content-inner .h4 + .h4,
+.webpage--content-inner .h4 + .h5,
+.webpage--content-inner .h4 + .h6,
+.webpage--content-inner .h4 + .h7,
+.webpage--content-inner .h4 + .h8,
+.webpage--content-inner .h5 + h2,
+.webpage--content-inner .h5 + h3,
+.webpage--content-inner .h5 + h4,
+.webpage--content-inner .h5 + h5,
+.webpage--content-inner .h5 + h6,
+.webpage--content-inner .h5 + h7,
+.webpage--content-inner .h5 + h8,
+.webpage--content-inner .h5 + .h2,
+.webpage--content-inner .h5 + .h3,
+.webpage--content-inner .h5 + .h4,
+.webpage--content-inner .h5 + .h5,
+.webpage--content-inner .h5 + .h6,
+.webpage--content-inner .h5 + .h7,
+.webpage--content-inner .h5 + .h8,
+.webpage--content-inner .h6 + h2,
+.webpage--content-inner .h6 + h3,
+.webpage--content-inner .h6 + h4,
+.webpage--content-inner .h6 + h5,
+.webpage--content-inner .h6 + h6,
+.webpage--content-inner .h6 + h7,
+.webpage--content-inner .h6 + h8,
+.webpage--content-inner .h6 + .h2,
+.webpage--content-inner .h6 + .h3,
+.webpage--content-inner .h6 + .h4,
+.webpage--content-inner .h6 + .h5,
+.webpage--content-inner .h6 + .h6,
+.webpage--content-inner .h6 + .h7,
+.webpage--content-inner .h6 + .h8,
+.webpage--content-inner .h7 + h2,
+.webpage--content-inner .h7 + h3,
+.webpage--content-inner .h7 + h4,
+.webpage--content-inner .h7 + h5,
+.webpage--content-inner .h7 + h6,
+.webpage--content-inner .h7 + h7,
+.webpage--content-inner .h7 + h8,
+.webpage--content-inner .h7 + .h2,
+.webpage--content-inner .h7 + .h3,
+.webpage--content-inner .h7 + .h4,
+.webpage--content-inner .h7 + .h5,
+.webpage--content-inner .h7 + .h6,
+.webpage--content-inner .h7 + .h7,
+.webpage--content-inner .h7 + .h8,
+.webpage--content-inner .h8 + h2,
+.webpage--content-inner .h8 + h3,
+.webpage--content-inner .h8 + h4,
+.webpage--content-inner .h8 + h5,
+.webpage--content-inner .h8 + h6,
+.webpage--content-inner .h8 + h7,
+.webpage--content-inner .h8 + h8,
+.webpage--content-inner .h8 + .h2,
+.webpage--content-inner .h8 + .h3,
+.webpage--content-inner .h8 + .h4,
+.webpage--content-inner .h8 + .h5,
+.webpage--content-inner .h8 + .h6,
+.webpage--content-inner .h8 + .h7,
+.webpage--content-inner .h8 + .h8 {
   margin-top: 0; }
 
 .profile .scroll h2,
@@ -500,7 +976,23 @@
 .postcolor h4,
 .postcolor .h4,
 .postcolor h5,
-.postcolor .h5 {
+.postcolor .h5,
+.ucp--description h2,
+.ucp--description .h2,
+.ucp--description h3,
+.ucp--description .h3,
+.ucp--description h4,
+.ucp--description .h4,
+.ucp--description h5,
+.ucp--description .h5,
+.webpage--content-inner h2,
+.webpage--content-inner .h2,
+.webpage--content-inner h3,
+.webpage--content-inner .h3,
+.webpage--content-inner h4,
+.webpage--content-inner .h4,
+.webpage--content-inner h5,
+.webpage--content-inner .h5 {
   margin: 0 auto 0.4em 0;
   line-height: 120%;
   font-family: var(--font-head);
@@ -515,7 +1007,15 @@
 .postcolor h2,
 .postcolor .h2,
 .postcolor h3,
-.postcolor .h3 {
+.postcolor .h3,
+.ucp--description h2,
+.ucp--description .h2,
+.ucp--description h3,
+.ucp--description .h3,
+.webpage--content-inner h2,
+.webpage--content-inner .h2,
+.webpage--content-inner h3,
+.webpage--content-inner .h3 {
   font-weight: 700;
   border-bottom: var(--border-accent);
   color: var(--text-secondary); }
@@ -523,39 +1023,63 @@
 .profile .scroll h2,
 .profile .scroll .h2,
 .postcolor h2,
-.postcolor .h2 {
+.postcolor .h2,
+.ucp--description h2,
+.ucp--description .h2,
+.webpage--content-inner h2,
+.webpage--content-inner .h2 {
   font-size: 32px;
   padding: 0 0.6em 0.2em 0; }
   @media only screen and (min-width: 480px) {
     .profile .scroll h2,
     .profile .scroll .h2,
     .postcolor h2,
-    .postcolor .h2 {
+    .postcolor .h2,
+    .ucp--description h2,
+    .ucp--description .h2,
+    .webpage--content-inner h2,
+    .webpage--content-inner .h2 {
       font-size: calc(32px + 16 * (100vw - 480px) / (1280 - 480)); } }
   @media only screen and (min-width: 1280px) {
     .profile .scroll h2,
     .profile .scroll .h2,
     .postcolor h2,
-    .postcolor .h2 {
+    .postcolor .h2,
+    .ucp--description h2,
+    .ucp--description .h2,
+    .webpage--content-inner h2,
+    .webpage--content-inner .h2 {
       font-size: 48px; } }
 
 .profile .scroll h3,
 .profile .scroll .h3,
 .postcolor h3,
-.postcolor .h3 {
+.postcolor .h3,
+.ucp--description h3,
+.ucp--description .h3,
+.webpage--content-inner h3,
+.webpage--content-inner .h3 {
   font-size: 24px;
   padding: 0 0.6em 0.3em 0; }
   @media only screen and (min-width: 480px) {
     .profile .scroll h3,
     .profile .scroll .h3,
     .postcolor h3,
-    .postcolor .h3 {
+    .postcolor .h3,
+    .ucp--description h3,
+    .ucp--description .h3,
+    .webpage--content-inner h3,
+    .webpage--content-inner .h3 {
       font-size: calc(24px + 8 * (100vw - 480px) / (1280 - 480)); } }
   @media only screen and (min-width: 1280px) {
     .profile .scroll h3,
     .profile .scroll .h3,
     .postcolor h3,
-    .postcolor .h3 {
+    .postcolor .h3,
+    .ucp--description h3,
+    .ucp--description .h3,
+    .webpage--content-inner h3,
+    .webpage--content-inner .h3 {
       font-size: 32px; } }
 
 .profile .scroll h4,
@@ -565,7 +1089,15 @@
 .postcolor h4,
 .postcolor .h4,
 .postcolor h5,
-.postcolor .h5 {
+.postcolor .h5,
+.ucp--description h4,
+.ucp--description .h4,
+.ucp--description h5,
+.ucp--description .h5,
+.webpage--content-inner h4,
+.webpage--content-inner .h4,
+.webpage--content-inner h5,
+.webpage--content-inner .h5 {
   font-weight: 400;
   padding: 0 0.6em 0.4em 0;
   border-bottom: var(--border-accent-transparent);
@@ -574,39 +1106,63 @@
 .profile .scroll h4,
 .profile .scroll .h4,
 .postcolor h4,
-.postcolor .h4 {
+.postcolor .h4,
+.ucp--description h4,
+.ucp--description .h4,
+.webpage--content-inner h4,
+.webpage--content-inner .h4 {
   letter-spacing: 0.05em;
   font-size: 16px; }
   @media only screen and (min-width: 480px) {
     .profile .scroll h4,
     .profile .scroll .h4,
     .postcolor h4,
-    .postcolor .h4 {
+    .postcolor .h4,
+    .ucp--description h4,
+    .ucp--description .h4,
+    .webpage--content-inner h4,
+    .webpage--content-inner .h4 {
       font-size: calc(16px + 8 * (100vw - 480px) / (1280 - 480)); } }
   @media only screen and (min-width: 1280px) {
     .profile .scroll h4,
     .profile .scroll .h4,
     .postcolor h4,
-    .postcolor .h4 {
+    .postcolor .h4,
+    .ucp--description h4,
+    .ucp--description .h4,
+    .webpage--content-inner h4,
+    .webpage--content-inner .h4 {
       font-size: 24px; } }
 
 .profile .scroll h5,
 .profile .scroll .h5,
 .postcolor h5,
-.postcolor .h5 {
+.postcolor .h5,
+.ucp--description h5,
+.ucp--description .h5,
+.webpage--content-inner h5,
+.webpage--content-inner .h5 {
   letter-spacing: 0.1em;
   font-size: 12px; }
   @media only screen and (min-width: 480px) {
     .profile .scroll h5,
     .profile .scroll .h5,
     .postcolor h5,
-    .postcolor .h5 {
+    .postcolor .h5,
+    .ucp--description h5,
+    .ucp--description .h5,
+    .webpage--content-inner h5,
+    .webpage--content-inner .h5 {
       font-size: calc(12px + 6 * (100vw - 480px) / (1280 - 480)); } }
   @media only screen and (min-width: 1280px) {
     .profile .scroll h5,
     .profile .scroll .h5,
     .postcolor h5,
-    .postcolor .h5 {
+    .postcolor .h5,
+    .ucp--description h5,
+    .ucp--description .h5,
+    .webpage--content-inner h5,
+    .webpage--content-inner .h5 {
       font-size: 18px; } }
 
 .profile .scroll h6,
@@ -616,7 +1172,15 @@
 .postcolor h6,
 .postcolor .h6,
 .postcolor h7,
-.postcolor .h7 {
+.postcolor .h7,
+.ucp--description h6,
+.ucp--description .h6,
+.ucp--description h7,
+.ucp--description .h7,
+.webpage--content-inner h6,
+.webpage--content-inner .h6,
+.webpage--content-inner h7,
+.webpage--content-inner .h7 {
   display: block;
   font-size: var(--size-xs);
   text-transform: uppercase;
@@ -629,19 +1193,29 @@
 .profile .scroll h6,
 .profile .scroll .h6,
 .postcolor h6,
-.postcolor .h6 {
+.postcolor .h6,
+.ucp--description h6,
+.ucp--description .h6,
+.webpage--content-inner h6,
+.webpage--content-inner .h6 {
   letter-spacing: 0.4em;
   color: var(--text-secondary); }
 
 .profile .scroll h7,
 .profile .scroll .h7,
 .postcolor h7,
-.postcolor .h7 {
+.postcolor .h7,
+.ucp--description h7,
+.ucp--description .h7,
+.webpage--content-inner h7,
+.webpage--content-inner .h7 {
   letter-spacing: 0.2em;
   color: var(--text-primary); }
 
 .profile .scroll h8,
-.postcolor h8 {
+.postcolor h8,
+.ucp--description h8,
+.webpage--content-inner h8 {
   display: block;
   font-size: var(--size-xs);
   text-transform: uppercase;
@@ -659,7 +1233,9 @@
   text-align-last: center; }
 
 .profile .scroll blockquote,
-.postcolor blockquote {
+.postcolor blockquote,
+.ucp--description blockquote,
+.webpage--content-inner blockquote {
   background: var(--bg-accent-low);
   border-radius: var(--radius-standard);
   padding: calc(var(--space-lg) - 5px) var(--space-lg);
@@ -670,41 +1246,57 @@
   font-size: var(--size-md);
   letter-spacing: 0.05em; }
   .profile .scroll blockquote:first-child,
-  .postcolor blockquote:first-child {
+  .postcolor blockquote:first-child,
+  .ucp--description blockquote:first-child,
+  .webpage--content-inner blockquote:first-child {
     margin-top: 0; }
   .profile .scroll blockquote:last-child,
-  .postcolor blockquote:last-child {
+  .postcolor blockquote:last-child,
+  .ucp--description blockquote:last-child,
+  .webpage--content-inner blockquote:last-child {
     margin-bottom: 0; }
 
 .profile .scroll b,
-.postcolor b {
+.postcolor b,
+.ucp--description b,
+.webpage--content-inner b {
   font-size: 1.1em;
   color: var(--text-accent);
   font-weight: 900; }
   .profile .scroll b i,
-  .postcolor b i {
+  .postcolor b i,
+  .ucp--description b i,
+  .webpage--content-inner b i {
     color: var(--text-secondary); }
 
 .profile .scroll i,
-.postcolor i {
+.postcolor i,
+.ucp--description i,
+.webpage--content-inner i {
   font-size: 1.1em;
   color: var(--text-accent); }
 
 .profile .scroll u,
-.postcolor u {
+.postcolor u,
+.ucp--description u,
+.webpage--content-inner u {
   text-decoration: none;
   padding: 0 3px;
   z-index: 1;
   border-bottom: var(--border-accent); }
 
 .profile .scroll s,
-.postcolor s {
+.postcolor s,
+.ucp--description s,
+.webpage--content-inner s {
   padding: 0 3px;
   text-decoration-thickness: 2px;
   text-decoration-color: var(--bg-accent); }
 
 .profile .scroll tag-spoiler,
-.postcolor tag-spoiler {
+.postcolor tag-spoiler,
+.ucp--description tag-spoiler,
+.webpage--content-inner tag-spoiler {
   padding: 2px calc(var(--space-sm) + 2px);
   background: var(--bg-primary-mid);
   border-radius: var(--radius-standard);
@@ -712,25 +1304,35 @@
   cursor: pointer;
   transition-duration: var(--transition-standard-duration); }
   .profile .scroll tag-spoiler:hover,
-  .postcolor tag-spoiler:hover {
+  .postcolor tag-spoiler:hover,
+  .ucp--description tag-spoiler:hover,
+  .webpage--content-inner tag-spoiler:hover {
     background: var(--bg-primary-high); }
   .profile .scroll tag-spoiler.is-visible,
-  .postcolor tag-spoiler.is-visible {
+  .postcolor tag-spoiler.is-visible,
+  .ucp--description tag-spoiler.is-visible,
+  .webpage--content-inner tag-spoiler.is-visible {
     color: var(--text-primary); }
 
 .profile .scroll tag-translation,
-.postcolor tag-translation {
+.postcolor tag-translation,
+.ucp--description tag-translation,
+.webpage--content-inner tag-translation {
   border-bottom: 1px dashed var(--accent);
   padding: 0 var(--space-xs);
   cursor: pointer; }
 
 .profile .scroll a,
-.postcolor a {
+.postcolor a,
+.ucp--description a,
+.webpage--content-inner a {
   color: var(--text-accent);
   font-family: var(--font-head);
   font-weight: 600; }
   .profile .scroll a[target="_blank"]:not(.staffOnly)::after,
-  .postcolor a[target="_blank"]:not(.staffOnly)::after {
+  .postcolor a[target="_blank"]:not(.staffOnly)::after,
+  .ucp--description a[target="_blank"]:not(.staffOnly)::after,
+  .webpage--content-inner a[target="_blank"]:not(.staffOnly)::after {
     font-size: 1.2em;
     font-family: 'Font Awesome 6 Pro';
     top: -3px;
@@ -738,21 +1340,31 @@
     margin-left: 5px; }
 
 .profile .scroll ul,
-.postcolor ul {
+.postcolor ul,
+.ucp--description ul,
+.webpage--content-inner ul {
   margin: var(--space-lg) 0;
   padding-left: 0; }
   .profile .scroll ul:first-child,
-  .postcolor ul:first-child {
+  .postcolor ul:first-child,
+  .ucp--description ul:first-child,
+  .webpage--content-inner ul:first-child {
     margin-top: 0; }
   .profile .scroll ul:last-child,
-  .postcolor ul:last-child {
+  .postcolor ul:last-child,
+  .ucp--description ul:last-child,
+  .webpage--content-inner ul:last-child {
     margin-bottom: 0; }
   .profile .scroll ul li,
-  .postcolor ul li {
+  .postcolor ul li,
+  .ucp--description ul li,
+  .webpage--content-inner ul li {
     padding-left: 0;
     list-style: none; }
     .profile .scroll ul li::before,
-    .postcolor ul li::before {
+    .postcolor ul li::before,
+    .ucp--description ul li::before,
+    .webpage--content-inner ul li::before {
       display: inline-block;
       margin-right: var(--space-md);
       position: relative;
@@ -761,10 +1373,14 @@
       font-size: 0.8em;
       top: -1px; }
     .profile .scroll ul li:not(:last-child),
-    .postcolor ul li:not(:last-child) {
+    .postcolor ul li:not(:last-child),
+    .ucp--description ul li:not(:last-child),
+    .webpage--content-inner ul li:not(:last-child) {
       margin-bottom: var(--space-md); }
     .profile .scroll ul li > b:first-child,
-    .postcolor ul li > b:first-child {
+    .postcolor ul li > b:first-child,
+    .ucp--description ul li > b:first-child,
+    .webpage--content-inner ul li > b:first-child {
       margin-right: var(--space-md); }
 
 .tw,
@@ -788,6 +1404,9 @@
     .note {
       grid-template-columns: 60px auto;
       margin: var(--space-lg) var(--space-xl); } }
+  .postcolor .tw, .postcolor
+  .note {
+    margin: var(--space-lg) auto !important; }
   .tw--header,
   .note--header {
     display: flex;
@@ -804,6 +1423,9 @@
       font-size: 24px;
       font-family: 'Font Awesome 6 Pro';
       font-weight: 300; }
+    .postcolor .tw--header, .postcolor
+    .note--header {
+      background: var(--bg-quaternary); }
   .tw--body,
   .note--body {
     margin: 0;
@@ -813,6 +1435,9 @@
     line-height: 160%;
     text-align: justify;
     height: max-content; }
+    .postcolor .tw--body, .postcolor
+    .note--body {
+      background: var(--bg-quaternary); }
 
 tag-shipsubtitle,
 tag-shiptitle {

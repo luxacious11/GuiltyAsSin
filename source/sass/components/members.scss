@@ -3,4 +3,304 @@
 /*******************************
     Member List
 ********************************/
+.members {
+    display: grid;
+    gap: 30px;
 
+    & ~ div {
+        display: none;
+    }
+
+    &--menu {
+        position: sticky;
+        top: calc(var(--size-menu-height) + var(--size-menu-width) + var(--space-md));
+        margin: 0 var(--space-md);
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-standard);
+        padding: var(--space-sm);
+        display: flex;
+        width: calc(100% - (2 * var(--space-md)));
+        box-shadow: 0 0 5px var(--bg-primary-high);
+        gap: var(--space-sm);
+        z-index: 2;
+
+        @include mq-up(xxs) {
+            margin: 0 var(--space-lg);
+            top: calc(var(--size-menu-height) + var(--space-lg));
+            width: calc(100% - (2 * var(--space-lg)));
+        }
+
+        & > .accordion {
+            position: absolute;
+            top: calc(100% + var(--space-md));
+            background: var(--bg-quaternary);
+            border-radius: var(--radius-standard);
+            padding: var(--space-md);
+            width: 250px;
+            max-height: calc(100vh - var(--size-menu-height) - 50px - (3 * var(--space-md)) - var(--size-menu-width));
+            padding-bottom: var(--space-md);
+
+            @include mq-up(xxs) {
+                max-height: calc(100vh - var(--size-menu-height) - 50px - (2 * var(--space-md)) - var(--space-lg));
+            }
+
+            .accordion--trigger {
+                &:not(:first-child) {
+                    margin-top: var(--space-sm);
+                }
+
+                span {
+                    text-transform: uppercase;
+                    font-size: var(--size-xs);
+                    letter-spacing: 0.2em;
+                    color: var(--text-secondary);
+                    border-bottom: var(--border-accent);
+                    padding: 0 var(--space-sm) var(--space-xs) 0;
+                }
+            }
+        }
+    }
+
+    &--list {
+        overflow: hidden;
+        margin: 50px var(--space-md) 0;
+
+        @include mq-up(xxs) {
+            margin: 50px var(--space-lg) 0;
+        }
+    }
+
+    .is-active &--accordion-inner {
+        display: flex;
+    }
+
+    &--accordion-inner {
+        flex-direction: column;
+        gap: var(--space-xs);
+        margin: var(--space-sm) 0;
+        padding: var(--space-sm);
+        max-height: 150px;
+        overflow: auto;
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-standard);
+
+        .members--sort {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-transform: uppercase;
+            font-family: var(--font-head);
+            font-size: var(--size-lg);
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 160%;
+
+            &::before {
+                width: var(--size-fancy-input);
+                height: var(--size-fancy-input);
+                display: block;
+                background: var(--bg-quaternary);
+                border: var(--border-primary);
+                border-radius: var(--radius-standard);
+                font-family: 'Font Awesome 6 Pro';
+                font-size: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: transparent;
+            }
+            
+            &.is-checked {
+                &::before {
+                    color: var(--text-secondary);
+                    background: var(--bg-accent-low);
+                    border: var(--border-accent);
+                }
+            }
+            
+            &:hover {
+                &::before {
+                    color: var(--text-secondary);
+                    background: var(--bg-accent-low);
+                }
+            }
+        }
+    }
+
+    &--filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+        margin: var(--space-sm) 0;
+        padding: var(--space-sm);
+        max-height: 150px;
+        overflow: auto;
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-standard);
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-transform: uppercase;
+            font-family: var(--font-head);
+            font-size: var(--size-lg);
+            letter-spacing: 0.05em;
+            cursor: pointer;
+
+            & > input {
+                display: none;
+            }
+
+            &::before {
+                width: var(--size-fancy-input);
+                height: var(--size-fancy-input);
+                display: block;
+                background: var(--bg-quaternary);
+                border: var(--border-primary);
+                border-radius: var(--radius-standard);
+                font-family: 'Font Awesome 6 Pro';
+                font-size: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: transparent;
+            }
+            
+            &.is-checked {
+                &::before {
+                    color: var(--text-secondary);
+                    background: var(--bg-accent-low);
+                    border: var(--border-accent);
+                }
+            }
+            
+            &:hover {
+                &::before {
+                    color: var(--text-secondary);
+                    background: var(--bg-accent-low);
+                }
+            }
+        }
+    }
+
+    .grid-item,
+    .member-sizer {
+        width: 100%;
+
+        @include mq-up(xs) {
+            width: calc((100% / 2) - ((var(--space-sm) * 1) / 2));
+        }
+
+        @include mq-up(md) {
+            width: calc((100% / 3) - ((var(--space-sm) * 2) / 3));
+        }
+
+        @include mq-up(lg) {
+            width: calc((100% / 4) - ((var(--space-sm) * 3) / 4));
+        }
+    }
+}
+.member {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-standard);
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+
+    &--topper {
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: max-content max-content auto;
+
+        & > a {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-align: right;
+            color: var(--text-secondary);
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            font-size: 32px;
+            display: flex;
+            flex-direction: column;
+            line-height: 120%;
+            padding: var(--space-md) 0 var(--space-md) var(--space-sm);
+            max-height: max-content;
+
+            & > span {
+                font-size: 0.7em;
+                letter-spacing: 0.05em;
+                line-height: 120%;
+                color: var(--text-primary);
+                opacity: 0.7;
+            }
+        }
+    }
+
+    &--side-info {
+        border-right: var(--border-accent);
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        text-align: right;
+        text-transform: uppercase;
+        font-size: var(--size-xs);
+        letter-spacing: 0.2em;
+        line-height: 160%;
+        padding: var(--space-md) var(--space-sm);
+        display: flex;
+        gap: var(--space-md);
+        justify-content: end;
+    }
+
+    &--info {
+        text-transform: uppercase;
+        font-size: var(--size-md);
+        letter-spacing: 0.1em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 var(--space-lg);
+        font-family: var(--font-head);
+        color: var(--text-secondary);
+        margin: var(--space-md) 0 var(--space-sm);
+        padding: 0 0 var(--space-sm);
+        border-bottom: var(--border-accent);
+        justify-content: end;
+    }
+
+    &--image {
+        //height: 300px;
+        height: 100%;
+
+        @include mq-down(xs) {
+            .tall {
+                display: none;
+            }
+        }
+
+        @include mq-up(xs) {
+            .wide {
+                display: none;
+            }
+        }
+
+        & > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: var(--radius-standard);
+        }
+    }
+    &--bottom {
+        .scroll {
+            text-align: justify;
+            height: 100px;
+        }
+    }
+}

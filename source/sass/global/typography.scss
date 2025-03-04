@@ -5,7 +5,9 @@
 ********************************/
 
 .profile .scroll,
-.postcolor {
+.postcolor,
+.ucp--description,
+.webpage--content-inner {
     h2,
     h3,
     h4,
@@ -294,6 +296,10 @@
         margin: var(--space-lg) var(--space-xl);
     }
 
+    .postcolor & {
+        margin: var(--space-lg) auto !important;
+    }
+
     &--header {
         display: flex;
         align-items: center;
@@ -310,6 +316,10 @@
             font-family: 'Font Awesome 6 Pro';
             font-weight: 300;
         }
+
+        .postcolor & {
+            background: var(--bg-quaternary);
+        }
     }
 
     &--body {
@@ -320,6 +330,10 @@
         line-height: 160%;
         text-align: justify;
         height: max-content;
+
+        .postcolor & {
+            background: var(--bg-quaternary);
+        }
     }
 }
 

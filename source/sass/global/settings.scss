@@ -3,7 +3,8 @@
 }
 .post--item .powers > span::before,
 .profile .scroll ul li::before,
-.postcolor ul li::before {
+.postcolor ul li::before,
+.ucp--description ul li::before {
     content: '\f101';
 }
 
@@ -36,6 +37,10 @@ tag-relationship > a::after {
 }
 .profile--column .accordion--trigger.is-active::after {
     content: '\e404';
+}
+.members--filter-group label::before,
+.members--accordion-inner .members--sort::before {
+    content: '\f00c';
 }
 
 .forum--image {

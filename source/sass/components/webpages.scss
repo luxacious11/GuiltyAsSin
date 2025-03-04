@@ -3,3 +3,76 @@
 /*******************************
     Webpages
 ********************************/
+#Pages {
+    main {
+        padding-bottom: 0;
+    }
+}
+.webpage {
+    & ~ div {
+        display: none;
+    }
+
+    &--menu {
+        position: sticky;
+        top: calc(var(--size-menu-height) + var(--size-menu-width) + var(--space-md));
+        margin: 0 var(--space-md);
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-standard);
+        padding: var(--space-sm);
+        display: flex;
+        width: calc(100% - (2 * var(--space-md)));
+        box-shadow: 0 0 5px var(--bg-primary-high);
+        gap: var(--space-sm);
+        z-index: 2;
+
+        @include mq-up(xxs) {
+            margin: 0 var(--space-lg);
+            top: calc(var(--size-menu-height) + var(--space-lg));
+            width: calc(100% - (2 * var(--space-lg)));
+        }
+    }
+
+    &--content {
+        overflow: hidden;
+        margin: calc(50px + var(--space-md) + var(--size-menu-width)) auto 0;
+        max-width: 1000px;
+        width: calc(100% - (2 * var(--space-md)));
+
+        @include mq-up(xxs) {
+            margin: calc(50px + var(--space-lg)) auto 0;
+            width: calc(100% - (2 * var(--space-lg)));
+        }
+
+        tag-tabset {
+            tag-tab {
+                background: var(--bg-tertiary);
+                border-radius: var(--radius-standard);
+            }
+        }
+
+        &-inner {
+            overflow-x: hidden;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-primary) transparent;
+            padding-right: var(--space-md);
+            margin: var(--space-lg) var(--space-md) var(--space-lg) var(--space-lg);
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: var(--text-primary);
+            }
+
+            @include mq-up(xxs) {
+                height: calc(100vh - var(--size-menu-height) - 50px - (2 * var(--space-md)) - (4 * var(--space-lg)));
+            }
+        }
+    }
+}

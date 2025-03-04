@@ -91,6 +91,39 @@
 #ST main > table:nth-of-type(2) ~ div {
   margin: var(--space-sm) var(--space-lg) 0; }
 
+#ST main .quick-edit {
+  display: grid;
+  grid-template-columns: 1fr max-content; }
+  #ST main .quick-edit .editor {
+    grid-column: 1 / -1; }
+    #ST main .quick-edit .editor textarea {
+      width: 100%;
+      margin: 0;
+      padding: var(--space-md) calc(var(--space-md) + 5px) !important; }
+  #ST main .quick-edit .buttons {
+    display: flex;
+    gap: var(--space-xs);
+    width: 100%; }
+    #ST main .quick-edit .buttons a {
+      background: var(--bg-secondary);
+      border: var(--border-primary);
+      border-radius: var(--radius-standard);
+      height: 30px;
+      color: var(--text-primary);
+      padding: var(--space-xs) var(--space-sm);
+      margin: 0;
+      text-transform: uppercase;
+      font-size: var(--size-xs);
+      letter-spacing: 0.2em;
+      line-height: 100%;
+      display: flex;
+      align-items: center; }
+  #ST main .quick-edit .right-buttons {
+    display: flex;
+    justify-content: end;
+    gap: var(--space-xs);
+    width: max-content; }
+
 .post {
   display: grid;
   grid-template-columns: 100%;
@@ -324,6 +357,12 @@
     border: none;
     cursor: pointer;
     top: -4px; }
+    .post--page-inner {
+      background: transparent;
+      height: 2px;
+      transition-duration: var(--transition-standard-duration); }
+    .post--page:hover .post--page-inner {
+      background: var(--bg-accent-mid); }
   .post--links {
     writing-mode: vertical-rl;
     transform: rotate(180deg);

@@ -36,7 +36,7 @@
                         <div class="accordion--trigger">
                             <span>Sort By</span>
                         </div>
-                        <div class="accordion--content members--sort-buttons">
+                        <div class="accordion--content members--sort-buttons"><div class="members--accordion-inner">
                             <button type="button" class="members--sort is-checked" data-sort="nameAsc">Name (A - Z)</button>
                             <button type="button" class="members--sort" data-sort="nameDesc">Name (Z - A)</button>
                             <button type="button" class="members--sort" data-sort="ageAsc">Age (Asc)</button>
@@ -45,7 +45,7 @@
                             <button type="button" class="members--sort" data-sort="postsDesc">Posts (Desc)</button>
                             <button type="button" class="members--sort" data-sort="newest">Newest</button>
                             <button type="button" class="members--sort" data-sort="oldest">Oldest</button>
-                        </div>
+                        </div></div>
                         <div class="accordion--trigger">
                             <span>Status</span>
                         </div>
@@ -150,7 +150,7 @@
                             percentPosition: true,
                             masonry: {
                                 columnWidth: '.member-sizer',
-                                gutter: 30
+                                gutter: 10
                             },
                             filter: defaultShow,
                             sortBy: 'name',

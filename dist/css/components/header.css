@@ -6,6 +6,11 @@
   @media (min-width: 1025px) {
     .hero {
       height: 64vw; } }
+  body#Members .hero,
+  body#UserCP .hero,
+  body#Msg .hero,
+  body#Pages .hero {
+    display: none; }
   body:not(#idx):not(#Profile) .hero {
     height: 40vw;
     min-height: 300px; }

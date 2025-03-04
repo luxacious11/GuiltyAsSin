@@ -3,7 +3,8 @@
 
 .post--item .powers > span::before,
 .profile .scroll ul li::before,
-.postcolor ul li::before {
+.postcolor ul li::before,
+.ucp--description ul li::before {
   content: '\f101'; }
 
 body.g-2 .memOnly,
@@ -38,6 +39,10 @@ tag-relationship > a::after {
 
 .profile--column .accordion--trigger.is-active::after {
   content: '\e404'; }
+
+.members--filter-group label::before,
+.members--accordion-inner .members--sort::before {
+  content: '\f00c'; }
 
 .f-22 .forum--image {
   background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/coastline_min.jpg); }

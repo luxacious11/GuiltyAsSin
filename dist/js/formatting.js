@@ -198,7 +198,7 @@ function formatPlotRole(role, characters, plot, section) {
             let lines = [character.role, `played by <a href="?showuser=${character.parentID}">${character.member}</a>`];
             claimsHTML += formatClaim(character.character, lines, character.groupID, `?showuser=${character.id}`);
         } else {
-            let lines = [`Expires in <span class="highlight">${setExpiry(character.timestamp, character.extension)}</span>`];
+            let lines = [`Expires in <span class="highlight" data-expiry data-timestamp="${character.timestamp}" data-extension="${character.extension}">${setExpiry(character.timestamp, character.extension)}</span>`];
             claimsHTML += formatClaim(`Reserved by ${character.member}`, lines);
         }
     });
@@ -233,7 +233,7 @@ function formatFaceReserves(data) {
     let html = ``;
 
     data.forEach((item, i) => {
-        let lines = [`Reserved for ${item.Member}`, `Expires in <span class="highlight">${setExpiry(item.Timestamp, item.Extension)}</span>`];
+        let lines = [`Reserved for ${item.Member}`, `Expires in <span class="highlight" data-expiry data-timestamp="${item.Timestamp}" data-extension="${item.Extension}">${setExpiry(item.Timestamp, item.Extension)}</span>`];
 
         //first
         if(i === 0) {

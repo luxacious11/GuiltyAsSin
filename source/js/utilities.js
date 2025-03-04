@@ -554,6 +554,19 @@ function initWebpages() {
 
     //accordions
     initAccordion();
+
+    if(document.querySelector('[data-expiry]')) {
+        setInterval(() => {
+            initExpiryCountdowns();
+        }, 1000);
+    }
+}
+function initExpiryCountdowns(selector = `[data-expiry]`) {
+    document.querySelectorAll(selector).forEach(item => {
+        let timestamp = item.dataset.timestamp;
+        let extension = item.dataset.extension;
+        item.innerText = setExpiry(timestamp, extension);
+    });
 }
 function toggleWarning(e) {
     e.closest('.webpage--warning').querySelector('.webpage--warning-text').classList.toggle('is-open');
@@ -695,6 +708,14 @@ function initMarkdown() {
         spoilers.forEach(spoiler => {
             spoiler.addEventListener('click', e => {e.currentTarget.classList.add('is-visible')});
         });
+    }
+}
+function toggleAlerts(e) {
+    e.closest('.alert-options').querySelector('.alert-select').classList.toggle('is-open');
+    if(e.closest('.alert-options').querySelector('.alert-select').classList.contains('is-open')) {
+        document.querySelector('.invisibleElTagging').classList.add('menu-open');
+    } else {
+        document.querySelector('.invisibleElTagging').classList.remove('menu-open');
     }
 }
 function tagLabel(type, data, label) {
@@ -873,18 +894,8 @@ function setAgeClass(age, canBeImmortal = false) {
 	    return '4655';
 	} else if(age > 55 && !canBeImmortal) {
 	    return '55';
-	} else if(age > 55 && age <= 100) {
-	    return '56100';
-	} else if(age > 100 && age <= 500) {
-	    return '101500';
-	} else if(age > 500 && age <= 1000) {
-	    return '5011000';
-	} else if(age > 1000 && age <= 2000) {
-	    return '10012000';
-	} else if(age > 2000 && age <= 3000) {
-	    return '20013000';
-	} else if(age > 3000) {
-	    return '3001';
+	} else if(age > 55) {
+	    return '55 immortal';
 	} else {
 	    return '';
 	}
@@ -964,18 +975,18 @@ function splitProfile() {
     let headers = $('thead');
     headers.each(function (index, el) {
         if(index == headers.length - 1) {
-            $(this).nextUntil('tr:last-child').wrapAll(`<tbody class="ucp--section fullWidth" data-section="${$(this)[0].dataset.section}"></tbody>`);
+            $(this).nextUntil('tr:last-child').wrapAll(`<tbody class="ucp--section" data-section="${$(this)[0].dataset.section}"></tbody>`);
         } else {
-            $(this).nextUntil('thead').wrapAll(`<tbody class="ucp--section fullWidth" data-section="${$(this)[0].dataset.section}"></tbody>`);
+            $(this).nextUntil('thead').wrapAll(`<tbody class="ucp--section" data-section="${$(this)[0].dataset.section}"></tbody>`);
         }
     });
 }
 function insertCPHeader (title, field, description) {
-    let html = `<thead data-section="${cleanText(title)}" class="fullWidth"><tr class="ucp--header"><td>
+    let html = `<thead data-section="${cleanText(title)}"><tr class="ucp--header"><td>
         <div class="sticky">
             <div class="ucp--header-title" data-section="${cleanText(title)}">${title}</div>`;
     if(description) {
-        html += `<div class="ucp--description scroll" data-section="${cleanText(title)}">
+        html += `<div class="ucp--description scroll accent" data-section="${cleanText(title)}">
             ${description}
         </div>`;
     }
@@ -1658,6 +1669,50 @@ function carouselPageHash(e, tab, progressBarClass = null, wrapperClass = '.caro
 function carouselSetHash(hash) {
     window.location.hash = hash;
 }
+function autofillMemberData(e) {
+    e.innerText = 'Getting info...';
+    const parentId = parseInt(e.dataset.parent) !== 0 ? e.dataset.parent : e.dataset.account;
+
+        fetch(members)
+        .then((response) => response.json())
+        .then((data) => {
+            const existing = data.filter(item => item.AccountID === parentId)[0];
+
+            console.log(parentId);
+            if(existing) {
+                autofillFieldMapping.forEach(field => {
+                    let fieldInput = document.querySelector(`#field_${field.jcink}_input`);
+                    let sheetValue = existing[field.sheet];
+                    if(field.checkText) {
+                    fieldInput.querySelectorAll('option').forEach(option => {
+                        if(option.innerText.toLowerCase() === existing[field.sheet].toLowerCase()) {
+                            fieldInput.value = option.value;
+                        }
+                    });
+                    } else if(field.checkRating) {
+                    switch(existing[field.sheet]) {
+                        case '3':
+                        fieldInput.value = 'all';
+                        break;
+                        case '2':
+                        fieldInput.value = 'limits';
+                        break;
+                        case '1':
+                        fieldInput.value = 'mild';
+                        break;
+                        default:
+                        fieldInput.value = 'unset';
+                        break;
+                    }
+                    } else {
+                        fieldInput.value = sheetValue;
+                    }
+                });
+            }
+        }).then(() => {
+        e.innerText = 'Auto-fill Complete!';
+    });
+}
 
 /****** Forms ******/
 function getAccountID(field) {
@@ -1732,7 +1787,7 @@ function setExpiry(timestamp, extension) {
 
     reserveDate.setDate(reserveDate.getDate() + defaultReserve + parseInt(extension));
 
-    return `${days}D ${hours}H ${minutes}M`;
+    return `${days}D ${hours}H ${minutes}M ${seconds}S`;
 }
 function sendDiscordMessage(webhook, embedTitle, message, notification = null, color = null) {
     const request = new XMLHttpRequest();

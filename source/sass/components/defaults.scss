@@ -11,7 +11,8 @@
 #submenu,
 #userlinks,
 .wrapmini,
-a[href=""] {
+a[href=""],
+a[href="<i>No Information</i>"] {
   display: none !important;
 }
 

@@ -10,6 +10,13 @@
         height: 64vw;
     }
 
+    body#Members &,
+    body#UserCP &,
+    body#Msg &,
+    body#Pages & {
+        display: none;
+    }
+
     body:not(#idx):not(#Profile) & {
         height: 40vw;
         min-height: 300px;

@@ -1,8 +1,8 @@
 /***** Profile *****/
 function formatAesthetics(aesthetics, images) {
     let imageHTML;
-    switch (aesthetics) {
-        case 'LargeMosaic':
+    switch (aesthetics.toLowerCase()) {
+        case 'largemosaic':
             imageHTML = `<span class="aesthetic--square one"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
                 <span class="aesthetic--square two"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>
                 <span class="aesthetic--square three"><img src="${images['square-3']}" title="Square #3" alt="Square #3" loading="lazy" /></span>
@@ -11,20 +11,20 @@ function formatAesthetics(aesthetics, images) {
                 <span class="aesthetic--wide six"><img src="${images['wide-2']}" title="Wide #2" alt="Wide #2" loading="lazy" /></span>
                 <span class="aesthetic--tall seven"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
             break;
-        case 'SmallMosaic':
+        case 'smallmosaic':
             imageHTML = `<span class="aesthetic--square one"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
                 <span class="aesthetic--square two"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>
                 <span class="aesthetic--wide three"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>
                 <span class="aesthetic--wide four"><img src="${images['wide-2']}" title="Wide #2" alt="Wide #2" loading="lazy" /></span>
                 <span class="aesthetic--tall five"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
             break;
-        case 'Columns':
+        case 'columns':
             imageHTML = `<span class="aesthetic--square one"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
                 <span class="aesthetic--tall two"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>
                 <span class="aesthetic--tall three"><img src="${images['tall-2']}" title="Tall #2" alt="Tall #2" loading="lazy" /></span>
                 <span class="aesthetic--square four"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>`;
             break;
-        case 'Single':
+        case 'single':
         default: 
             imageHTML = `<span class="aesthetic--tall one"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
             break;
@@ -102,41 +102,26 @@ function initMember() {
 
 /****** UserCP/Messages ******/
 function cpShift() {
-	let imageType = document.querySelector(toggleFields[1]).value,
-	    account = document.querySelector(toggleFields[0]).value,
+	let imageType = document.querySelector(toggleFields[2]).value,
+        powerType = document.querySelector(toggleFields[1]).value,
+        account = document.querySelector(toggleFields[0]).value,
 	    showFields = [],
 	    hideFields = characterFields
-                    .concat(defaultImages)
-                    .concat(gridImages)
-                    .concat(mosaicImages),
+                    .concat(aestheticFields['single'].hideFields)
+                    .concat(aestheticFields['single'].hideFields)
+                    .concat(allLayouts)
+                    .concat(powerFields),
 	    showHeaders = allHeaders;
 
-	if(account.toLowerCase() == 'character') {
-        if(imageType.toLowerCase() === 'grid') {
-            showFields = characterFields
-                        .concat(defaultImages)
-                        .concat(gridImages);
-            hideFields = mosaicImages;
-            showHeaders = allHeaders
-                        .concat(charHeaders);
-            document.querySelector(defaultImages[0]).classList.remove('fullWidth');
-        } else if (imageType.toLowerCase() === 'mosaic') {
-            showFields = characterFields
-                        .concat(defaultImages)
-                        .concat(gridImages)
-                        .concat(mosaicImages);
-            hideFields = [];
-            showHeaders = allHeaders
-                        .concat(charHeaders);
-            document.querySelector(defaultImages[0]).classList.remove('fullWidth');
+	if(account == 'character') {
+        showHeaders = allHeaders.concat(charHeaders);
+        showFields = characterFields.concat(aestheticFields[imageType].showFields);
+        hideFields = aestheticFields[imageType].hideFields;
+
+        if(powerType !== 'powerless' && powerType !== 'unset') {
+            showFields = [...showFields, ...powerFields];
         } else {
-            showFields = characterFields
-                        .concat(defaultImages);
-            hideFields = gridImages
-                        .concat(mosaicImages);
-            showHeaders = allHeaders
-                        .concat(charHeaders);
-            document.querySelector(defaultImages[0]).classList.add('fullWidth');
+            hideFields = [...hideFields, ...powerFields];
         }
     }
     
@@ -144,19 +129,22 @@ function cpShift() {
 }
 function setUpAesthetics() {
     let aestheticsObj = {
-        'tall-1': document.querySelector('#field_20_input').value,
-        'tall-2': document.querySelector('#field_21_input').value,
-        'wide-1': document.querySelector('#field_22_input').value,
-        'square-1': document.querySelector('#field_23_input').value,
-        'square-2': document.querySelector('#field_24_input').value,
-        'square-3': document.querySelector('#field_25_input').value,
+        'tall-1': document.querySelector('#field_57_input').value,
+        'tall-2': document.querySelector('#field_58_input').value,
+        'wide-1': document.querySelector('#field_59_input').value,
+        'wide-2': document.querySelector('#field_60_input').value,
+        'square-1': document.querySelector('#field_61_input').value,
+        'square-2': document.querySelector('#field_62_input').value,
+        'square-3': document.querySelector('#field_63_input').value,
+        'square-4': document.querySelector('#field_64_input').value,
     };
-    let aesthetics = getSelectText(document.querySelector('#field_19_input')).replace(' ', '');
+    let aesthetics = getSelectText(document.querySelector('#field_56_input')).replace(' ', '');
     return {aestheticsObj, aesthetics};
 }
 function ucpAesthetics() {
     let imageObj = setUpAesthetics().aestheticsObj;
     let aesthetics = setUpAesthetics().aesthetics;
+    console.log(aesthetics);
 
     let aestheticsSample = document.querySelector('.ucp--description[data-section="Aesthetics"] .sample');
     if(aestheticsSample) {
@@ -165,26 +153,17 @@ function ucpAesthetics() {
     }
 }
 function ucpAvatars() {
-    let avatarSample = document.querySelector('.ucp--description[data-section="Images"] .sample');
+    let avatarSample = document.querySelector('.ucp--description[data-section="AccountImages"] .sample');
     let avatarObj = {
-        'tall': document.querySelector('#field_17_input').value,
-        'wide': document.querySelector('#field_18_input').value,
+        'tall': document.querySelector('#field_54_input').value,
+        'wide': document.querySelector('#field_55_input').value,
     }
-    let { aesthetics, aestheticsObj } = setUpAesthetics();
 
     let accType = getSelectText(document.querySelector('#field_1_input'));
     if(avatarSample) {
-        let html = `<div><strong>Avatars</strong>
-            <div class="avatars">
+        let html = `<div class="avatars">
             ${formatAvatars(avatarObj)}
         </div></div>`;
-
-        if(accType === 'character') {
-            html += `<div><strong>Aesthetics</strong>
-                <div class="profile--aesthetic ${aesthetics}">
-                ${formatAesthetics(aesthetics, aestheticsObj)}
-            </div></div>`;
-        }
         
         avatarSample.innerHTML = html;
     }
@@ -203,45 +182,49 @@ function createFieldArray(arr, input = false) {
 
 /****** Members Initialization ******/
 function formatMemberRow(type, data, extraFilters = '') {
-    let tagList = ``, info = ``, details = ``;
+    let tagList = ``, info = ``, details = ``, sideSubtext = ``;
     if(type === 'character') {
-        tagList += `${data.character.ageClass} ${data.character.relationshipClass} ${data.character.locationClass}`;
-        info += `<div class="member--stats">
+        tagList += `${data.character.ageClass} ${data.character.relationshipClass} ${data.character.locationClass} ${data.character.powerClass}`;
+        info += `<div class="member--info">
             <span>${data.character.age} years old</span>
             <span>${data.character.pronouns}</span>
-            <span>${data.character.location}</span>
-            <span>${data.writer.alias}</span>
+            <span>${data.character.powerType}</span>
         </div>`;
         details = data.character.overview;
+        sideSubtext = `<span>Played by ${data.writer.alias}</span>
+            <span>${data.universal.posts} posts</span>
+            <span>${data.universal.groupName}</span>`;
     } else {
-        info += `<div class="member--stats">
+        info += `<div class="member--info">
             <span>${data.writer.age} years old</span>
             <span>${data.writer.pronouns}</span>
             <span>${data.writer.timezone}</span>
-            <span>${data.writer.contact}</span>
         </div>`;
         details = data.writer.triggers;
+        sideSubtext = `<span>Joined ${data.universal.dates.joined}</span>
+            <span>${data.universal.posts} posts</span>
+            <span>${data.universal.groupName}</span>`;
     }
     return `<div class="members--member grid-item g-${data.universal.groupID} ${data.writer.aliasClass} ${type} ${extraFilters} ${tagList}">
         <div class="member">
-            <div class="member--top">
-                <img src="${data.universal.imageWide}" loading="lazy" />
+            <div class="member--topper">
+                <a href="?showuser=${data.universal.id}">${formatName(data.universal.name)}</a>
+                <div class="member--side-info">${sideSubtext}</div>
+                <div class="member--image">
+                    <img src="${data.universal.imageTall}" class="tall" />
+                    <img src="${data.universal.imageWide}" class="wide" />
+                </div>
             </div>
-            <div class="member--main">
-                <a href="?showuser=${data.universal.id}">${formatName(data.universal.name, 'b')}</a>
-                <div class="member--species">Joined ${data.universal.dates.joined}</div>
-                <div class="member--species">Last seen ${data.universal.dates.lastActive}</div>
+            <div class="member--bottom">
+                ${info}
+                <div class="scroll">${details}</div>
             </div>
-            ${info}
-            <div class="member--overview"><div class="scroll">
-                ${details}
-            </div></div>
-        </div>
-        <div class="hidden member--sortable">
-            <span class="member--name">${data.universal.name}</span>
-            <span class="member--age">${data.character.age}</span>
-            <span class="member--posts">${data.universal.posts}</span>
-            <span class="member--join">${data.universal.dates.joined}</span>
+            <div class="hidden member--sortable">
+                <span class="member--name">${data.universal.name}</span>
+                <span class="member--age">${data.character.age}</span>
+                <span class="member--posts">${data.universal.posts}</span>
+                <span class="member--join">${data.universal.dates.joined}</span>
+            </div>
         </div>
     </div>`;
 }

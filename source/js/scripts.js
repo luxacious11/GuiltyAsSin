@@ -141,6 +141,7 @@ if(pageType === 'ST') {
         label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox">${checkboxChecked}</div>`);
     });
     $('#qr_open .tablepad > input').wrapAll('<div class="qr_buttons"></div>');
+    initMarkdown();
 }
 
 /********** Login **********/
@@ -238,6 +239,14 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
             fields = createFieldArray(setHeightFields);
             document.querySelectorAll(fields).forEach(field => field.classList.add('staticHeight'));
         }
+        if(tallTextFields.length > 0) {
+            fields = createFieldArray(tallTextFields);
+            document.querySelectorAll(fields).forEach(field => field.classList.add('tallText'));
+        }
+        if(alignEndFields.length > 0) {
+            fields = createFieldArray(alignEndFields);
+            document.querySelectorAll(fields).forEach(field => field.classList.add('alignEnd'));
+        }
         
         toggleFields.forEach(toggle => {
             document.querySelector(toggle).addEventListener('change', () => {
@@ -252,6 +261,14 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
             document.querySelector(field).addEventListener('keyup', () => {
                 setTimeout(() => {
                     ucpAvatars();
+                }, 500);
+            });
+        });
+
+        aestheticImageFields.forEach(field => {
+            document.querySelector(field).addEventListener('keyup', () => {
+                setTimeout(() => {
+                    ucpAesthetics();
                 }, 500);
             });
         });
