@@ -19,20 +19,41 @@
         <b>Region</b>
         <span><select id="region" required>
             <option value="">(select)</option>
-            <option value="location1">Location 1</option>
-            <option value="location2">Location 2</option>
+            <option value="coastline">Coastline</option>
+            <option value="oldtown">Old Town</option>
+            <option value="centrallimbo">Central Limbo</option>
+            <option value="downtown">Downtown</option>
+            <option value="outskirts">Outskirts</option>
+            <option value="outsidelimbo">Outside Limbo</option>
         </select></span>
     </label>
     <label class="hidden typeOnly">
         <b>Neighborhood</b>
         <span><select id="neighbourhood" required>
             <option value="">(select)</option>
-            <option value="1" class="hidden loc1Only">Location 1 Neighbourhood 1</option>
-            <option value="2" class="hidden loc1Only">Location 1 Neighbourhood 2</option>
-            <option value="3" class="hidden loc1Only">Location 1 Neighbourhood 3</option>
-            <option value="4" class="hidden loc2Only">Location 2 Neighbourhood 1</option>
-            <option value="5" class="hidden loc2Only">Location 2 Neighbourhood 2</option>
-            <option value="6" class="hidden loc2Only">Location 2 Neighbourhood 3</option>
+            <option class="hidden ifCoastline" value="27">The Dockyards</option>
+            <option class="hidden ifCoastline" value="28">Carnivale</option>
+            <option class="hidden ifCoastline" value="29">The Graveyard</option>
+            <option class="hidden ifCoastline" value="22">Coastline Area</option>
+            <option class="hidden ifOld" value="30">St. Anthony Village</option>
+            <option class="hidden ifOld" value="31">Westfall</option>
+            <option class="hidden ifOld" value="32">Logan Creek</option>
+            <option class="hidden ifOld" value="23">Old Town Area</option>
+            <option class="hidden ifCentral" value="33">Oakland Terrace</option>
+            <option class="hidden ifCentral" value="34">Holland Heights</option>
+            <option class="hidden ifCentral" value="35">Brentwood Ridge</option>
+            <option class="hidden ifCentral" value="24">Central Limbo Area</option>
+            <option class="hidden ifDowntown" value="36">Bay Road</option>
+            <option class="hidden ifDowntown" value="37">Essex Plaza</option>
+            <option class="hidden ifDowntown" value="38">Pacific Market</option>
+            <option class="hidden ifDowntown" value="25">Downtown Area</option>
+            <option class="hidden ifOutskirts" value="39">Castlepeak Gated Community</option>
+            <option class="hidden ifOutskirts" value="40">Hawthorne Hills</option>
+            <option class="hidden ifOutskirts" value="41">The Pitch</option>
+            <option class="hidden ifOutskirts" value="26">Outskirts Area</option>
+            <option class="hidden ifOutside" value="42">North</option>
+            <option class="hidden ifOutside" value="42">East</option>
+            <option class="hidden ifOutside" value="42">South</option>
         </select></span>
     </label>
     <label class="fullWidth hidden typeOnly">

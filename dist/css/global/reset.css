@@ -23,6 +23,12 @@ select {
 
 a {
   text-decoration: none; }
+  a.external::after {
+    font-family: 'Font Awesome 6 Pro';
+    font-size: 0.8em;
+    top: -0.2em;
+    position: relative;
+    left: 0.7em; }
 
 p:first-child {
   margin-top: 0; }

@@ -1,4 +1,5 @@
 <form id="form-edit-character" data-type="grid">
+    <h2 class="fullWidth" data-box-align="center">Edit Character Info</h2>
     <label>
         <b>Profile</b>
         <span><input type="text" id="accountid" placeholder="URL or ID" required=""></span>
@@ -45,18 +46,42 @@
             <strong>Remove Subplot Role(s)</strong>
         </label>
     </div>
-    <label class="hidden ifName">
+    <label class="hidden ifName form-section">
         <b>Name</b>
         <span><input type="text" id="character" placeholder="Character Name"></span>
     </label>
-    <label class="hidden ifGroup">
+    <label class="hidden ifGroup form-section">
         <b>Group</b>
         <span><select id="group">
             <option value="">(select)</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
+            <optgroup label="Basic">
+                <option value="10">Adder</option>
+                <option value="13">Crow</option>
+                <option value="14">Deer</option>
+                <option value="11">Eagle</option>
+                <option value="30">Fox</option>
+                <option value="19">Grizzly</option>
+                <option value="28">Horse</option>
+                <option value="20">Hyena</option>
+                <option value="26">Lion</option>
+                <option value="12">Otter</option>
+                <option value="9">Rabbit</option>
+                <option value="21">Rat</option>
+                <option value="22">Sloth</option>
+                <option value="7">Tiger</option>
+                <option value="27">Turtle</option>
+                <option value="8">Wolf</option>
+            </optgroup>
+            <optgroup label="Premium">
+                <option value="25">Basilisk</option>
+                <option value="17">Dragon</option>
+                <option value="23">Griffin</option>
+                <option value="24">Kelpie</option>
+                <option value="29">Pegasus</option>
+                <option value="16">Phoenix</option>
+                <option value="18">Selkie</option>
+                <option value="15">Unicorn</option>
+            </optgroup>
         </select></span>
     </label>
     <div class="hidden ifJobAdd adjustable field-wrap">

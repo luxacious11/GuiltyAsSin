@@ -18,6 +18,10 @@ main {
     @include mq-up(xxs) {
         padding: 0 0 var(--space-lg) var(--size-menu-width);
     }
+
+    a {
+        color: var(--text-secondary);
+    }
 }
 .bg {
     position: fixed;
@@ -94,7 +98,7 @@ tag-labels {
 
     .tab-category.accordion--content {
         &:not(:last-child) {
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-sm);
         }
 
         &.is-active {
@@ -104,6 +108,7 @@ tag-labels {
         }
     }
 }
+
 .accordion {
     &--trigger {
         cursor: pointer;
@@ -219,6 +224,39 @@ tag-labels {
     }
 }
 
+#Search .maintitle .small,
+#Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(3) table td .small,
+#Search.code-getactive .tablebasic > tbody > tr > td:nth-child(3) table td .small {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--space-xs) / 2);
+    font-size: 0;
+    margin: var(--space-sm) 0;
+
+    a {
+        color: var(--text-primary);
+        transition-duration: var(--transition-standard-duration);
+        width: 30px;
+        height: 30px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-standard);
+        font-size: var(--size-xs) !important;
+        font-family: var(--font-body) !important;
+        font-weight: 600 !important;
+        padding: 0 !important;
+
+        &:hover {
+            color: var(--text-secondary);
+            background: var(--bg-accent-low);
+            font-size: calc(var(--size-xs) + 1px);
+        }
+    }
+}
 .pagination {
     text-transform: uppercase;
     display: flex;
@@ -303,7 +341,6 @@ tag-labels {
     }
 }
 
-
 .invisibleElTagging {
     &.menu-open + .alert-options .fa-tags,
     &:not(.menu-open) + .alert-options .fa-xmark {
@@ -346,16 +383,16 @@ tag-labels {
     background: var(--bg-tertiary);
     gap: var(--space-md);
     padding: var(--space-md);
-    max-width: 500px;
+    max-width: 600px;
     text-align: left;
-    width: calc(100vw - var(--size-menu-width) - (2 * var(--space-lg)));
+    width: calc(100vw - (3 * var(--space-md)));
     border-radius: var(--radius-standard);
 
     @include mq-up(xxs) {
-        width: calc(100vw - var(--size-menu-width) - (2 * var(--space-lg)));
+        width: calc(100vw - var(--size-menu-width) - (3 * var(--space-md)));
     }
 
-    @include mq-up(xs) {
+    @include mq-up(sm) {
         grid-template-columns: repeat(3, 1fr);
         width: calc(100vw - 35px);
     }
@@ -415,11 +452,14 @@ tag-labels {
 }
 
 .custom-code,
-tag-code {
+tag-code,
+.codecon {
     pre {
         margin: var(--space-sm) 0 0 0;
 
-        textarea {
+        textarea,
+        code {
+            display: block;
             width: 100%;
             background: var(--bg-tertiary-mid);
             border: var(--border-primary);
@@ -434,7 +474,8 @@ tag-code {
         }
     }
 }
-.copyQuick {
+.copyQuick,
+.codeclick {
     border: 0;
     color: var(--text-secondary);
     text-transform: uppercase;
@@ -447,6 +488,8 @@ tag-code {
     border-radius: var(--radius-standard);
     transition: var(--transition-standard-duration);
     cursor: pointer;
+    width: max-content;
+    max-width: 100%;
 
     &:hover {
         background: var(--bg-accent-mid);
@@ -475,8 +518,12 @@ textarea {
     color: var(--text-primary);
     padding: var(--space-xs) var(--space-sm);
     margin: 0;
-}
 
+    &:focus {
+        outline: none;
+        border: var(--border-accent);
+    }
+}
 select,
 input,
 button {
@@ -500,5 +547,29 @@ textarea {
     }
     .tallText & {
         height: 300px;
+    }
+}
+
+fieldset {
+    border: 0;
+    border-bottom: var(--border-accent-transparent);
+    text-align: left;
+    font-size: var(--size-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+    padding-bottom: var(--space-lg);
+
+    legend {
+        display: block;
+        font-size: var(--size-xs);
+        text-transform: uppercase;
+        padding: 0 var(--space-sm) var(--space-xs) 0;
+        line-height: 160%;
+        border-bottom: var(--border-accent);
+        margin: 0 auto var(--space-md) 0;
+        width: max-content;
+        letter-spacing: 0.4em;
+        color: var(--text-secondary);
     }
 }

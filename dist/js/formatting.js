@@ -19,15 +19,16 @@ function closeTabCategory() {
 function formatTabLabel(title, hash) {
     return `<a href="#${hash}">${title}</a>`;
 }
-function formatTab(title, hash, content) {
+function formatTab(title, hash, content, pretitle = null) {
     return `<tag-tab data-key="#${hash}">
-        <h2 class="tab-heading">${title}</h2>
         <div class="webpage--content-inner">
+            ${pretitle ? `<div class="tab-pretitle">${pretitle}</div>` : ``}
+            <h2 class="tab-heading">${title}</h2>
             ${content}
         </div>
     </tag-tab>`;
 }
-function formatClaim(title, lines, group = null, link = null, classes = ``, filterAttributes = ``) {
+function formatClaim(title, lines, group = null, link = null, classes = ``, filterAttributes = ``, specialLines = null) {
     let html = ``;
     if(group) {
         html += `<div class="claim g-${group} ${classes}">`;
@@ -38,6 +39,13 @@ function formatClaim(title, lines, group = null, link = null, classes = ``, filt
         html += `<a href="${link}" ${filterAttributes}>${title}</a>`;
     } else {
         html += `<b ${filterAttributes}>${title}</b>`;
+    }
+    if(specialLines) {
+        html += `<div>`;
+        specialLines.forEach(line => {
+            html += `<span>${line}</span>`;
+        });
+        html += `</div>`;
     }
     lines.forEach(line => {
         html += `<span>${line}</span>`;
@@ -169,7 +177,7 @@ function formatPlotSection(section, characters, plot) {
 
     return `<h3>${capitalize(section.title)}</h3>
     <blockquote class="plot--section-overview">${section.overview}</blockquote>
-    <div class="plot--roles" data-type="grid">${rolesHTML}</div>`;
+    <div class="plot--roles" data-type="grid" data-gap="smsquare" data-columns="3">${rolesHTML}</div>`;
 }
 function formatPlotRole(role, characters, plot, section) {
     let assignedCharacters = characters.filter(item => item.plot === plot.Plot && item.section === section.title && item.role === role.role);
@@ -195,7 +203,7 @@ function formatPlotRole(role, characters, plot, section) {
 
     assignedCharacters.forEach(character => {
         if(character.type === 'claim') {
-            let lines = [character.role, `played by <a href="?showuser=${character.parentID}">${character.member}</a>`];
+            let lines = [`played by <a href="?showuser=${character.parentID}">${character.member}</a>`];
             claimsHTML += formatClaim(character.character, lines, character.groupID, `?showuser=${character.id}`);
         } else {
             let lines = [`Expires in <span class="highlight" data-expiry data-timestamp="${character.timestamp}" data-extension="${character.extension}">${setExpiry(character.timestamp, character.extension)}</span>`];
@@ -238,7 +246,7 @@ function formatFaceReserves(data) {
         //first
         if(i === 0) {
             html += formatHeader(item.Face[0], 5);
-            html += `<div class="claims--grid" data-type="grid">`;
+            html += `<div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`;
             html += formatClaim(item.Face, lines);
         }
 
@@ -246,7 +254,7 @@ function formatFaceReserves(data) {
         else if (data[i - 1].Face[0] !== item.Face[0]) {
             html += `</div>`;
             html += formatHeader(item.Face[0], 5);
-            html += `<div class="claims--grid" data-type="grid">`;
+            html += `<div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`;
             html += formatClaim(item.Face, lines);
         }
 
@@ -267,8 +275,6 @@ function formatFaceReserves(data) {
 
 /***** Face Claims *****/
 function formatFaceClaims(data) {
-    console.log(data);
-
     data.sort((a, b) => {
         if(a.Face < b.Face) {
             return -1;
@@ -291,7 +297,7 @@ function formatFaceClaims(data) {
         //first
         if(i === 0) {
             html += formatHeader(item.Face[0], 5);
-            html += `<div class="claims--grid" data-type="grid">`;
+            html += `<div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`;
             html += formatClaim(item.Face, lines, item.GroupID, `?showuser=${item.AccountID}`);
         }
 
@@ -299,7 +305,7 @@ function formatFaceClaims(data) {
         else if (data[i - 1].Face[0] !== item.Face[0]) {
             html += `</div>`;
             html += formatHeader(item.Face[0], 5);
-            html += `<div class="claims--grid" data-type="grid">`;
+            html += `<div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`;
             html += formatClaim(item.Face, lines, item.GroupID, `?showuser=${item.AccountID}`);
         }
 
@@ -339,7 +345,7 @@ function formatDirectory(data, claims) {
             labels += formatTabLabel(item.Member, cleanText(item.Member));
 
             tabs += formatTabCategory(item.Member[0]);
-            tabs += formatTab(capitalize(item.Member, [' ', '-']), cleanText(item.Member), formatMemberInfo(item, claims));
+            tabs += formatTab(capitalize(item.Member, [' ', '-']), cleanText(item.Member), formatMemberInfo(item, claims), item.Group);
         }
 
         //different starting letter
@@ -350,13 +356,13 @@ function formatDirectory(data, claims) {
 
             tabs += closeTabCategory();
             tabs += formatTabCategory(item.Member[0]);
-            tabs += formatTab(capitalize(item.Member, [' ', '-']), cleanText(item.Member), formatMemberInfo(item, claims));
+            tabs += formatTab(capitalize(item.Member, [' ', '-']), cleanText(item.Member), formatMemberInfo(item, claims), item.Group);
         }
 
         //same starting letter
         else {
             labels += formatTabLabel(item.Member, cleanText(item.Member));
-            tabs += formatTab(capitalize(item.Member, [' ', '-']), cleanText(item.Member), formatMemberInfo(item, claims));
+            tabs += formatTab(capitalize(item.Member, [' ', '-']), cleanText(item.Member), formatMemberInfo(item, claims), item.Group);
         }
 
         //last
@@ -388,12 +394,13 @@ function formatMemberInfo(member, claims) {
         characterHTML += formatClaim(character.Character, lines, character.GroupID, `?showuser=${character.AccountID}`);
     });
 
-    return `<div class="h8">
-        ${member.Group}<br>
-        ${member.Pronouns} - ${member.Age} - ${member.Timezone}<br>
-        Writes ${member.Language} - ${member.Sex} - ${member.Violence}
+    return `<div class="directory--subtitle">
+        <div>${member.Pronouns} - ${member.Age} - ${member.Timezone}</div>
+        <div>writes ${member.Language} - ${member.Sex} - ${member.Violence}, ${member.Tense}, ${member.POV}</div>
+        <div>expect a response ${member.ResponseTime}</div>
+        <div>preferred posting frequency is ${member.Frequency}</div>
     </div>
-    <div class="directory--overview" data-type="grid">
+    <div class="directory--overview" data-type="grid" data-columns="2">
         <div class="directory--section">
             <div class="h5">About</div>
             <p>${member.About}</p>
@@ -403,7 +410,7 @@ function formatMemberInfo(member, claims) {
             <p>${member.Triggers}</p>
         </div>
     </div>
-    <div class="directory--list" data-type="grid">
+    <div class="directory--list" data-type="grid" data-columns="3" data-gap="smsquare">
         <div class="h5 fullWidth">Active Characters</div>
         ${characterHTML}
     </div>`;
@@ -445,6 +452,8 @@ function formatBusinesses(data, claims) {
             return 0;
         }
     });
+
+    console.log(data);
 
     let labels = ``, tabs = ``;
     data.forEach((item, i) => {
@@ -520,7 +529,7 @@ function formatEmployees(claims, employer) {
 
     });
 
-    return html;
+    return html.length ? html : `<blockquote class="fullWidth">No active employees</blockquote>`;
 }
 function formatEmployer(employer, claims) {
     let hiringText = employer.Hiring === 'yes' ? 'Currently Hiring' : (employer.Hiring === 'no' ? 'Not hiring' : `Please ask <a href="?showuser=${JSON.parse(employer.Owner).id}">${JSON.parse(employer.Owner).alias}</a> about working here`);
@@ -529,32 +538,29 @@ function formatEmployer(employer, claims) {
     let hours = JSON.parse(employer.Hours);
     hours.forEach((hourset, i) => {
         if(hourset.range) {
-            hoursHTML += `<b>${hourset.range}</b><span>${hourset.time}</span>`;
-            if(i !== hours.length - 1) {
-                hoursHTML += `<br>`;
-            }
+            hoursHTML += `<div class="hours-flex"><b>${hourset.range}</b><span>${hourset.time}</span></div>`;
         } else {
-            hoursHTML += `<span>${hourset.text}</span>`;
+            hoursHTML += `<div class="hours-flex"><span>${hourset.text}</span></div>`;
         }
     });
 
     let characterHTML = formatEmployees(claims, employer.Employer);
 
-    return `<div class="h8">
-        ${hiringText}<br>
-        Located in <a href="?showforum=${employer.LocationID}">${employer.Location}</a>
+    return `<div class="directory--subtitle">
+        <div>${hiringText}</div>
+        <div>Located in <a href="?showforum=${employer.LocationID}">${employer.Location}</a></div>
     </div>
-    <div class="directory--overview" data-type="grid">
+    <div class="directory--overview" data-type="grid" data-columns="2">
         <div class="directory--section">
             <div class="h5">About</div>
             <p>${employer.Summary}</p>
         </div>
-        <div class="directory--section hours">
+        <div class="directory--section">
             <div class="h5">Hours</div>
-            <p>${hoursHTML}</p>
+            <div class="hours">${hoursHTML}</div>
         </div>
     </div>
-    <div class="directory--list" data-type="grid">
+    <div class="directory--list" data-type="grid" data-columns="3" data-gap="smsquare">
         <div class="h5 fullWidth">Employees</div>
         ${characterHTML}
     </div>`;
@@ -720,12 +726,20 @@ function formatAddresses(characters, businesses) {
     });
 
     let sectionedAddresses = {
-        location1: addresses.filter(item => item.address.region === 'location 1'),
-        location2: addresses.filter(item => item.address.region === 'location 2'),
+        coastline: addresses.filter(item => item.address.region === 'coastline'),
+        oldtown: addresses.filter(item => item.address.region === 'old town'),
+        centrallimbo: addresses.filter(item => item.address.region === 'central limbo'),
+        downtown: addresses.filter(item => item.address.region === 'downtown'),
+        outskirts: addresses.filter(item => item.address.region === 'outskirts'),
+        outsidelimbo: addresses.filter(item => item.address.region === 'outside limbo'),
     }
     let addressHTML = {
-        location1: '',
-        location2: '',
+        coastline: '',
+        oldtown: '',
+        centrallimbo: '',
+        downtown: '',
+        outskirts: '',
+        outsidelimbo: '',
     }
 
     document.querySelectorAll('tag-tab[data-category="addresses"] [data-key]').forEach(tab => {
@@ -740,7 +754,7 @@ function formatAddresses(characters, businesses) {
                     addressHTML[region] += formatHeader(`<span>${capitalize(neighbourhood, [' ', '-'])}</span>`, 3, 'accordion--trigger neighbourhood-trigger');
                     addressHTML[region] += `<div class="accordion--content"><div class="accordion">`;
                     addressHTML[region] += formatHeader(capitalize(address.address.street, [' ', '-']), 5, 'accordion--trigger');
-                    addressHTML[region] += `<div class="accordion--content"><div class="claims--grid" data-type="grid">`; //open claims
+                    addressHTML[region] += `<div class="accordion--content"><div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`; //open claims
                     addressHTML[region] += formatClaim(address.title, lines, address.type === 'character' ? address.groupID : null, address.type === 'character' ? `?showuser=${address.id}` : `?act=Pages&kid=businesses#${cleanText(address.title)}`);
                 }
 
@@ -754,7 +768,7 @@ function formatAddresses(characters, businesses) {
                     addressHTML[region] += formatHeader(`<span>${capitalize(neighbourhood, [' ', '-'])}</span>`, 3, 'accordion--trigger neighbourhood-trigger');
                     addressHTML[region] += `<div class="accordion--content"><div class="accordion">`;
                     addressHTML[region] += formatHeader(capitalize(address.address.street, [' ', '-']), 5, 'accordion--trigger');
-                    addressHTML[region] += `<div class="accordion--content"><div class="claims--grid" data-type="grid">`; //open claims
+                    addressHTML[region] += `<div class="accordion--content"><div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`; //open claims
                     addressHTML[region] += formatClaim(address.title, lines, address.type === 'character' ? address.groupID : null, address.type === 'character' ? `?showuser=${address.id}` : `?act=Pages&kid=businesses#${cleanText(address.title)}`);
                 }
 
@@ -765,7 +779,7 @@ function formatAddresses(characters, businesses) {
 
                     addressHTML[region] += `<div class="accordion">`;
                     addressHTML[region] += formatHeader(capitalize(address.address.street, [' ', '-']), 5, 'accordion--trigger');
-                    addressHTML[region] += `<div class="accordion--content"><div class="claims--grid" data-type="grid">`; //open claims
+                    addressHTML[region] += `<div class="accordion--content"><div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`; //open claims
                     addressHTML[region] += formatClaim(address.title, lines, address.type === 'character' ? address.groupID : null, address.type === 'character' ? `?showuser=${address.id}` : `?act=Pages&kid=businesses#${cleanText(address.title)}`);
                 }
 
@@ -844,7 +858,7 @@ function formatLocalConnections(data) {
             html += formatHeader(`<span>${capitalize(item.connection.category, [' ', '-'])}</span>`, '3', 'accordion--trigger neighbourhood-trigger');
             html += startAccordion(`class="accordion"`);
             html += formatHeader(capitalize(item.connection.subcategory, [' ', '-']), '5', 'accordion--trigger');
-            html += startAccordion(`data-type="grid" class="claims--grid"`);
+            html += startAccordion(`data-type="grid" class="claims--grid" data-columns="3" data-gap="smsquare"`);
             html += formatClaim(item.title, lines, item.group, item.link);
         }
         //different category
@@ -856,14 +870,14 @@ function formatLocalConnections(data) {
             html += formatHeader(`<span>${capitalize(item.connection.category, [' ', '-'])}</span>`, '3', 'accordion--trigger neighbourhood-trigger');
             html += startAccordion(`class="accordion"`);
             html += formatHeader(capitalize(item.connection.subcategory, [' ', '-']), '5', 'accordion--trigger');
-            html += startAccordion(`data-type="grid" class="claims--grid"`);
+            html += startAccordion(`data-type="grid" class="claims--grid" data-columns="3" data-gap="smsquare"`);
             html += formatClaim(item.title, lines, item.group, item.link);
         }
         //different subcategory
         else if(data[i - 1].connection.subcategory !== item.connection.subcategory) {
             html += stopAccordion();
             html += formatHeader(capitalize(item.connection.subcategory, [' ', '-']), '5', 'accordion--trigger');
-            html += startAccordion(`data-type="grid" class="claims--grid"`);
+            html += startAccordion(`data-type="grid" class="claims--grid" data-columns="3" data-gap="smsquare"`);
             html += formatClaim(item.title, lines, item.group, item.link);
         }
         //same sections
@@ -914,7 +928,7 @@ function formatHistoryConnections(data) {
             html += formatHeader(`<span>${capitalize(item.connection.category, [' ', '-'])}</span>`, '3', 'accordion--trigger neighbourhood-trigger');
             html += startAccordion(`class="accordion"`);
             html += formatHeader(capitalize(item.connection.subcategory, [' ', '-']), '5', 'accordion--trigger');
-            html += startAccordion(`data-type="grid" class="claims--grid"`);
+            html += startAccordion(`data-type="grid" class="claims--grid" data-columns="3" data-gap="smsquare"`);
             html += item.connection.location !== '' ? formatHeader(item.connection.location, '7') : ``;
             html += formatClaim(item.title, lines, item.group, item.link);
         }
@@ -927,7 +941,7 @@ function formatHistoryConnections(data) {
             html += formatHeader(`<span>${capitalize(item.connection.category, [' ', '-'])}</span>`, '3', 'accordion--trigger neighbourhood-trigger');
             html += startAccordion(`class="accordion"`);
             html += formatHeader(capitalize(item.connection.subcategory, [' ', '-']), '5', 'accordion--trigger');
-            html += startAccordion(`data-type="grid" class="claims--grid"`);
+            html += startAccordion(`data-type="grid" class="claims--grid" data-columns="3" data-gap="smsquare"`);
             html += item.connection.location !== '' ? formatHeader(item.connection.location, '7') : ``;
             html += formatClaim(item.title, lines, item.group, item.link);
         }
@@ -935,7 +949,7 @@ function formatHistoryConnections(data) {
         else if(data[i - 1].connection.subcategory !== item.connection.subcategory) {
             html += stopAccordion();
             html += formatHeader(capitalize(item.connection.subcategory, [' ', '-']), '5', 'accordion--trigger');
-            html += startAccordion(`data-type="grid" class="claims--grid"`);
+            html += startAccordion(`data-type="grid" class="claims--grid" data-columns="3" data-gap="smsquare"`);
             html += item.connection.location !== '' ? formatHeader(item.connection.location, '7') : ``;
             html += formatClaim(item.title, lines, item.group, item.link);
         }
@@ -957,4 +971,62 @@ function formatHistoryConnections(data) {
     });
 
     document.querySelector('tag-tab[data-key="#historical"] .webpage--content-inner').innerHTML = html;
+}
+
+/***** Power Claims *****/
+function formatPowerClaims(data) {
+    data = data.filter((item) => item.PowerType !== 'powerless');
+
+    data.sort((a, b) => {
+        if(a.PowerType < b.PowerType) {
+            return -1;
+        } else if(a.PowerType > b.PowerType) {
+            return 1;
+        } else if(a.Character < b.Character) {
+            return -1;
+        } else if(a.Character > b.Character) {
+            return 1;
+        } else if(a.Member < b.Member) {
+            return -1;
+        } else if(a.Member > b.Member) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+    let html = ``;
+
+    data.forEach((item, i) => {
+        let powerList = JSON.parse(item.Powers);
+        let lines = [`Played by <a href="?showuser=${item.ParentID}">${item.Member}</a>`];
+
+        //first
+        if(i === 0) {
+            html += formatHeader(item.PowerType, 5);
+            html += `<div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`;
+            html += formatClaim(item.Character, lines, item.GroupID, `?showuser=${item.AccountID}`, '', '', powerList);
+        }
+
+        //different starting letter
+        else if (data[i - 1].PowerType !== item.PowerType) {
+            html += `</div>`;
+            html += formatHeader(item.PowerType, 5);
+            html += `<div class="claims--grid" data-type="grid" data-columns="3" data-gap="smsquare">`;
+            html += formatClaim(item.Character, lines, item.GroupID, `?showuser=${item.AccountID}`, '', '', powerList);
+        }
+
+        //same starting letter
+        else {
+            html += formatClaim(item.Character, lines, item.GroupID, `?showuser=${item.AccountID}`, '', '', powerList);
+        }
+
+        //last
+        if(i === data.length - 1) {
+            html += `</div>`;
+        }
+    });
+
+
+    document.querySelector('tag-tab[data-key="#powers"] .webpage--content-inner').insertAdjacentHTML('beforeend', html);
 }

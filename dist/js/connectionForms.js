@@ -6,8 +6,12 @@ if(document.querySelectorAll('.form-address').length > 0) {
     });
     document.querySelectorAll('.form-address').forEach(form => {
         let locationField = form.querySelector('#region');
-        simpleFieldToggle(locationField, '.loc1Only', 'location1', form);
-        simpleFieldToggle(locationField, '.loc2Only', 'location2', form);
+        simpleFieldToggle(locationField, '.ifCoastline', 'coastline', form);
+        simpleFieldToggle(locationField, '.ifOld', 'oldtown', form);
+        simpleFieldToggle(locationField, '.ifCentral', 'centrallimbo', form);
+        simpleFieldToggle(locationField, '.ifDowntown', 'downtown', form);
+        simpleFieldToggle(locationField, '.ifOutskirts', 'outskirts', form);
+        simpleFieldToggle(locationField, '.ifOutside', 'outsidelimbo', form);
 
         form.addEventListener('submit', e => {
             e.preventDefault();

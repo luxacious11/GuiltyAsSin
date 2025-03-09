@@ -214,7 +214,74 @@ if(pageType === 'Post') {
         inputWrap(icon, `input`, 'radio');
     });
     fancyBoxes();
+
+    //by sadri with edits by lux
+    //https://sadricodes.notion.site/Simple-Custom-BBCode-Replacer-1934114f263e80b3b8e0e018963daec4
+    showMoreCustomBBCode = (e) => {
+        if (e.getAttribute("hiding") == "true") {
+            e.setAttribute("hiding", false);
+            e.value = "Less";
+            const collapsed = document.querySelectorAll(".bbcCollapse");
+            for (const col of collapsed) {
+                col.classList.remove("bbcCollapse");
+                col.classList.add("bbcCollapsible");
+            }
+        } else {
+            e.setAttribute("hiding", true);
+            e.value = "More";
+            const uncollapse = document.querySelectorAll(".bbcCollapsible");
+            for (const col of uncollapse) {
+                col.classList.remove("bbcCollapsible");
+                col.classList.add("bbcCollapse");
+            }
+        }
+    };
+      
+    const setUpCustomBBcodeButtons = () => {
+        const buttonDestination = document.getElementById("bbcode-buttons");
+      
+        let cbHolder = ``;
+      
+        for (const group of bbcode) {
+            cbHolder += `<div class="customButtonSection ${group.extraClasses ?? ''}">`;
+            if (group.tags.length < 1) continue;
+            cbHolder += `<div class="cbHeader">${group.groupName}</div>`;
+            cbHolder += `<div class="buttonHolder ${group.collapsed ? "bbcCollapse" : "bbcNoCollapse"}">`
+            for (const bbc of group.tags) {
+                // Hide buttons that already exist
+                const exists = document.querySelector(`input[value=" ${bbc.tag.toUpperCase()} "]`);
+                if (exists) {
+                    exists.style.display = "none";
+                }
+                // Add the buttons in
+                let newButton = `<input type="button"
+                    class="codebuttons${bbc.collapsed ? ' bbcCollapse' : ''}"
+                    data-tag-name="${bbc.tag}"
+                    value="${bbc.displayName ? bbc.displayName : bbc.tag}"
+                    data-tag-type="${bbc.type}"
+                    ${bbc.desc ? `title="${bbc.desc}"` : ''}
+                    ${bbc.complexIndicator ? `data-complex-indicator="${bbc.complexIndicator}"` : ''}
+                    onclick="doSelectionReplace(this)">`;
+                cbHolder += newButton;
+            }
+            cbHolder += `</div></div>`;
+        }
+      
+        buttonDestination.innerHTML = cbHolder;
+    };
+      
+    setUpCustomBBcodeButtons();
 }
+      
+const doSelectionReplace = (button) => {
+    if (button.dataset.tagName && button.dataset.tagType) {
+        let tagName = button.dataset.tagName;
+        const inputBox = document.forms["REPLIER"].elements["Post"];
+        const selRange = inputBox.value.substring(inputBox.selectionStart, inputBox.selectionEnd);
+        const replacement = `[${tagName}${button.dataset.tagType == 'complex' ? `=${button.dataset.complexIndicator}` : ''}]${selRange}[/${tagName}]`;
+        inputBox.setRangeText(replacement, inputBox.selectionStart, inputBox.selectionEnd);
+    }
+};
 
 /********** User CP & Messages **********/
 if(pageType === 'UserCP' || pageType === 'Msg') {
@@ -333,7 +400,11 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
 
 /********** Store **********/
 if(pageType === 'store') {
-  initStoreMenu();
+    initStoreMenu();
+    if(document.querySelector('body.store-do_staff_inventory')) {
+        document.querySelectorAll(`#ucpcontent input[type="checkbox"]`).forEach(input => inputWrap(input));
+        fancyBoxes();
+    }
 }
 
 /********** Member List Only **********/
@@ -345,3 +416,125 @@ if(pageType === 'Members') {
 if(pageType === 'modcp') {
   initModCPMenu();
 }
+
+/********** Search Only **********/
+if(pageType === 'Search') {
+    initTopicDescription('#Search.code-show main > #search-topics .tablebasic > tbody > tr > td .desc, #Search.code-getactive main > #search-topics .tablebasic > tbody > tr > td .desc');
+}
+
+
+/********** Templates **********/
+document.addEventListener( 'DOMContentLoaded', function() {
+    document.querySelectorAll(`[data-type="gallery2"]`).forEach((gallery) => {
+        var splide = new Splide(gallery, {
+            type: 'loop',
+            speed: '500',
+            perPage: 1,
+            perMove: 1,
+            gap: 0,
+            padding: 100,
+            easing: 'ease',
+            reducedMotion: {
+                speed: 0
+            }
+        });
+        let bar = splide.root.querySelector( '.gallery--progress-bar' );
+        splide.on( 'mounted move', function () {
+            var end  = splide.Components.Controller.getEnd() + 1;
+            var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+            bar.style.width = String( 100 * rate ) + '%';
+        });
+        splide.mount();
+    });
+    document.querySelectorAll(`[data-type="socialgallery2"]`).forEach((gallery) => {
+        let images = gallery.querySelectorAll('tag-image');
+        let splide;
+        images.forEach(image => image.classList.add('splide__slide'));
+        if(images.length === 1) {
+            splide = new Splide(gallery, {
+                speed: '500',
+                perPage: 1,
+                perMove: 1,
+                gap: 0,
+                padding: 0,
+                arrows: false,
+                pagination: false,
+                easing: 'ease',
+                reducedMotion: {
+                    speed: 0
+                }
+            });
+        } else {
+            splide = new Splide(gallery, {
+                speed: '500',
+                perPage: 1,
+                perMove: 1,
+                gap: 0,
+                padding: {right: 50},
+                pagination: false,
+                easing: 'ease',
+                reducedMotion: {
+                    speed: 0
+                }
+            });
+        }
+        let bar = splide.root.querySelector( '.gallery--progress-bar' );
+        splide.on( 'mounted move', function () {
+            var end  = splide.Components.Controller.getEnd() + 1;
+            var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+            bar.style.width = String( 100 * rate ) + '%';
+        });
+        splide.mount();
+    });
+
+
+    document.querySelectorAll(`[data-type="gallery"]`).forEach((gallery) => {
+        var splide = new Splide(gallery, {
+            type: 'loop',
+            speed: '500',
+            perPage: 1,
+            perMove: 1,
+            gap: 0,
+            padding: 100,
+            easing: 'ease',
+            reducedMotion: {
+                speed: 0
+            }
+        });
+        splide.mount();
+    });
+    document.querySelectorAll(`[data-type="socialgallery"]`).forEach((gallery) => {
+        let images = gallery.querySelectorAll('tag-image');
+        let splide;
+        images.forEach(image => image.classList.add('splide__slide'));
+        if(images.length === 1) {
+            splide = new Splide(gallery, {
+                speed: '500',
+                perPage: 1,
+                perMove: 1,
+                gap: 0,
+                padding: 0,
+                arrows: false,
+                pagination: false,
+                easing: 'ease',
+                reducedMotion: {
+                    speed: 0
+                }
+            });
+        } else {
+            splide = new Splide(gallery, {
+                type: 'loop',
+                speed: '500',
+                perPage: 1,
+                perMove: 1,
+                gap: 0,
+                padding: '10%',
+                easing: 'ease',
+                reducedMotion: {
+                    speed: 0
+                }
+            });
+        }
+        splide.mount();
+    });
+});

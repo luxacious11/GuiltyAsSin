@@ -1,10 +1,14 @@
 .pagination_last::after {
   content: '\f340'; }
 
+.external::after {
+  content: '\f35d'; }
+
 .post--item .powers > span::before,
 .profile .scroll ul li::before,
 .postcolor ul li::before,
-.ucp--description ul li::before {
+.ucp--description ul li::before,
+.webpage--content-inner ul li::before {
   content: '\f101'; }
 
 body.g-2 .memOnly,
@@ -17,12 +21,34 @@ body.g-2 .guestOnly,
 body.g-4 .staffOnly {
   display: initial; }
 
-body.g-4 .webpage--menu .accordion--content.staffOnly,
-body.g-4 .accordion--trigger.staffOnly {
+body.g-4 .accordion--content.staffOnly:not(.is-active) {
+  display: none; }
+
+body.g-4 .accordion--content.is-active.staffOnly,
+body.g-4 .accordion--trigger.staffOnly,
+body.g-2 .nav--inner a.guestOnly {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+
+body.g-4 .nav .nav--inner a.staffOnly.notMobile {
+  display: none; }
+  @media (min-width: 1025px) {
+    body.g-4 .nav .nav--inner a.staffOnly.notMobile {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; } }
+
+body.g-4 .nav .nav--inner a.staffOnly.onlyMobile {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  @media (min-width: 1025px) {
+    body.g-4 .nav .nav--inner a.staffOnly.onlyMobile {
+      display: none; } }
 
 .tw--header::before {
   content: '\f071';
@@ -34,10 +60,12 @@ body.g-4 .accordion--trigger.staffOnly {
 tag-relationship > a::after {
   content: '\f178'; }
 
-.profile--column .accordion--trigger:not(.is-active)::after {
+.profile--column .accordion--trigger:not(.is-active)::after,
+.webpage--content-inner .accordion--trigger:not(.is-active)::after {
   content: '\2b'; }
 
-.profile--column .accordion--trigger.is-active::after {
+.profile--column .accordion--trigger.is-active::after,
+.webpage--content-inner .accordion--trigger.is-active::after {
   content: '\e404'; }
 
 .members--filter-group label::before,
@@ -112,3 +140,108 @@ tag-relationship > a::after {
 
 .f-41 .forum--image {
   background-image: url(https://files.jcink.net/uploads2/wherethehellis/New_Board_Images/pitch_min.jpg); }
+
+.f-1 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/guidebook_min.jpg); }
+
+.f-3 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/announcements_min.jpg); }
+
+.f-4 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/code_bank_min.jpg); }
+
+.f-5 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/getting_started_min.jpg); }
+
+.f-6 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/development_min.jpg); }
+
+.f-7 .forum--image, .f-13 .forum--image, .f-14 .forum--image, .f-15 .forum--image, .f-16 .forum--image, .f-17 .forum--image, .f-18 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/requests_min.jpg); }
+
+.f-8 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/worldbuilding_min.jpg); }
+
+.f-9 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/group_development_min.jpg); }
+
+.f-10 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/member_development_min.jpg); }
+
+.f-77 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/amalthea_min.jpg); }
+
+.f-61 .forum--image, .f-72 .forum--image, .f-73 .forum--image, .f-74 .forum--image, .f-75 .forum--image, .f-76 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/dashin_min.jpg); }
+
+.f-63 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/hermes_min.jpg); }
+
+.f-82 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/hound_min.jpg); }
+
+.f-62 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/iris_min.jpg); }
+
+.f-11 .forum--image, .f-69 .forum--image, .f-71 .forum--image, .f-70 .forum--image, .f-68 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/lux_min.jpg); }
+
+.f-81 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/noon_min.jpg); }
+
+.f-64 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/silence_min.jpg); }
+
+.f-12 .forum--image, .f-65 .forum--image, .f-66 .forum--image, .f-67 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/spyder_min.jpg); }
+
+.f-59 .forum--image, .f-79 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/challenges_min.jpg); }
+
+.f-78 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/dev_challenges_min.jpg); }
+
+.f-80 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/writing_challenges_min.jpg); }
+
+.f-60 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/past_events_min.jpg); }
+
+.f-19 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/comms_min.jpg); }
+
+.f-20 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/tc_profiles_min.jpg); }
+
+.f-21 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/tc_messages_min.jpg); }
+
+.f-42 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/out_of_town_min.jpg); }
+
+.f-43 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/in_the_past_min.jpg); }
+
+.f-44 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/in_the_future_min.jpg); }
+
+.f-45 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/in_another_life_min.jpg); }
+
+.f-46 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/general_min.jpg); }
+
+.f-47 .forum--image, .f-51 .forum--image, .f-52 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/advertising_min.jpg); }
+
+.f-48 .forum--image, .f-53 .forum--image, .f-54 .forum--image, .f-55 .forum--image, .f-56 .forum--image, .f-57 .forum--image, .f-58 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/archives_min.jpg); }
+
+.f-2 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/staff_3_min.jpg); }
+
+.f-49 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/staff_2_min.jpg); }
+
+.f-50 .forum--image {
+  background-image: url(https://files.jcink.net/uploads2/wherethehellis/Board_Images/staff_1_min.jpg); }

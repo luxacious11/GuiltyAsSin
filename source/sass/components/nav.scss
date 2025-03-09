@@ -33,6 +33,10 @@
             display: flex;
             flex-wrap: wrap;
             max-width: calc(100% - var(--size-menu));
+            font-size: var(--size-xs);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
         }
 
         a {

@@ -1,5 +1,6 @@
 <form id="form-sort" data-type="grid" data-columns="2">
-    <h3 class="fullWidth">Basic Information</h3>
+    <h2 class="fullWidth" data-box-align="center">Get Sorted</h2>
+    <h3 class="fullWidth h5">Basic Information</h3>
     <label>
         <b>Character</b>
         <span><input type="text" id="character" placeholder="Character name" required=""></span>
@@ -12,10 +13,34 @@
         <b>Group</b>
         <span><select id="group" required>
             <option value="">(select)</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
+            <optgroup label="Basic">
+                <option value="10">Adder</option>
+                <option value="13">Crow</option>
+                <option value="14">Deer</option>
+                <option value="11">Eagle</option>
+                <option value="30">Fox</option>
+                <option value="19">Grizzly</option>
+                <option value="28">Horse</option>
+                <option value="20">Hyena</option>
+                <option value="26">Lion</option>
+                <option value="12">Otter</option>
+                <option value="9">Rabbit</option>
+                <option value="21">Rat</option>
+                <option value="22">Sloth</option>
+                <option value="7">Tiger</option>
+                <option value="27">Turtle</option>
+                <option value="8">Wolf</option>
+            </optgroup>
+            <optgroup label="Premium">
+                <option value="25">Basilisk</option>
+                <option value="17">Dragon</option>
+                <option value="23">Griffin</option>
+                <option value="24">Kelpie</option>
+                <option value="29">Pegasus</option>
+                <option value="16">Phoenix</option>
+                <option value="18">Selkie</option>
+                <option value="15">Unicorn</option>
+            </optgroup>
         </select></span>
     </label>
     <label>
@@ -34,7 +59,31 @@
         <b>Request Details</b>
         <span><textarea id="request" placeholder="Name of requester and/or URL to wanted ad"></textarea></span>
     </label>
-    <h3 class="fullWidth">Employment</h3>
+    <h3 class="fullWidth h5">Powers</h3>
+    <label class="fullWidth">
+        <b>Power Type</b>
+        <span><select id="powertype" required>
+            <option value="">(select)</option>
+            <option value="powerless">Powerless</option>
+            <option value="elemental">Elemental</option>
+            <option value="enhancement">Enhancement</option>
+            <option value="mutation">Mutation</option>
+            <option value="physiology">Physiology</option>
+            <option value="psychic">Psychic</option>
+            <option value="support">Support</option>
+            <option value="mixed">Mixed</option>
+            <option value="other">Other</option>
+        </select></span>
+    </label>
+    <label class="hidden ifPower fullWidth">
+        <b>Powers</b>
+        <div data-type="grid">
+            <span><input type="text" class="power" placeholder="First Power"></span>
+            <span><input type="text" class="power" placeholder="Second Power"></span>
+            <span><input type="text" class="power" placeholder="Third Power"></span>
+        </div>
+    </label>
+    <h3 class="fullWidth h5">Employment</h3>
     <label class="fullWidth">
         <b>Employed?</b>
         <span><select id="employed" required>
@@ -45,13 +94,13 @@
     </label>
     <label class="fullWidth adjustable ifEmployed hidden">
         <b>Jobs</b>
-        <div class="rows jobs-wrap"></div>
+        <div class="rows jobs-wrap" data-type="grid"></div>
         <div class="multi-buttons" data-row-type="jobs">
             <button type="button" onclick="addRow(this)">+ New Row</button>
             <button type="button" onclick="removeRow(this)">- Remove Row</button>
         </div>
     </label>
-    <h3 class="fullWidth">Subplots</h3>
+    <h3 class="fullWidth h5">Subplots</h3>
     <label class="fullWidth">
         <b>Part of a Subplot?</b>
         <span><select id="subplot" required>
@@ -62,13 +111,13 @@
     </label>
     <label class="fullWidth adjustable ifPlot hidden">
         <b>Roles</b>
-        <div class="rows roles-wrap"></div>
+        <div class="rows roles-wrap" data-type="grid"></div>
         <div class="multi-buttons" data-row-type="roles">
             <button type="button" onclick="addRow(this)">+ New Row</button>
             <button type="button" onclick="removeRow(this)">- Remove Row</button>
         </div>
     </label>
-    <h3 class="fullWidth">Member Info</h3>
+    <h3 class="fullWidth h5">Member Info</h3>
     <label>
         <b>Alias</b>
         <span><input type="text" id="alias" placeholder="Alias" required=""></span>
@@ -105,7 +154,7 @@
         <b>Triggers</b>
         <span><textarea id="triggers" placeholder="If you have any triggers, please list them."></textarea></span>
     </label>
-    <div class="hidden ifFirst fullWidth" data-type="grid" data-columns="3">
+    <div class="hidden ifFirst fullWidth neverTwo" data-type="grid" data-columns="3">
         <label>
             <b>Mature Language</b>
             <span>
@@ -143,5 +192,55 @@
             </span>
         </label>
     </div>
+    <label class="hidden ifFirst">
+        <b>Writing Tense</b>
+            <span>
+                <select id="tense">
+                    <option value="">(select)</option>
+                    <option value="past">Past Tense</option>
+                    <option value="present">Present Tense</option>
+                    <option value="future">Future Tense</option>
+                </select>
+            </span>
+    </label>
+    <label class="hidden ifFirst">
+        <b>Writing POV</b>
+            <span>
+                <select id="pov">
+                    <option value="">(select)</option>
+                    <option value="third">Third Person</option>
+                    <option value="second">Second Person</option>
+                    <option value="first">First Person</option>
+                </select>
+            </span>
+    </label>
+    <label class="hidden ifFirst">
+        <b>Typical Response Time</b>
+            <span>
+                <select id="responseTime">
+                    <option value="">(select)</option>
+                    <option value="daily">Daily</option>
+                    <option value="frequent">More than once a week</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Every 1 to 2 weeks</option>
+                    <option value="triweekly">Every 2 to 3 weeks</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </span>
+    </label>
+    <label class="hidden ifFirst">
+        <b>Preferred Posting Frequency</b>
+            <span>
+                <select id="frequency">
+                    <option value="">(select)</option>
+                    <option value="daily">Daily</option>
+                    <option value="frequent">More than once a week</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Every 1 to 2 weeks</option>
+                    <option value="triweekly">Every 2 to 3 weeks</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </span>
+    </label>
     <button type="submit" id="submit" class="fullWidth">Submit</button>
 </form>

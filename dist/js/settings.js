@@ -11,7 +11,6 @@ const discordTags = [
     {alias: `Angel`, id: `1222372721900392501`},
     {alias: `Bodhi`, id: `532688640929824772`},
     {alias: `Corvus`, id: `489491814630293504`},
-    {alias: `Cowpoke`, id: `503892152049336321`},
     {alias: `Dashin`, id: `177638202755121152`},
     {alias: `Hermes`, id: `830491813407883306`},
     {alias: `Hme`, id: `969405372697825330`},
@@ -63,15 +62,339 @@ const colors = {
     'fox': [120, 78, 96],
 }
 
+const bbcode = [
+    {
+        groupName: "Text",
+        extraClasses: "fullWidth",
+        tags: [
+            {
+                tag: "h2",
+                type: "simple",
+                displayName: "H2"
+            },
+            {
+                tag: "h3",
+                type: "simple",
+                displayName: "H3"
+            },
+            {
+                tag: "h4",
+                type: "simple",
+                displayName: "H4"
+            },
+            {
+                tag: "h5",
+                type: "simple",
+                displayName: "H5"
+            },
+            {
+                tag: "h6",
+                type: "simple",
+                displayName: "H6"
+            },
+            {
+                tag: "h7",
+                type: "simple",
+                displayName: "H7"
+            },
+            {
+                tag: "h8",
+                type: "simple",
+                displayName: "H8"
+            },
+            {
+                tag: "b",
+                type: "simple",
+                displayName: "Bold"
+            },
+            {
+                tag: "i",
+                type: "simple",
+                displayName: "Italic"
+            },
+            {
+                tag: "u",
+                type: "simple",
+                displayName: "Underline"
+            },
+            {
+                tag: "s",
+                type: "simple",
+                displayName: "Strikethrough"
+            },
+            {
+                tag: "translate",
+                desc: "Text that can be toggled between translations",
+                type: "complex",
+                displayName: "Translate",
+                complexIndicator: "english translation"
+            },
+            {
+                tag: "spoiler",
+                desc: "Text hidden behind a spoiler",
+                type: "simple",
+                displayName: "Spoiler"
+            }
+        ]
+    },
+    {
+        groupName: "Posting",
+        tags: [
+            {
+                tag: "post",
+                desc: "Use a basic post template; option 1",
+                type: "complex",
+                displayName: "Post 1 Wrap",
+                complexIndicator: "theme number"
+            },
+            {
+                tag: "post2",
+                desc: "Use a basic post template; option 2",
+                type: "simple",
+                displayName: "Post 2 Wrap"
+            },
+            {
+                tag: "image",
+                desc: "Add within a post wrap to have a post template with an image",
+                type: "complex",
+                displayName: "Post Image",
+                complexIndicator: "url"
+            },
+            {
+                tag: "gallery",
+                desc: "Wrap in a basic post style.",
+                type: "complex",
+                displayName: "Gallery Wrap",
+                complexIndicator: "image ratio value"
+            },
+            {
+                tag: "galleryimage",
+                desc: "Add within a gallery wrap to add an image to the carousel",
+                type: "simple",
+                displayName: "Gallery Image"
+            }
+        ]
+    },
+    {
+        groupName: "Comms",
+        tags: [
+            {
+                tag: "comm",
+                desc: "Use a comm template; place messages, actions, and contacts inside the wrap",
+                type: "simple",
+                displayName: "Comm 1 Wrap"
+            },
+            {
+                tag: "msg",
+                type: "simple",
+                displayName: "Comm 1 Message"
+            },
+            {
+                tag: "action",
+                type: "simple",
+                displayName: "Comm 1 Action"
+            },
+            {
+                tag: "contact",
+                type: "complex",
+                displayName: "Comm 1 Contact",
+                complexIndicator: "image url"
+            }
+        ]
+    },
+    {
+        groupName: "Blocks",
+        tags: [
+            {
+                tag: "tw",
+                desc: "Wrap selected text in a trigger warning style that will pass into the discord tagger.",
+                type: "simple",
+                displayName: "Triggers"
+            },
+            {
+                tag: "note",
+                desc: "Wrap selected text in a note style that will pass into the discord tagger.",
+                type: "simple",
+                displayName: "Note"
+            },
+            {
+                tag: "blockquote",
+                type: "simple",
+                displayName: "Blockquote"
+            }
+        ]
+    },
+    {
+        groupName: "Groups",
+        extraClasses: 'fullWidth',
+        tags: [
+            {
+                tag: "Adder",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Basilisk",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Crow",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Deer",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Dragon",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Eagle",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Fox",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Griffin",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Grizzly",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Horse",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Hyena",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Kelpie",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Lion",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Otter",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Pegasus",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Phoenix",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Rabbit",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Rat",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Selkie",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Sloth",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Tiger",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Turtle",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Unicorn",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Wolf",
+                desc: "",
+                type: "simple"
+            },
+        ]
+    },
+    {
+        groupName: "Staff",
+        extraClasses: "fullWidth staffOnly",
+        tags: [
+            {
+                tag: "luxpost",
+                type: "simple"
+            },
+            {
+                tag: "luxpost2",
+                type: "complex",
+                complexIndicator: "quote"
+            },
+            {
+                tag: "luxclass",
+                type: "complex",
+                complexIndicator: "class"
+            },
+            {
+                tag: "luxcomm",
+                type: "complex",
+                complexIndicator: "contact name"
+            },
+            {
+                tag: "spypost",
+                type: "complex",
+                complexIndicator: "image url"
+            },
+            {
+                tag: "spysong",
+                type: "simple"
+            }
+        ]
+    }
+];
+
 const unusable = ['premium species', 'premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
 
 const staffGroups = ['4'];
 const oocGroups = [...staffGroups, '6'];
 const optGroups = ['1', '3', '5'];
 
-const templateWraps = `tag-wrap`;
+const templateWraps = `tag-wrap, tag-comm, tag-wrap2, tag-comm2`;
 
-const markdownSafe = `tag-tab[data-key="#basics"] .scroll, tag-tab[data-key="#powers"] .scroll, tag-tab[data-key="#details"] .scroll, tag-tab[data-key="#plotting"] .scroll, .postcolor.no-template, .postcolor blockquote, .postcolor tag-content, .postcolor tag-block, .postcolor tag-event, .postcolor tag-msg, .postcolor tag-action`;
+const markdownSafe = `tag-tab[data-key="#basics"] .scroll, tag-tab[data-key="#powers"] .scroll, tag-tab[data-key="#details"] .scroll, tag-tab[data-key="#plotting"] .scroll, .postcolor.no-template, .postcolor blockquote, .postcolor tag-content, .postcolor tag-block, .postcolor tag-event, .postcolor tag-msg, .postcolor tag-action, .member--bottom .scroll`;
 
 /** auto-tracker code by FizzyElf - https://fizzyelf.jcink.net **/
 trackerParams = {
@@ -344,6 +667,9 @@ const members = `https://opensheet.elk.sh/${sheetID}/Members`;
 const plots = `https://opensheet.elk.sh/${sheetID}/Plots`;
 const businesses = `https://opensheet.elk.sh/${sheetID}/Businesses`;
 
+//remove this on launch
+const subplotReserves = `https://opensheet.elk.sh/${sheetID}/PlotReserves`;
+
 const defaultReserve = 14;
 
 const successMessage = `<blockquote class="fullWidth">Submission successful!</blockquote>
@@ -383,23 +709,29 @@ const jcinkUCPLinks = `<div class="accordion--trigger" data-category="account"><
             <a href="?act=UserCP&CODE=02">Emails</a>
         </div>`;
 
-const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal"><b>Personal</b></div>
-        <div class="accordion--content" data-category="personal">
-            <a href="?act=store&CODE=inventory">Inventory</a>
-            <a href="?act=store&code=donate_money">Send Money</a>
-            <a href="?act=store&code=donate_item">Send Item</a>
-        </div>
-        <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
-        <div class="accordion--content" data-category="shop">
-            <a href="?act=store">Home</a>
-            <a href="?act=store&code=shop&category=000">Category</a>
-        </div>
-        <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
-        <div class="accordion--content staffOnly" data-category="staff">
-            <a href="?act=store&code=fine" class="staffOnly">Fine</a>
-            <a href="?act=store&code=edit_points" class="staffOnly">Edit Points</a>
-            <a href="?act=store&code=edit_inventory" class="staffOnly">Edit Inventory</a>
-        </div>`;
+        const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal"><b>Personal</b></div>
+                <div class="accordion--content" data-category="personal">
+                    <a href="?act=store&CODE=inventory">Inventory</a>
+                    <a href="?act=store&code=donate_money">Send Money</a>
+                    <a href="?act=store&code=donate_item">Send Item</a>
+                </div>
+                <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
+                <div class="accordion--content" data-category="shop">
+                    <a href="?act=store">Home</a>
+                    <a href="?act=store&code=shop&category=2">Action Badges</a>
+                    <a href="?act=store&code=shop&category=1">Appreciation Badges</a>
+                    <a href="?act=store&code=shop&category=3">Personality Badges</a>
+                    <a href="?act=store&code=shop&category=4">Player Badges</a>
+                    <a href="?act=store&code=shop&category=6">Premium Features</a>
+                    <a href="?act=store&code=shop&category=5">Relationship Badges</a>
+                    <a href="?act=store&code=shop&category=7">Zodiac Badges</a>
+                </div>
+                <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
+                <div class="accordion--content staffOnly" data-category="staff">
+                    <a href="?act=store&code=fine" class="staffOnly">Fine</a>
+                    <a href="?act=store&code=edit_points" class="staffOnly">Edit Points</a>
+                    <a href="?act=store&code=edit_inventory" class="staffOnly">Edit Inventory</a>
+                </div>`;
 
 const jcinkModCPLinks = `<div class="accordion--trigger" data-category="forumsposts"><b>Forums & Posts</b></div>
         <div class="accordion--content" data-category="forumsposts">

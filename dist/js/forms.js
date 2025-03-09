@@ -139,10 +139,12 @@ if(addBusiness) {
 /***** Add a Character *****/
 let sortForm = document.querySelector('#form-sort');
 if(sortForm) {
+    let powerToggle = sortForm.querySelector('#powertype');
     let requestToggle = sortForm.querySelector('#requested');
     let employedToggle = sortForm.querySelector('#employed');
     let plotToggle = sortForm.querySelector('#subplot');
     let firstToggle = sortForm.querySelector('#first');
+    complexFieldToggle(powerToggle, '.ifPower', ['', 'powerless'], false);
     if(requestToggle) {simpleFieldToggle(requestToggle, '.ifRequest', 'y')};
     if(employedToggle) {simpleFieldToggle(employedToggle, '.ifEmployed', 'y')};
     if(plotToggle) {simpleFieldToggle(plotToggle, '.ifPlot', 'y')};
@@ -166,10 +168,24 @@ if(sortForm) {
             language = form.querySelector('#language'),
             sexualContent = form.querySelector('#sex'),
             violence = form.querySelector('#violence'),
+            tense = form.querySelector('#tense'),
+            pov = form.querySelector('#pov'),
+            responseTime = form.querySelector('#responseTime'),
+            frequency = form.querySelector('#frequency'),
             employed = getSelectValue(form.querySelector('#employed')) === 'y' ? true : false,
             subplot = getSelectValue(form.querySelector('#subplot')) === 'y' ? true : false,
             first = getSelectValue(form.querySelector('#first')) === 'y' ? true : false,
-            jobs = [], roles = [], memberData = {};
+            powerType = getSelectValue(form.querySelector('#powertype')),
+            jobs = [], roles = [], memberData = {}, powers = [];
+
+        //powers array
+        if(powerType !== '' && powerType !== 'powerless') {
+            form.querySelectorAll('.power').forEach(power => {
+                if(power.value.trim() !== '') {
+                    powers.push(power.value.toLowerCase().trim());
+                }
+            });
+        }
 
         //jobs array
         if(employed) {
@@ -205,6 +221,8 @@ if(sortForm) {
             Group: getSelectText(group),
             GroupID: getSelectValue(group),
             Face: getStandardValue(face),
+            PowerType: powerType,
+            Powers: powers.length > 0 ? JSON.stringify(powers) : '',
             Jobs: jobs.length > 0 ? JSON.stringify(jobs) : '',
             Roles: roles.length > 0 ? JSON.stringify(roles) : '',
             Status: 'pending',
@@ -226,6 +244,10 @@ if(sortForm) {
                 Language: getSelectValue(language),
                 Sex: getSelectValue(sexualContent),
                 Violence: getSelectValue(violence),
+                Tense: getSelectText(tense),
+                POV: getSelectText(pov),
+                ResponseTime: getSelectText(responseTime),
+                Frequency: getSelectText(frequency),
             }
         }
 
@@ -245,12 +267,12 @@ if(sortForm) {
 
         let staffDiscord = {
             title: `New Sorting Request: ${capitalize(characterData.Character)}`,
-            text: `**Played by:** [${capitalize(characterData.Member, [' ', '-'])}](<https://${siteName}.jcink.net/?showuser=${characterData.ParentID}>)
+            text: `**Played by:** [${capitalize(characterData.Member, [' ', '-'])}](<https://wherethehellis.jcink.net/?showuser=${characterData.ParentID}>)
             **Group:** ${capitalize(characterData.Group, [' '])}
             **First Character?** ${capitalize(getSelectText(form.querySelector('#first')))}
             **Requested?** ${capitalize(getSelectText(form.querySelector('#requested')))}${requestMessage}
             
-            [**View Profile**](<https://${siteName}.jcink.net/?showuser=${characterData.AccountID}>)
+            [**View Profile**](<https://wherethehellis.jcink.net/?showuser=${characterData.AccountID}>)
             
             Please add this task to the JIRA board and mark this log with a checkmark. To sort the character, assign the JIRA task to yourself, move to the In Progress status, and then follow the acceptance process outlined in the Documentation.`,
             hook: claimLogs,
@@ -259,9 +281,9 @@ if(sortForm) {
 
         let publicDiscord = {
             title: `${capitalize(characterData.Member, [' ', '-'])} has finished ${capitalize(characterData.Character)}!`,
-            text: `> _looks like ${characterData.Face}, belongs in ${characterData.Group}_
-
-            [**Learn More**](<https://${siteName}.jcink.net/?showuser=${characterData.AccountID}>)${publicRequestMessage}`,
+            text: `> _${characterData.Face}, ${characterData.PowerType}, ${characterData.Group}_
+    
+            [**Learn More**](<https://wherethehellis.jcink.net/?showuser=${characterData.AccountID}>)${publicRequestMessage}`,
             hook: sortLogs,
             notification: `<@&${staffDiscordRole}>`,
             color: rgbToHex(colors[characterData.Group][0], colors[characterData.Group][1], colors[characterData.Group][2]),
@@ -287,6 +309,10 @@ if(editMemberForm){
     let aboutBox = editMemberForm.querySelector('[value="about"]');
     let triggersBox = editMemberForm.querySelector('[value="triggers"]');
     let ratingsBox = editMemberForm.querySelector('[value="ratings"]');
+    let tenseBox = editMemberForm.querySelector('[value="tense"]');
+    let povBox = editMemberForm.querySelector('[value="pov"]');
+    let responseBox = editMemberForm.querySelector('[value="responseTime"]');
+    let frequencyBox = editMemberForm.querySelector('[value="frequency"]');
     if(aliasBox) {checkToggle(aliasBox, '.ifAlias')};
     if(pronounsBox) {checkToggle(pronounsBox, '.ifPronouns')};
     if(ageBox) {checkToggle(ageBox, '.ifAge')};
@@ -294,6 +320,10 @@ if(editMemberForm){
     if(aboutBox) {checkToggle(aboutBox, '.ifAbout')};
     if(triggersBox) {checkToggle(triggersBox, '.ifTriggers')};
     if(ratingsBox) {checkToggle(ratingsBox, '.ifRatings')};
+    if(tenseBox) {checkToggle(tenseBox, '.ifTense')};
+    if(povBox) {checkToggle(povBox, '.ifPOV')};
+    if(responseBox) {checkToggle(responseBox, '.ifResponseTime')};
+    if(frequencyBox) {checkToggle(frequencyBox, '.ifFrequency')};
     editMemberForm.addEventListener('submit', e => {
         e.preventDefault();
 
@@ -308,7 +338,11 @@ if(editMemberForm){
             triggers = form.querySelector('#triggers'),
             language = form.querySelector('#language'),
             sex = form.querySelector('#sex'),
-            violence = form.querySelector('#violence');
+            violence = form.querySelector('#violence'),
+            tense = form.querySelector('#tense'),
+            pov = form.querySelector('#pov'),
+            responseTime = form.querySelector('#responseTime'),
+            frequency = form.querySelector('#frequency');
 
         let data = {
             SubmissionType: `edit-member`,
@@ -323,6 +357,10 @@ if(editMemberForm){
             Language: getSelectValue(language),
             Sex: getSelectValue(sex),
             Violence: getSelectValue(violence),
+            Tense: getSelectText(tense),
+            POV: getSelectText(pov),
+            ResponseTime: getSelectText(responseTime),
+            Frequency: getSelectText(frequency),
         }
 
         setFormStatus(form);

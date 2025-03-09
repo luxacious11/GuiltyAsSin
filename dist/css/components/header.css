@@ -75,6 +75,8 @@
   line-height: 200%;
   font-weight: 200;
   letter-spacing: 1em; }
+  .profile .small[data-group="Unsorted"] {
+    letter-spacing: 0.65em; }
 
 .big {
   font-size: 2em;

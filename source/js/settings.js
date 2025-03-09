@@ -1,57 +1,402 @@
-//channel name does not have to match, but it makes the most sense if it does
-//for the hook, do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
 const discordChannels = [
-	{title: `#channel`, hook: `hook`},
+	{title: `#comm-tags`, hook: `1271222320991572092/kwuhkboyP53-YNhS8gl6hDXg9Vn1wsT8Ze2D6i_B9Ud8N4Br3g29gVkw4-VhkRes1FSZ`},
+	{title: `#thread-tags`, hook: `1271222190804697118/6naqTrj3fJxo9T81vEfa1oErwXswUbnUKIT37Ae37Kzu52khA69CVvcPzpMhoQ7ewnRn`},
+	{title: `#open-comms`, hook: `1271222533085200486/8vdCv6z9xa-CqOlIHNOPM18K4NkGzVssqfdugRG8VNKBzYDX9zmpML89qAJbLeTt6sPZ`},
+	{title: `#open-threads`, hook: `1271222406140268574/hlTvUhenV3StLFL_GZjjO11BZyImPMP7iKptRVxiSH2rAa32XqIpFZIRtlIBJZM_212o`},
 ];
 
-//member alias and acquire the id by right clicking their name in discord and "copy user id"
-//if you don't see that option in the menu, you need to turn on developer mode
 const discordTags = [
-    {alias: `Name`, id: `ID`},
+    {alias: `Amalthea`, id: `1017239933422927883`},
+    {alias: `Ampersand`, id: `475081166567899137`},
+    {alias: `Angel`, id: `1222372721900392501`},
+    {alias: `Bodhi`, id: `532688640929824772`},
+    {alias: `Corvus`, id: `489491814630293504`},
+    {alias: `Dashin`, id: `177638202755121152`},
+    {alias: `Hermes`, id: `830491813407883306`},
+    {alias: `Hme`, id: `969405372697825330`},
+    {alias: `Hound`, id: `213456059736653826`},
+    {alias: `Iris`, id: `691131810213527592`},
+    {alias: `Lux`, id: `253627726886469642`},
+    {alias: `Noon`, id: `326875266741960724`},
+    {alias: `Silence`, id: `224926781243785218`},
+    {alias: `Spyder`, id: `189583247141765120`},
+    {alias: `Yoshi`, id: `933400611234402315`},
 ];
 
-//role name doesn't have to match, can be contextualized
-//to acquire the id, go to server settings > roles > the three dot menu > copy role id
-//it will not copy with the ampersand but the ampersand is required. ensure all ids start with an ampersand for a role tag
 const discordRoles = [
-    {title: `Open`, id: `&ID`},
+    {title: `Open`, id: `&1239530723178840125`},
 ];
 
-//the ampersand does not need to be present for the staffDiscordRole; this is for character sorting, not the tagging system
-const staffDiscordRole = `ID`;
+const staffDiscordRole = `1239412954848432158`;
 
-//this is for displaying the avatars for the visual account switcher and the member roster.
-//just make sure the sitename matches and, if it does and the images still don't show, try changes 'uploads2' to 'uploads', sometimes jcink is weird
 const uploads = `uploads2`;
-const siteName = `sitename`;
+const siteName = `wherethehellis`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
 const defaultSquare = 'https://picsum.photos/100';
 const checkboxChecked = `<i class="fa-solid fa-check"></i>`;
 
-//this is for character sorting, highlighting the edge of the sorting related messages
-//the group name should by lowercase and should match what would appear in the Group column of the google sheet
-//the number array is the RGB values, so rgb(0,0,0) would be equivalent to [0,0,0] in this instance
 const colors = {
-    'group name': [0, 0, 0],
+    'tiger': [153, 117, 78],
+    'wolf': [88, 92, 98],
+    'rabbit': [189, 91, 132],
+    'adder': [103, 117, 75],
+    'eagle': [119, 157, 164],
+    'otter': [162, 147, 118],
+    'crow': [95, 89, 117],
+    'deer': [149, 155, 127],
+    'unicorn': [168, 146, 159],
+    'phoenix': [189, 141, 79],
+    'dragon': [128, 43, 43],
+    'selkie': [38, 104, 117],
+    'grizzly': [91, 73, 68],
+    'hyena': [125, 85, 92],
+    'rat': [69, 77, 70],
+    'sloth': [96, 68, 90],
+    'griffin': [66, 86, 106],
+    'kelpie': [69, 87, 69],
+    'basilisk': [137, 125, 121],
+    'lion': [214, 185, 129],
+    'turtle': [163, 190, 109],
+    'horse': [61, 116, 93],
+    'pegasus': [71, 151, 165],
+    'fox': [120, 78, 96],
 }
 
-//if you have items in the shop that you want to hide the "use" button when the item is in inventory, then add the _exact_ item name here in lowercase
-const unusable = ['premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
+const bbcode = [
+    {
+        groupName: "Text",
+        extraClasses: "fullWidth",
+        tags: [
+            {
+                tag: "h2",
+                type: "simple",
+                displayName: "H2"
+            },
+            {
+                tag: "h3",
+                type: "simple",
+                displayName: "H3"
+            },
+            {
+                tag: "h4",
+                type: "simple",
+                displayName: "H4"
+            },
+            {
+                tag: "h5",
+                type: "simple",
+                displayName: "H5"
+            },
+            {
+                tag: "h6",
+                type: "simple",
+                displayName: "H6"
+            },
+            {
+                tag: "h7",
+                type: "simple",
+                displayName: "H7"
+            },
+            {
+                tag: "h8",
+                type: "simple",
+                displayName: "H8"
+            },
+            {
+                tag: "b",
+                type: "simple",
+                displayName: "Bold"
+            },
+            {
+                tag: "i",
+                type: "simple",
+                displayName: "Italic"
+            },
+            {
+                tag: "u",
+                type: "simple",
+                displayName: "Underline"
+            },
+            {
+                tag: "s",
+                type: "simple",
+                displayName: "Strikethrough"
+            },
+            {
+                tag: "translate",
+                desc: "Text that can be toggled between translations",
+                type: "complex",
+                displayName: "Translate",
+                complexIndicator: "english translation"
+            },
+            {
+                tag: "spoiler",
+                desc: "Text hidden behind a spoiler",
+                type: "simple",
+                displayName: "Spoiler"
+            }
+        ]
+    },
+    {
+        groupName: "Posting",
+        tags: [
+            {
+                tag: "post",
+                desc: "Use a basic post template; option 1",
+                type: "complex",
+                displayName: "Post 1 Wrap",
+                complexIndicator: "theme number"
+            },
+            {
+                tag: "post2",
+                desc: "Use a basic post template; option 2",
+                type: "simple",
+                displayName: "Post 2 Wrap"
+            },
+            {
+                tag: "image",
+                desc: "Add within a post wrap to have a post template with an image",
+                type: "complex",
+                displayName: "Post Image",
+                complexIndicator: "url"
+            },
+            {
+                tag: "gallery",
+                desc: "Wrap in a basic post style.",
+                type: "complex",
+                displayName: "Gallery Wrap",
+                complexIndicator: "image ratio value"
+            },
+            {
+                tag: "galleryimage",
+                desc: "Add within a gallery wrap to add an image to the carousel",
+                type: "simple",
+                displayName: "Gallery Image"
+            }
+        ]
+    },
+    {
+        groupName: "Comms",
+        tags: [
+            {
+                tag: "comm",
+                desc: "Use a comm template; place messages, actions, and contacts inside the wrap",
+                type: "simple",
+                displayName: "Comm 1 Wrap"
+            },
+            {
+                tag: "msg",
+                type: "simple",
+                displayName: "Comm 1 Message"
+            },
+            {
+                tag: "action",
+                type: "simple",
+                displayName: "Comm 1 Action"
+            },
+            {
+                tag: "contact",
+                type: "complex",
+                displayName: "Comm 1 Contact",
+                complexIndicator: "image url"
+            }
+        ]
+    },
+    {
+        groupName: "Blocks",
+        tags: [
+            {
+                tag: "tw",
+                desc: "Wrap selected text in a trigger warning style that will pass into the discord tagger.",
+                type: "simple",
+                displayName: "Triggers"
+            },
+            {
+                tag: "note",
+                desc: "Wrap selected text in a note style that will pass into the discord tagger.",
+                type: "simple",
+                displayName: "Note"
+            },
+            {
+                tag: "blockquote",
+                type: "simple",
+                displayName: "Blockquote"
+            }
+        ]
+    },
+    {
+        groupName: "Groups",
+        extraClasses: 'fullWidth',
+        tags: [
+            {
+                tag: "Adder",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Basilisk",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Crow",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Deer",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Dragon",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Eagle",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Fox",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Griffin",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Grizzly",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Horse",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Hyena",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Kelpie",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Lion",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Otter",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Pegasus",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Phoenix",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Rabbit",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Rat",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Selkie",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Sloth",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Tiger",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Turtle",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Unicorn",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "Wolf",
+                desc: "",
+                type: "simple"
+            },
+        ]
+    },
+    {
+        groupName: "Staff",
+        extraClasses: "fullWidth staffOnly",
+        tags: [
+            {
+                tag: "luxpost",
+                type: "simple"
+            },
+            {
+                tag: "luxpost2",
+                type: "complex",
+                complexIndicator: "quote"
+            },
+            {
+                tag: "luxclass",
+                type: "complex",
+                complexIndicator: "class"
+            },
+            {
+                tag: "luxcomm",
+                type: "complex",
+                complexIndicator: "contact name"
+            },
+            {
+                tag: "spypost",
+                type: "complex",
+                complexIndicator: "image url"
+            },
+            {
+                tag: "spysong",
+                type: "simple"
+            }
+        ]
+    }
+];
 
-//set your groups to manage removals of ooc account only elements (.oocOnly), character only elements (.charOnly), and staff only elements (.staffOnly)
+const unusable = ['premium species', 'premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
+
 const staffGroups = ['4'];
 const oocGroups = [...staffGroups, '6'];
 const optGroups = ['1', '3', '5'];
 
-//templateWraps should be the class or tag name (if unique and not div) in a comma separated list
-//this will apply the .no-template class if these are NOT present to allow additional styling, padding, etc as a built-in template
-const templateWraps = `tag-wrap`;
+const templateWraps = `tag-wrap, tag-comm, tag-wrap2, tag-comm2`;
 
-//want markdown applied? add the class or tag name here in the comma separated list
-const markdownSafe = `.markdown, .postcolor.no-template, .postcolor blockquote, .postcolor [data-markdown], .postcolor tag-content, .postcolor tag-msg, .postcolor tag-action`;
+const markdownSafe = `tag-tab[data-key="#basics"] .scroll, tag-tab[data-key="#powers"] .scroll, tag-tab[data-key="#details"] .scroll, tag-tab[data-key="#plotting"] .scroll, .postcolor.no-template, .postcolor blockquote, .postcolor tag-content, .postcolor tag-block, .postcolor tag-event, .postcolor tag-msg, .postcolor tag-action, .member--bottom .scroll`;
 
 /** auto-tracker code by FizzyElf - https://fizzyelf.jcink.net **/
-//these are the category and forum ids for a profile-based thread autotracker by fizzyelf
 trackerParams = {
     //include
     includeCategoryIds: ['2', '3', '4', '5', '6', '7'],
@@ -75,14 +420,12 @@ trackerParams = {
     indicators: ['fa-solid fa-check', 'fa-solid fa-star'], 
 }
 
-//should be plain numbers in a comma separated list, do not wrap in quotes
 const fullWidthFields = [8, 13, 14, 24, 25, 26, 29, 30, 37, 38, 44, 67, 68, 69, 70, 45, 46, 47, 56, 42, 43, 65, 66]; //for ucp that has been gridded, sets the field to span the full grid width
 const thirdWidthFields = [5, 6, 7, 17, 18, 19, 39, 40, 41]; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
 const setHeightFields = [15, 16, 28]; //for when you want a text area field to allow some coding, apostrophes, etc but want it to look like a standard text input
 const tallTextFields = [44, 67, 69, 47];
 const alignEndFields = [6, 7];
 
-//toggle fields: account type, image type
 const toggleFields = createFieldArray([1, 38, 56], true);
 const characterFields = createFieldArray([14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 56, 67, 68, 69, 70]); //character only fields
 
@@ -94,11 +437,10 @@ const mosaicOnly = createFieldArray([59, 60]);
 const notDefault = createFieldArray([61, 62]);
 const largeOnly = createFieldArray([63, 64]);
 
-const avatarImageFields = createFieldArray([54, 55]); //which images are avatars, not aesthetics?
+const avatarImageFields = createFieldArray([54, 55]); 
 
 const aestheticImageFields = [...allLayouts, ...columnsOnly, ...mosaicOnly, ...notDefault, ...largeOnly];
 
-//shouldn't need to change this
 const aestheticFields = {
     'single': {
         showFields: allLayouts,
@@ -118,7 +460,6 @@ const aestheticFields = {
     }
 };
 
-//for member info autofil from google sheet
 const autofillFieldMapping = [
 	{
 		'jcink': 2,
@@ -177,19 +518,11 @@ const autofillFieldMapping = [
 	}
 ];
 
-//sets up a title and a description for each section of the ucp
-//insertBefore is the field number as a number, not a string
-//it will put the header and description before that input
-//you can use html in the description, it'll load right, allowing full customization
-//allHeaders are the headers ALWAYS visible
-//charHeaders are the headers only available for characters
-
 const allHeaders = [
 {
 sectionTitle: `Player`,
 insertBefore: 1,
 sectionDescription: `<p>This section is for information about <i>you</i>, the writer! This should be the same as the details on your OOC account for consistency's sake. If something changes, please make sure to update the change on <i>all</i> your accounts for that reason.</p><p>Already have your info on our claims sheet? Auto-fill your data with a click of a button! (Hint: You can use this to update your data based on the claims sheet too!)</p><div class="macro--button" onClick="autofillMemberData(this)" data-parent="1" data-account="3">Auto-fill Data</div>`,
-
 },
 {
 sectionTitle: `Account Images`,
@@ -314,25 +647,19 @@ sectionDescription: `<div class="sample"></div><div class="text"><p>These fields
 },
 ];
 
-//this is for google claims implementation using my standard set up.
-//that means face claim, business claim with integrated jobs, face reserves, subplots with integrated claims and reserves, and discord webhooks for all of this
-//forms are in the source/js/templates/forms directory
-//the blank sheet can be duplicated from: https://docs.google.com/spreadsheets/d/1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM/edit?usp=sharing
-//sheet must be set to viewable with link, then put the id below
-//apps script must run through setup function, then deploy as a webapp, then put the deploy id below
-const sheetID = '1buBqX-7xF2PTnk4KPGZkJplEGdsKv0vzT6n3kMhwvaY';
-const deployID = 'AKfycbxw_tC4jLP8gn66FtZdbU9SAli1RbMMhzstiN_QBvYAxSj5iTg7kvMzZL9p72d594uWjg';
+//THIS IS FOR A WORKING COPY; CHANGE FOR LAUNCH
+const sheetID = '1tZ1SAZejKEcF-tMpVqAYqzx-fvYkcwg8gf8NOZFQYBU';
+const deployID = 'AKfycbxMkD1uX58Qp_BuITTfW8aQrkNGyQTPV_1PbR_Lu60uaxqlDDofVQCKzrqokZBY8Azfeg';
 
-//these are the discord webhooks. do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
-const reserveLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const businessLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const claimLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const modLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const staffLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const sortLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const announceLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+//UPDATE ANNOUNCE AND SORT LOGS; the rest are already private so are set up accurately
+const reserveLogs = `1241133077795704872/_AQMeJpMJJIgUXZ_RnfamVdNW19egMkSKrVMl9MmCmZv5UsHpmagJQDIutLmLdNld_Jm`;
+const businessLogs = `1241133925640831006/oc1QdrqDYKhBtTMI9kfQ-3eT0jm1mYsERjTXMkC_B19podkxk-vl2WtjhIfEnxji7Gcb`;
+const claimLogs = `1241133855059218544/z6I5PWzpY0ZqklX3wjBY9fOo-_-vh3nAKe5Kxf1SkDhz70-4pS0aMTp-RF_-Zo12bG7L`;
+const modLogs = `1241133990518460436/Y3nr7TlizQqWWPtO2C_4LDR9Yw6acDpCLyGwzQSRdUkw34CnoLaov-XsXNDVHOlWDzrf`;
+const staffLogs = `1241512727646830664/M4l0GXpNaSLoj2WCRsPf-b1JxNOfjuMJrBahBHLqQ1p-3lxhrD86egV5mtTjLYg0l3PM`;
+const sortLogs = `1346567978061271080/hQ1hYdveaAPY4WihJqc-aaCD28kz4g5Nuf18hKBK4reB42k2hQglHGF_2lI9MgPCkVTq`;
+const announceLogs = `1346567978061271080/hQ1hYdveaAPY4WihJqc-aaCD28kz4g5Nuf18hKBK4reB42k2hQglHGF_2lI9MgPCkVTq`;
 
-//if using the base set up, these won't need to change
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
 const faceReserves = `https://opensheet.elk.sh/${sheetID}/FaceReserves`;
 const plotReserves = `https://opensheet.elk.sh/${sheetID}/PlotReserves`;
@@ -340,10 +667,11 @@ const members = `https://opensheet.elk.sh/${sheetID}/Members`;
 const plots = `https://opensheet.elk.sh/${sheetID}/Plots`;
 const businesses = `https://opensheet.elk.sh/${sheetID}/Businesses`;
 
-//default reserve days count
+//remove this on launch
+const subplotReserves = `https://opensheet.elk.sh/${sheetID}/PlotReserves`;
+
 const defaultReserve = 14;
 
-//default form error and success messages
 const successMessage = `<blockquote class="fullWidth">Submission successful!</blockquote>
 <button onclick="reloadForm(this)" type="button" class="fullWidth submit">Back to form</button>`;
 const activeResExists = `<blockquote class="fullWidth warning">Uh-oh! That's already reserved. Maybe we can help you find another option - reach out in the Discord for help!</blockquote>`;
@@ -381,23 +709,29 @@ const jcinkUCPLinks = `<div class="accordion--trigger" data-category="account"><
             <a href="?act=UserCP&CODE=02">Emails</a>
         </div>`;
 
-const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal"><b>Personal</b></div>
-        <div class="accordion--content" data-category="personal">
-            <a href="?act=store&CODE=inventory">Inventory</a>
-            <a href="?act=store&code=donate_money">Send Money</a>
-            <a href="?act=store&code=donate_item">Send Item</a>
-        </div>
-        <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
-        <div class="accordion--content" data-category="shop">
-            <a href="?act=store">Home</a>
-            <a href="?act=store&code=shop&category=000">Category</a>
-        </div>
-        <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
-        <div class="accordion--content staffOnly" data-category="staff">
-            <a href="?act=store&code=fine" class="staffOnly">Fine</a>
-            <a href="?act=store&code=edit_points" class="staffOnly">Edit Points</a>
-            <a href="?act=store&code=edit_inventory" class="staffOnly">Edit Inventory</a>
-        </div>`;
+        const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal"><b>Personal</b></div>
+                <div class="accordion--content" data-category="personal">
+                    <a href="?act=store&CODE=inventory">Inventory</a>
+                    <a href="?act=store&code=donate_money">Send Money</a>
+                    <a href="?act=store&code=donate_item">Send Item</a>
+                </div>
+                <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
+                <div class="accordion--content" data-category="shop">
+                    <a href="?act=store">Home</a>
+                    <a href="?act=store&code=shop&category=2">Action Badges</a>
+                    <a href="?act=store&code=shop&category=1">Appreciation Badges</a>
+                    <a href="?act=store&code=shop&category=3">Personality Badges</a>
+                    <a href="?act=store&code=shop&category=4">Player Badges</a>
+                    <a href="?act=store&code=shop&category=6">Premium Features</a>
+                    <a href="?act=store&code=shop&category=5">Relationship Badges</a>
+                    <a href="?act=store&code=shop&category=7">Zodiac Badges</a>
+                </div>
+                <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
+                <div class="accordion--content staffOnly" data-category="staff">
+                    <a href="?act=store&code=fine" class="staffOnly">Fine</a>
+                    <a href="?act=store&code=edit_points" class="staffOnly">Edit Points</a>
+                    <a href="?act=store&code=edit_inventory" class="staffOnly">Edit Inventory</a>
+                </div>`;
 
 const jcinkModCPLinks = `<div class="accordion--trigger" data-category="forumsposts"><b>Forums & Posts</b></div>
         <div class="accordion--content" data-category="forumsposts">

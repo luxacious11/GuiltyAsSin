@@ -5,6 +5,8 @@
   margin-top: calc(1.5 * var(--space-xl)); }
   .category:first-of-type {
     margin-top: 0; }
+  .category:last-of-type {
+    margin-bottom: var(--space-lg); }
   .category h2 {
     text-transform: uppercase;
     font-size: var(--size-xs);

@@ -1,4 +1,5 @@
 <form id="form-edit-member" data-type="grid">
+    <h2 class="fullWidth" data-box-align="center">Edit Member Info</h2>
     <label>
         <b>OOC Profile</b>
         <span><input type="text" id="parentid" placeholder="URL or ID" required=""></span>
@@ -39,32 +40,52 @@
             <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
             <strong>Update Ratings</strong>
         </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="tense">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Writing Tense</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="pov">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Writing POV</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="responseTime">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Response Time</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="frequency">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Posting Frequency</strong>
+        </label>
     </div>
-    <label class="hidden ifAlias">
+    <label class="hidden form-section ifAlias">
         <b>Alias</b>
         <span><input type="text" id="alias" placeholder="Alias"></span>
     </label>
-    <label class="hidden ifPronouns">
+    <label class="hidden form-section ifPronouns">
         <b>Pronouns</b>
         <span><input type="text" id="pronouns" placeholder="Pronouns"></span>
     </label>
-    <label class="hidden ifAge">
+    <label class="hidden form-section ifAge">
         <b>Age</b>
         <span><input type="number" id="age" min="21"></span>
     </label>
-    <label class="hidden ifTimezone">
+    <label class="hidden form-section ifTimezone">
         <b>Timezone</b>
         <span><input type="text" id="timezone" placeholder="GMT-based please!"></span>
     </label>
-    <label class="hidden ifAbout">
+    <label class="hidden form-section ifAbout">
         <b>About</b>
         <span><textarea id="about" placeholder="Tell us about yourself!"></textarea></span>
     </label>
-    <label class="hidden ifTriggers">
+    <label class="hidden form-section ifTriggers">
         <b>Triggers</b>
         <span><textarea id="triggers" placeholder="If you have any triggers, please list them."></textarea></span>
     </label>
-    <div class="hidden ifRatings" data-type="grid" data-columns="3">
+    <div class="hidden form-section ifRatings" data-type="grid" data-columns="3">
         <label>
             <b>Mature Language</b>
             <span>
@@ -102,5 +123,55 @@
             </span>
         </label>
     </div>
+    <label class="hidden form-section ifTense">
+        <b>Writing Tense</b>
+            <span>
+                <select id="tense">
+                    <option value="">(select)</option>
+                    <option value="past">Past Tense</option>
+                    <option value="present">Present Tense</option>
+                    <option value="future">Future Tense</option>
+                </select>
+            </span>
+    </label>
+    <label class="hidden form-section ifPOV">
+        <b>Writing POV</b>
+            <span>
+                <select id="pov">
+                    <option value="">(select)</option>
+                    <option value="third">Third Person</option>
+                    <option value="second">Second Person</option>
+                    <option value="first">First Person</option>
+                </select>
+            </span>
+    </label>
+    <label class="hidden form-section ifResponseTime">
+        <b>Typical Response Time</b>
+            <span>
+                <select id="responseTime">
+                    <option value="">(select)</option>
+                    <option value="daily">Daily</option>
+                    <option value="frequent">More than once a week</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Every 1 to 2 weeks</option>
+                    <option value="triweekly">Every 2 to 3 weeks</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </span>
+    </label>
+    <label class="hidden form-section ifFrequency">
+        <b>Preferred Posting Frequency</b>
+            <span>
+                <select id="frequency">
+                    <option value="">(select)</option>
+                    <option value="daily">Daily</option>
+                    <option value="frequent">More than once a week</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Every 1 to 2 weeks</option>
+                    <option value="triweekly">Every 2 to 3 weeks</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </span>
+    </label>
     <button type="submit" id="submit" class="fullWidth">Submit</button>
 </form>

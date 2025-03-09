@@ -32,10 +32,12 @@
   --bg-tertiary-mid: rgba(40, 40, 40, 0.5);
   --bg-tertiary-high: rgba(40, 40, 40, 0.85);
   --bg-quaternary: rgb(50, 50, 50);
+  --bg-quintenary: rgb(75, 75, 75);
   --text-on-accent: var(--text-secondary);
   --text-primary: rgb(200, 200, 200);
   --text-secondary: rgb(225, 225, 225);
   --border-primary: 1px solid rgb(60, 60, 60);
+  --border-primary-color: rgb(60, 60, 60);
   --size-alert-max-height: 80px;
   --size-menu-height: 30px;
   --size-menu-width: 50px;
@@ -83,9 +85,11 @@ body.light {
   --bg-tertiary-mid: rgba(225, 225, 225, 0.5);
   --bg-tertiary-high: rgba(225, 225, 225, 0.85);
   --bg-quaternary: rgb(235, 235, 235);
+  --bg-quintenary: rgb(245, 245, 245);
   --text-primary: rgb(80, 80, 80);
   --text-secondary: rgb(24, 24, 24);
-  --border-primary: 1px solid rgb(195, 195, 195); }
+  --border-primary: 1px solid rgb(195, 195, 195);
+  --border-primary-color: rgb(195, 195, 195); }
   body.light.g-26,
   body.light .g-26, body.light.mgroup-26,
   body.light .mgroup-26,
@@ -107,6 +111,8 @@ body [class*="mgroup-"] {
   --bg-accent-high: var(--accent-50);
   --text-accent: var(--accent);
   --border-accent: 1px solid var(--accent);
+  --border-accent-dotted: 1px dotted var(--accent);
+  --border-accent-dashed: 1px dashed var(--accent);
   --border-accent-transparent: 1px solid rgba(var(--rgb), 0.5); }
 
 body.g-1,

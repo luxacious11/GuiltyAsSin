@@ -8,11 +8,12 @@
   border-radius: var(--radius-standard);
   padding: var(--space-sm);
   display: block;
-  width: calc(100% - (2 * var(--space-lg)));
+  width: calc(100% - (2 * var(--space-md)));
   box-shadow: 0 0 5px var(--bg-primary-high); }
   @media (min-width: 481px) {
     #SF main > table,
     #ST main > table {
+      width: calc(100% - (2 * var(--space-lg)));
       margin: 0 var(--space-lg); } }
   #SF main > table:first-of-type,
   #ST main > table:first-of-type {

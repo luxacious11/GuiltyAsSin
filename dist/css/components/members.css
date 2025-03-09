@@ -159,6 +159,10 @@
   height: 500px;
   display: flex;
   flex-direction: column; }
+  body.lgFont .member {
+    height: 550px; }
+  body.xlFont .member {
+    height: 600px; }
   .member--topper {
     flex-grow: 1;
     display: grid;

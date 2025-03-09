@@ -82,7 +82,6 @@ function toggleMenu(e) {
             document.querySelector(`.nav--popout[data-menu="${e.dataset.menu}"]`).classList.add('is-open');
             document.querySelector('.invisibleEl').classList.add('menu-open');
             if (e.dataset.menu === 'alerts') {
-                /*custom load_alerts() - will throw errors locally so uncomment for live
                 $.get( "?recent_alerts=1", function( data ) {
                     $( "#recent-alerts-data" ).html( data );
                 }).done(function() {
@@ -92,17 +91,7 @@ function toggleMenu(e) {
                             alert.innerHTML = alert.innerHTML.split(' New member registered: ').join('');
                         }
                     });
-                });*/
-                //remove this next bit on live
-                    document.querySelectorAll('.recent-alerts-msg').forEach(alert => {
-                        if(alert.querySelectorAll('a').length === 1) {
-                            alert.classList.add('reg-alert');
-                            alert.innerHTML = alert.innerHTML.split(' New member registered: ').join('');
-                        } else {
-                            alert.innerHTML = alert.innerHTML.split(' tagged you in ').join('').split(' in "').join('').split('"  ').join('');
-                        }
-                    });
-                //stop removal here
+                });
             }
         } else {
             document.querySelector('.invisibleEl').classList.remove('menu-open');
@@ -200,7 +189,6 @@ function initAccordionActive() {
 
     let activeMenu = 'messages';
     pageClasses.forEach(pageClass => {
-        console.log(pageClass);
         if(pageType === 'Msg') {
             activeMenu = 'messages';
         } else if(pageType === 'UserCP' && trackingCodes.includes(pageClass)) {
@@ -443,7 +431,6 @@ function initForums() {
 
     //manual links
     document.querySelectorAll('.forum .forum--manual-links').forEach(linkSet => {
-        console.log(linkSet);
         //subforums exist
         let subforumEl = linkSet.closest('.forum').querySelector('.subforums');
         if(subforumEl) {
@@ -463,7 +450,7 @@ function initForums() {
         }
     });
     document.querySelectorAll('.forum--links .scroll').forEach(linkSet => {
-        if(linkSet.innerHTML === '') {
+        if(linkSet.innerHTML === '' || (linkSet.querySelector('.subforums') && linkSet.querySelector('.subforums').innerHTML === '')) {
             linkSet.remove();
         }
     })
@@ -535,7 +522,7 @@ function filterValue(e) {
         e.closest('.scroll').querySelectorAll('.accordion--trigger, .accordion--content').forEach(item => item.classList.remove('is-active'));
     }
 }
-function initWebpages() {
+function initWebpages(initMap = false) {
     //remove staff for non-staff
     let isStaff = false;
     staffGroups.forEach(staffGroup => {
@@ -554,6 +541,22 @@ function initWebpages() {
 
     //accordions
     initAccordion();
+    initMarkdown();
+    
+    if(initMap) {
+	let regionDescription = document.querySelector('.region-desc');
+	let regions = document.querySelectorAll('.region');
+	regions.forEach(region => {
+	    region.addEventListener('mouseover', e => {
+	        let location = e.currentTarget.dataset.hover;
+	        regionDescription.classList.add('active');
+	        regionDescription.innerText = location;
+	    });
+	    region.addEventListener('mouseout', () => {
+	        regionDescription.classList.remove('active');
+	    });
+	});
+    }
 
     if(document.querySelector('[data-expiry]')) {
         setInterval(() => {
@@ -581,14 +584,17 @@ function appendSearchQuery(param, value) {
 
 /****** Posting ******/
 function translationSwitch(e) {
-        let current = e.innerText;
-        let original = e.dataset.original;
-        let translation = e.dataset.result;
-        if(current === original) {
-            e.innerText = translation;
-        } else {
-            e.innerText = original;
-        }
+    if(!e.dataset.result) {
+        e.setAttribute('data-result', e.innerText);
+    }
+    let current = e.innerText;
+    let original = e.dataset.original;
+    let translation = e.dataset.result;
+    if(current === original) {
+        e.innerText = translation;
+    } else {
+        e.innerText = original;
+    }
 }
 function highlightCode() {
     let clipcodeQuick = new Clipboard('.copyQuick', {
@@ -678,6 +684,8 @@ function formatMarkdown(str, identifier, opening, closing) {
             } else {
                 return `${opening}${value}${closing}`;
             }
+        } else if(str.split(identifier).length !== index && value === '') {
+            return `${identifier}${identifier}`;
         }
       
     }).join('');
@@ -805,7 +813,6 @@ function initDiscordTagging(location) {
 	    let message = ``;
         var includes = [...new Set(Array.from(document.querySelectorAll('.post')).map(item => item.dataset.fullName))];
         var characterList = ``;
-        console.log(document.querySelectorAll('.post'));
         includes.forEach((character, i) => {
             if(includes.length > 2 && i < includes.length && i !== 0) {
                 characterList += `, `;
@@ -1093,7 +1100,6 @@ function initPostContentAlter() {
         document.querySelectorAll(`.post.type-Member.g-${group} .charOnly`).forEach(item => item.remove());
     });
     document.querySelectorAll('.post').forEach(post => {
-        console.log(post.classList);
         let optOOC = false, oocAlways = false;
         optGroups.forEach(group => {
             if(post.classList.contains(`g-${group}`)) {
@@ -1106,7 +1112,6 @@ function initPostContentAlter() {
         });
         oocGroups.forEach(group => {
             if(post.classList.contains(`g-${group}`)) {
-                console.log('contains ooc groups');
                 oocAlways = true;
             }
         });
@@ -1119,6 +1124,7 @@ function initPostContentAlter() {
 /****** Members List ******/
 function initMembers() {
     initAccordion();
+    initMarkdown();
 }
 function populatePage(array) {
     let html = ``;
@@ -1601,8 +1607,6 @@ function carouselArrowAct(index, bullets, slides, wrapper, progressBar) {
     }
 
     if(progressBar) {
-        console.log(index + 1);
-        console.log(slides.length);
         progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
     }
 }
@@ -1678,7 +1682,6 @@ function autofillMemberData(e) {
         .then((data) => {
             const existing = data.filter(item => item.AccountID === parentId)[0];
 
-            console.log(parentId);
             if(existing) {
                 autofillFieldMapping.forEach(field => {
                     let fieldInput = document.querySelector(`#field_${field.jcink}_input`);
@@ -1921,6 +1924,7 @@ function removeRow(e) {
 }
 function formatSectionFields() {
     return `<div class="section-wrap row" data-type="grid">
+        <div class="h5 fullWidth">Section Information</div>
         <label class="section-title">
             <b>Section Title</b>
             <span><input type="text" placeholder="Title" /></span>
@@ -1930,8 +1934,8 @@ function formatSectionFields() {
             <span><textarea placeholder="Overview"></textarea></span>
         </label>
         <label class="adjustable">
-        <b>Roles</b>
-        <div class="rows" data-type="grid" data-gap="xs"></div>
+        <div class="h5">Section Roles</div>
+        <div class="rows" data-type="grid"></div>
         <div class="multi-buttons" data-row-type="plotroles">
             <button type="button" onclick="addRow(this)">+ Add Role</button>
             <button type="button" onclick="removeRow(this)">- Remove Role</button>
@@ -1940,7 +1944,7 @@ function formatSectionFields() {
     </div>`;
 }
 function formatRoleFields() {
-    return `<div class="section-role row" data-type="grid" data-columns="2">
+    return `<div class="section-role row" data-type="grid" data-columns="2" data-gap="smsquare">
         <label class="role-title">
             <b>Role Title</b>
             <span><input type="text" placeholder="Role Name" /></span>
@@ -2268,6 +2272,9 @@ function setMultiplePlotSwitchers(formID, data, wrapClass) {
     });
 }
 function setBusinessList(fieldClass, data, segmented = false) {
+    data.sort((a, b) => {
+        return a.Employer > b.Employer;
+    });
     document.querySelectorAll(fieldClass).forEach(el => {
         let html = `<option value="">(select)</option>`;
         if(segmented) {

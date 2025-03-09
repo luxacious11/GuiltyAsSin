@@ -234,6 +234,54 @@ function editMember(form, data) {
                 initialMessage += `**Ratings:** ${original.Language}-${original.Sex}-${original.Violence}`;
                 changeMessage += `**Ratings:** ${existing.Language}-${existing.Sex}-${existing.Violence}`;
             }
+    
+            if(data.selectedChanges.includes('tense')) {
+                existing.Tense = data.Tense;
+                if(initialMessage !== '') {
+                    initialMessage += `\n`;
+                    changeMessage += `\n`;
+                }
+                initialMessage += `**Writing Tense:**
+                > ${original.Tense}\n`;
+                changeMessage += `**Writing Tense:**
+                > ${existing.Tense}\n`;
+            }
+    
+            if(data.selectedChanges.includes('pov')) {
+                existing.POV = data.POV;
+                if(initialMessage !== '') {
+                    initialMessage += `\n`;
+                    changeMessage += `\n`;
+                }
+                initialMessage += `**POV:**
+                > ${original.POV}\n`;
+                changeMessage += `**POV:**
+                > ${existing.POV}\n`;
+            }
+    
+            if(data.selectedChanges.includes('responseTime')) {
+                existing.ResponseTime = data.ResponseTime;
+                if(initialMessage !== '') {
+                    initialMessage += `\n`;
+                    changeMessage += `\n`;
+                }
+                initialMessage += `**Response Time:**
+                > ${original.ResponseTime}\n`;
+                changeMessage += `**Response Time:**
+                > ${existing.ResponseTime}\n`;
+            }
+    
+            if(data.selectedChanges.includes('frequency')) {
+                existing.Frequency = data.Frequency;
+                if(initialMessage !== '') {
+                    initialMessage += `\n`;
+                    changeMessage += `\n`;
+                }
+                initialMessage += `**Frequency:**
+                > ${original.Frequency}\n`;
+                changeMessage += `**Frequency:**
+                > ${existing.Frequency}\n`;
+            }
 
             let staffDiscord = {
                 title: `Member Claims Editted: ${capitalize(original.Member, [' ', '-'])}`,

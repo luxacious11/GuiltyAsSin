@@ -1,4 +1,5 @@
 <form id="form-add-business" data-type="grid" data-columns="2">
+    <h2 class="fullWidth" data-box-align="center">Register a Business</h2>
     <label>
         <b>Alias</b>
         <span><input type="text" id="alias" placeholder="Alias" required=""></span>
@@ -15,22 +16,55 @@
         <b>Category</b>
         <span><select id="category" required>
             <option value="">(select)</option>
-            <option value="edu">Education</option>
-            <option value="entertain">Entertainment</option>
-            <option value="food">Food & Drink</option>
-            <option value="gov">Governmental</option>
-            <option value="shop">Retail</option>
-            <option value="serve">Services</option>
-            <option value="misc">Miscellaneous</option>
+            <option value="education">Education</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="food-drink">Food & Drink</option>
+            <option value="government">Government</option>
+            <option value="retail">Retail</option>
+            <option value="services">Services</option>
+            <option value="sciencetechnology">Science & Tech</option>
+            <option value="miscellaneous">Miscellaneous</option>
         </select></span>
     </label>
     <label>
         <b>Location</b>
         <span><select id="location" required>
             <option value="">(select)</option>
-            <option value="FORUM ID">Forum Name</option>
-            <option value="FORUM ID">Forum Name</option>
-            <option value="FORUM ID">Forum Name</option>
+            <optgroup label="Coastline">
+                <option value="22">Coastline Area</option>
+                <option value="27">The Dockyards</option>
+                <option value="28">Carnivale</option>
+                <option value="29">The Graveyard</option>
+            </optgroup>
+            <optgroup label="Old Town">
+                <option value="23">Old Town Area</option>
+                <option value="30">St. Anthony Village</option>
+                <option value="31">Westfall</option>
+                <option value="32">Logan Creek</option>
+            </optgroup>
+            <optgroup label="Central Limbo">
+                <option value="24">Central Limbo Area</option>
+                <option value="33">Oakland Terrace</option>
+                <option value="34">Holland Heights</option>
+                <option value="35">Brentwood Ridge</option>
+            </optgroup>
+            <optgroup label="Downtown">
+                <option value="25">Downtown Area</option>
+                <option value="36">Bay Road</option>
+                <option value="37">Essex Plaza</option>
+                <option value="38">Pacific Market</option>
+            </optgroup>
+            <optgroup label="Outskirts">
+                <option value="26">Outskirts Area</option>
+                <option value="39">Castlepeak Gated Community</option>
+                <option value="40">Hawthorne Hills</option>
+                <option value="41">The Pitch</option>
+            </optgroup>
+            <optgroup label="Outside Limbo">
+                <option value="42">North</option>
+                <option value="42">East</option>
+                <option value="42">South</option>
+            </optgroup>
         </select></span>
     </label>
     <label>
@@ -61,7 +95,7 @@
     </label>
     <label class="fullWidth adjustable ifSetHours hidden">
         <b>Hours</b>
-        <div class="rows hours-wrap"></div>
+        <div class="rows hours-wrap" data-type="grid"></div>
         <div class="multi-buttons" data-row-type="hours">
             <button type="button" onclick="addRow(this)">+ New Row</button>
             <button type="button" onclick="removeRow(this)">- Remove Row</button>
