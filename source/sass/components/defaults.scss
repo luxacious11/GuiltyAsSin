@@ -91,6 +91,19 @@ a[href="<i>No Information</i>"] {
         color: var(--text-secondary);
     }
 }
+#delcookiesrow {
+    margin: 0 var(--space-lg) var(--space-md);
+    text-transform: uppercase;
+    font-size: var(--size-xs);
+    letter-spacing: 0.2em;
+}
+#mark-as-read-subto {
+    margin: 0 var(--space-lg) 0 auto;
+    text-transform: uppercase;
+    font-size: var(--size-xs);
+    letter-spacing: 0.2em;
+    text-align: right;
+}
 #Online,
 #Reg,
 #Login,
